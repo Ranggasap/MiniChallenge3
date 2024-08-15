@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B162A532C6DB13900BBB6A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A522C6DB13900BBB6A9 /* LoginViewController.swift */; };
+		8B162A592C6DB1E900BBB6A9 /* LoginViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A582C6DB1E900BBB6A9 /* LoginViewRepresentable.swift */; };
 		8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */; };
 		8BFFF95A2C57D51F00A2F088 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9592C57D51F00A2F088 /* ContentView.swift */; };
 		8BFFF95C2C57D52100A2F088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95B2C57D52100A2F088 /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B162A522C6DB13900BBB6A9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8B162A582C6DB1E900BBB6A9 /* LoginViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewRepresentable.swift; sourceTree = "<group>"; };
 		8BFFF9542C57D51F00A2F088 /* MiniChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChallenge3App.swift; sourceTree = "<group>"; };
 		8BFFF9592C57D51F00A2F088 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +75,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B162A512C6DB11300BBB6A9 /* UIKitViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8B162A522C6DB13900BBB6A9 /* LoginViewController.swift */,
+			);
+			path = UIKitViewControllers;
+			sourceTree = "<group>";
+		};
+		8B162A572C6DB1D200BBB6A9 /* UIKitViewRepresentable */ = {
+			isa = PBXGroup;
+			children = (
+				8B162A582C6DB1E900BBB6A9 /* LoginViewRepresentable.swift */,
+			);
+			path = UIKitViewRepresentable;
+			sourceTree = "<group>";
+		};
 		8BFFF94B2C57D51F00A2F088 = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +114,10 @@
 		8BFFF9562C57D51F00A2F088 /* MiniChallenge3 */ = {
 			isa = PBXGroup;
 			children = (
+				8B162A572C6DB1D200BBB6A9 /* UIKitViewRepresentable */,
 				8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */,
 				8BFFF9592C57D51F00A2F088 /* ContentView.swift */,
+				8B162A512C6DB11300BBB6A9 /* UIKitViewControllers */,
 				8BFFF9842C57D54900A2F088 /* Utils */,
 				8BFFF9832C57D54000A2F088 /* ViewModels */,
 				8BFFF9822C57D53B00A2F088 /* Models */,
@@ -289,8 +311,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B162A532C6DB13900BBB6A9 /* LoginViewController.swift in Sources */,
 				8BFFF95A2C57D51F00A2F088 /* ContentView.swift in Sources */,
 				8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */,
+				8B162A592C6DB1E900BBB6A9 /* LoginViewRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
