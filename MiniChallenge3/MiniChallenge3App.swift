@@ -11,7 +11,7 @@ import SwiftUI
 struct MiniChallenge3App: App {
     var body: some Scene {
         WindowGroup {
-            LoginViewControllerRepresentable()
+            ContentView()
         }
     }
 }
