@@ -8,12 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */; };
-		8BFFF95A2C57D51F00A2F088 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9592C57D51F00A2F088 /* ContentView.swift */; };
 		8BFFF95C2C57D52100A2F088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95B2C57D52100A2F088 /* Assets.xcassets */; };
 		8BFFF95F2C57D52100A2F088 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95E2C57D52100A2F088 /* Preview Assets.xcassets */; };
 		8BFFF9692C57D52100A2F088 /* MiniChallenge3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9682C57D52100A2F088 /* MiniChallenge3Tests.swift */; };
 		8BFFF9732C57D52100A2F088 /* MiniChallenge3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9722C57D52100A2F088 /* MiniChallenge3UITests.swift */; };
 		8BFFF9752C57D52100A2F088 /* MiniChallenge3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9742C57D52100A2F088 /* MiniChallenge3UITestsLaunchTests.swift */; };
+		931C296D2C719C7D00554592 /* Mini3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C296C2C719C7D00554592 /* Mini3App.swift */; };
+		931C29712C719C7E00554592 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 931C29702C719C7E00554592 /* Assets.xcassets */; };
+		931C29742C719C7E00554592 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 931C29732C719C7E00554592 /* Preview Assets.xcassets */; };
+		931C297E2C719C7E00554592 /* Mini3_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C297D2C719C7E00554592 /* Mini3_Watch_AppTests.swift */; };
+		931C29882C719C7E00554592 /* Mini3_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29872C719C7E00554592 /* Mini3_Watch_AppUITests.swift */; };
+		931C298A2C719C7E00554592 /* Mini3_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29892C719C7E00554592 /* Mini3_Watch_AppUITestsLaunchTests.swift */; };
+		931C298D2C719C7E00554592 /* Mini3 Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 931C296A2C719C7D00554592 /* Mini3 Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		931C29A72C719E2A00554592 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29A62C719E2A00554592 /* Audio.swift */; };
+		931C29A82C719E2A00554592 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29A62C719E2A00554592 /* Audio.swift */; };
+		931C29AA2C719E4200554592 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29A92C719E4200554592 /* WatchConnectivityManager.swift */; };
+		931C29AB2C719E4200554592 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29A92C719E4200554592 /* WatchConnectivityManager.swift */; };
+		931C29AD2C719E7E00554592 /* RecordFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29AC2C719E7E00554592 /* RecordFunction.swift */; };
+		931C29AE2C719E7E00554592 /* RecordFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29AC2C719E7E00554592 /* RecordFunction.swift */; };
+		931C29B02C719E9800554592 /* iOSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29AF2C719E9800554592 /* iOSManager.swift */; };
+		931C29B22C719EA700554592 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29B12C719EA700554592 /* WatchManager.swift */; };
+		931C29B42C719ECB00554592 /* WatchMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29B32C719ECB00554592 /* WatchMainView.swift */; };
+		931C29B82C719EE100554592 /* iOSMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29B72C719EE100554592 /* iOSMainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,12 +47,46 @@
 			remoteGlobalIDString = 8BFFF9532C57D51F00A2F088;
 			remoteInfo = MiniChallenge3;
 		};
+		931C297A2C719C7E00554592 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BFFF94C2C57D51F00A2F088 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 931C29692C719C7D00554592;
+			remoteInfo = "Mini3 Watch App";
+		};
+		931C29842C719C7E00554592 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BFFF94C2C57D51F00A2F088 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 931C29692C719C7D00554592;
+			remoteInfo = "Mini3 Watch App";
+		};
+		931C298B2C719C7E00554592 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BFFF94C2C57D51F00A2F088 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 931C29692C719C7D00554592;
+			remoteInfo = "Mini3 Watch App";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		931C298E2C719C7E00554592 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				931C298D2C719C7E00554592 /* Mini3 Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8BFFF9542C57D51F00A2F088 /* MiniChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChallenge3App.swift; sourceTree = "<group>"; };
-		8BFFF9592C57D51F00A2F088 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8BFFF95B2C57D52100A2F088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BFFF95E2C57D52100A2F088 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8BFFF9642C57D52100A2F088 /* MiniChallenge3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniChallenge3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +94,24 @@
 		8BFFF96E2C57D52100A2F088 /* MiniChallenge3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniChallenge3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFFF9722C57D52100A2F088 /* MiniChallenge3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChallenge3UITests.swift; sourceTree = "<group>"; };
 		8BFFF9742C57D52100A2F088 /* MiniChallenge3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChallenge3UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		931C296A2C719C7D00554592 /* Mini3 Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mini3 Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		931C296C2C719C7D00554592 /* Mini3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini3App.swift; sourceTree = "<group>"; };
+		931C29702C719C7E00554592 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		931C29732C719C7E00554592 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		931C29792C719C7E00554592 /* Mini3 Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mini3 Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		931C297D2C719C7E00554592 /* Mini3_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini3_Watch_AppTests.swift; sourceTree = "<group>"; };
+		931C29832C719C7E00554592 /* Mini3 Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mini3 Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		931C29872C719C7E00554592 /* Mini3_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini3_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		931C29892C719C7E00554592 /* Mini3_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini3_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		931C29982C719CAE00554592 /* Mini3-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mini3-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		931C29992C719CB500554592 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		931C29A62C719E2A00554592 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		931C29A92C719E4200554592 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		931C29AC2C719E7E00554592 /* RecordFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFunction.swift; sourceTree = "<group>"; };
+		931C29AF2C719E9800554592 /* iOSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSManager.swift; sourceTree = "<group>"; };
+		931C29B12C719EA700554592 /* WatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
+		931C29B32C719ECB00554592 /* WatchMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchMainView.swift; sourceTree = "<group>"; };
+		931C29B72C719EE100554592 /* iOSMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSMainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +136,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		931C29672C719C7D00554592 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		931C29762C719C7E00554592 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		931C29802C719C7E00554592 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -75,8 +164,15 @@
 			isa = PBXGroup;
 			children = (
 				8BFFF9562C57D51F00A2F088 /* MiniChallenge3 */,
+				931C296B2C719C7D00554592 /* Mini3 Watch App */,
+				931C29A52C719DEC00554592 /* Model */,
+				931C29A42C719DE400554592 /* View Model */,
+				931C29A32C719DE100554592 /* View */,
+				931C29A22C719DDC00554592 /* Utils */,
 				8BFFF9672C57D52100A2F088 /* MiniChallenge3Tests */,
 				8BFFF9712C57D52100A2F088 /* MiniChallenge3UITests */,
+				931C297C2C719C7E00554592 /* Mini3 Watch AppTests */,
+				931C29862C719C7E00554592 /* Mini3 Watch AppUITests */,
 				8BFFF9552C57D51F00A2F088 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,6 +183,9 @@
 				8BFFF9542C57D51F00A2F088 /* MiniChallenge3.app */,
 				8BFFF9642C57D52100A2F088 /* MiniChallenge3Tests.xctest */,
 				8BFFF96E2C57D52100A2F088 /* MiniChallenge3UITests.xctest */,
+				931C296A2C719C7D00554592 /* Mini3 Watch App.app */,
+				931C29792C719C7E00554592 /* Mini3 Watch AppTests.xctest */,
+				931C29832C719C7E00554592 /* Mini3 Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,12 +193,8 @@
 		8BFFF9562C57D51F00A2F088 /* MiniChallenge3 */ = {
 			isa = PBXGroup;
 			children = (
+				931C29992C719CB500554592 /* Info.plist */,
 				8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */,
-				8BFFF9592C57D51F00A2F088 /* ContentView.swift */,
-				8BFFF9842C57D54900A2F088 /* Utils */,
-				8BFFF9832C57D54000A2F088 /* ViewModels */,
-				8BFFF9822C57D53B00A2F088 /* Models */,
-				8BFFF9812C57D53500A2F088 /* Views */,
 				8BFFF95B2C57D52100A2F088 /* Assets.xcassets */,
 				8BFFF95D2C57D52100A2F088 /* Preview Content */,
 			);
@@ -131,32 +226,75 @@
 			path = MiniChallenge3UITests;
 			sourceTree = "<group>";
 		};
-		8BFFF9812C57D53500A2F088 /* Views */ = {
+		931C296B2C719C7D00554592 /* Mini3 Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				931C29982C719CAE00554592 /* Mini3-Watch-App-Info.plist */,
+				931C296C2C719C7D00554592 /* Mini3App.swift */,
+				931C29702C719C7E00554592 /* Assets.xcassets */,
+				931C29722C719C7E00554592 /* Preview Content */,
 			);
-			path = Views;
+			path = "Mini3 Watch App";
 			sourceTree = "<group>";
 		};
-		8BFFF9822C57D53B00A2F088 /* Models */ = {
+		931C29722C719C7E00554592 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				931C29732C719C7E00554592 /* Preview Assets.xcassets */,
 			);
-			path = Models;
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		8BFFF9832C57D54000A2F088 /* ViewModels */ = {
+		931C297C2C719C7E00554592 /* Mini3 Watch AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				931C297D2C719C7E00554592 /* Mini3_Watch_AppTests.swift */,
 			);
-			path = ViewModels;
+			path = "Mini3 Watch AppTests";
 			sourceTree = "<group>";
 		};
-		8BFFF9842C57D54900A2F088 /* Utils */ = {
+		931C29862C719C7E00554592 /* Mini3 Watch AppUITests */ = {
 			isa = PBXGroup;
 			children = (
+				931C29872C719C7E00554592 /* Mini3_Watch_AppUITests.swift */,
+				931C29892C719C7E00554592 /* Mini3_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "Mini3 Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		931C29A22C719DDC00554592 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				931C29AC2C719E7E00554592 /* RecordFunction.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		931C29A32C719DE100554592 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				931C29B72C719EE100554592 /* iOSMainView.swift */,
+				931C29B32C719ECB00554592 /* WatchMainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		931C29A42C719DE400554592 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				931C29A92C719E4200554592 /* WatchConnectivityManager.swift */,
+				931C29AF2C719E9800554592 /* iOSManager.swift */,
+				931C29B12C719EA700554592 /* WatchManager.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		931C29A52C719DEC00554592 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				931C29A62C719E2A00554592 /* Audio.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,10 +307,12 @@
 				8BFFF9502C57D51F00A2F088 /* Sources */,
 				8BFFF9512C57D51F00A2F088 /* Frameworks */,
 				8BFFF9522C57D51F00A2F088 /* Resources */,
+				931C298E2C719C7E00554592 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				931C298C2C719C7E00554592 /* PBXTargetDependency */,
 			);
 			name = MiniChallenge3;
 			productName = MiniChallenge3;
@@ -215,6 +355,59 @@
 			productReference = 8BFFF96E2C57D52100A2F088 /* MiniChallenge3UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		931C29692C719C7D00554592 /* Mini3 Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 931C29952C719C7E00554592 /* Build configuration list for PBXNativeTarget "Mini3 Watch App" */;
+			buildPhases = (
+				931C29662C719C7D00554592 /* Sources */,
+				931C29672C719C7D00554592 /* Frameworks */,
+				931C29682C719C7D00554592 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mini3 Watch App";
+			productName = "Mini3 Watch App";
+			productReference = 931C296A2C719C7D00554592 /* Mini3 Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		931C29782C719C7E00554592 /* Mini3 Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 931C29962C719C7E00554592 /* Build configuration list for PBXNativeTarget "Mini3 Watch AppTests" */;
+			buildPhases = (
+				931C29752C719C7E00554592 /* Sources */,
+				931C29762C719C7E00554592 /* Frameworks */,
+				931C29772C719C7E00554592 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				931C297B2C719C7E00554592 /* PBXTargetDependency */,
+			);
+			name = "Mini3 Watch AppTests";
+			productName = "Mini3 Watch AppTests";
+			productReference = 931C29792C719C7E00554592 /* Mini3 Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		931C29822C719C7E00554592 /* Mini3 Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 931C29972C719C7E00554592 /* Build configuration list for PBXNativeTarget "Mini3 Watch AppUITests" */;
+			buildPhases = (
+				931C297F2C719C7E00554592 /* Sources */,
+				931C29802C719C7E00554592 /* Frameworks */,
+				931C29812C719C7E00554592 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				931C29852C719C7E00554592 /* PBXTargetDependency */,
+			);
+			name = "Mini3 Watch AppUITests";
+			productName = "Mini3 Watch AppUITests";
+			productReference = 931C29832C719C7E00554592 /* Mini3 Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -222,7 +415,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					8BFFF9532C57D51F00A2F088 = {
@@ -235,6 +428,17 @@
 					8BFFF96D2C57D52100A2F088 = {
 						CreatedOnToolsVersion = 15.3;
 						TestTargetID = 8BFFF9532C57D51F00A2F088;
+					};
+					931C29692C719C7D00554592 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					931C29782C719C7E00554592 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 931C29692C719C7D00554592;
+					};
+					931C29822C719C7E00554592 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 931C29692C719C7D00554592;
 					};
 				};
 			};
@@ -254,6 +458,9 @@
 				8BFFF9532C57D51F00A2F088 /* MiniChallenge3 */,
 				8BFFF9632C57D52100A2F088 /* MiniChallenge3Tests */,
 				8BFFF96D2C57D52100A2F088 /* MiniChallenge3UITests */,
+				931C29692C719C7D00554592 /* Mini3 Watch App */,
+				931C29782C719C7E00554592 /* Mini3 Watch AppTests */,
+				931C29822C719C7E00554592 /* Mini3 Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -282,6 +489,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		931C29682C719C7D00554592 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				931C29742C719C7E00554592 /* Preview Assets.xcassets in Resources */,
+				931C29712C719C7E00554592 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		931C29772C719C7E00554592 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		931C29812C719C7E00554592 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -289,7 +519,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BFFF95A2C57D51F00A2F088 /* ContentView.swift in Sources */,
+				931C29AD2C719E7E00554592 /* RecordFunction.swift in Sources */,
+				931C29B02C719E9800554592 /* iOSManager.swift in Sources */,
+				931C29B82C719EE100554592 /* iOSMainView.swift in Sources */,
+				931C29A72C719E2A00554592 /* Audio.swift in Sources */,
+				931C29AA2C719E4200554592 /* WatchConnectivityManager.swift in Sources */,
 				8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +545,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		931C29662C719C7D00554592 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				931C29AE2C719E7E00554592 /* RecordFunction.swift in Sources */,
+				931C29A82C719E2A00554592 /* Audio.swift in Sources */,
+				931C29B42C719ECB00554592 /* WatchMainView.swift in Sources */,
+				931C29AB2C719E4200554592 /* WatchConnectivityManager.swift in Sources */,
+				931C296D2C719C7D00554592 /* Mini3App.swift in Sources */,
+				931C29B22C719EA700554592 /* WatchManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		931C29752C719C7E00554592 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				931C297E2C719C7E00554592 /* Mini3_Watch_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		931C297F2C719C7E00554592 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				931C29882C719C7E00554592 /* Mini3_Watch_AppUITests.swift in Sources */,
+				931C298A2C719C7E00554592 /* Mini3_Watch_AppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -323,6 +587,21 @@
 			isa = PBXTargetDependency;
 			target = 8BFFF9532C57D51F00A2F088 /* MiniChallenge3 */;
 			targetProxy = 8BFFF96F2C57D52100A2F088 /* PBXContainerItemProxy */;
+		};
+		931C297B2C719C7E00554592 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 931C29692C719C7D00554592 /* Mini3 Watch App */;
+			targetProxy = 931C297A2C719C7E00554592 /* PBXContainerItemProxy */;
+		};
+		931C29852C719C7E00554592 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 931C29692C719C7D00554592 /* Mini3 Watch App */;
+			targetProxy = 931C29842C719C7E00554592 /* PBXContainerItemProxy */;
+		};
+		931C298C2C719C7E00554592 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 931C29692C719C7D00554592 /* Mini3 Watch App */;
+			targetProxy = 931C298B2C719C7E00554592 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -449,14 +728,17 @@
 		8BFFF9792C57D52100A2F088 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = NNX37468Q3;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MiniChallenge3/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -478,14 +760,17 @@
 		8BFFF97A2C57D52100A2F088 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = NNX37468Q3;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MiniChallenge3/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -511,7 +796,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NNX37468Q3;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
@@ -531,7 +816,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NNX37468Q3;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
@@ -550,7 +835,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NNX37468Q3;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3UITests;
@@ -568,7 +853,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NNX37468Q3;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3UITests;
@@ -577,6 +862,152 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MiniChallenge3;
+			};
+			name = Release;
+		};
+		931C298F2C719C7E00554592 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Mini3;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ranggasaputra.MiniChallenge3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Debug;
+		};
+		931C29902C719C7E00554592 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Mini3;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ranggasaputra.MiniChallenge3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Release;
+		};
+		931C29912C719C7E00554592 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mini3 Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mini3 Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Debug;
+		};
+		931C29922C719C7E00554592 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mini3 Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mini3 Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Release;
+		};
+		931C29932C719C7E00554592 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Mini3 Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Debug;
+		};
+		931C29942C719C7E00554592 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Mini3 Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
 			};
 			name = Release;
 		};
@@ -615,6 +1046,33 @@
 			buildConfigurations = (
 				8BFFF97F2C57D52100A2F088 /* Debug */,
 				8BFFF9802C57D52100A2F088 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		931C29952C719C7E00554592 /* Build configuration list for PBXNativeTarget "Mini3 Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				931C298F2C719C7E00554592 /* Debug */,
+				931C29902C719C7E00554592 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		931C29962C719C7E00554592 /* Build configuration list for PBXNativeTarget "Mini3 Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				931C29912C719C7E00554592 /* Debug */,
+				931C29922C719C7E00554592 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		931C29972C719C7E00554592 /* Build configuration list for PBXNativeTarget "Mini3 Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				931C29932C719C7E00554592 /* Debug */,
+				931C29942C719C7E00554592 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
