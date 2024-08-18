@@ -29,9 +29,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
-        
         configureContainerViewBottomAction()
-        
         configureCallToActionButton()
         configureViewController()
         configureAutoRecordToggleButton()
@@ -68,15 +66,39 @@ class MainViewController: UIViewController {
 
     func setBackground() {
         let backgroundView = UIView()
+        let deerHorn = UIImageView(image: UIImage(named: "DeerHorn"))
+        let topDonut = UIImageView(image: UIImage(named: "BiteDonut"))
+        let bottomDonut = UIImageView(image: UIImage(named: "BiteDonut"))
+        
+        deerHorn.translatesAutoresizingMaskIntoConstraints = false
+        topDonut.translatesAutoresizingMaskIntoConstraints = false
+        bottomDonut.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        
+        deerHorn.contentMode = .scaleAspectFit
+        topDonut.contentMode = .scaleAspectFit
+        bottomDonut.contentMode = .scaleAspectFit
+        
         view.addSubview(backgroundView)
+        view.addSubview(deerHorn)
+        view.addSubview(topDonut)
+        view.addSubview(bottomDonut)
         view.sendSubviewToBack(backgroundView)
         
         NSLayoutConstraint.activate([
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            deerHorn.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            deerHorn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 50),
+            
+            topDonut.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            topDonut.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -200),
+            
+            bottomDonut.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            bottomDonut.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 100)
         ])
         
     }
