@@ -183,6 +183,8 @@
 		BFD4A8DB2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */; };
 		BFD4A8DC2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */; };
 		BFD4A8DD2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */; };
+		931C2A442C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
+		931C2A452C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -305,6 +307,7 @@
 		BFD4A8BB2C71FCEA00D5E4C5 /* ValidationPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValidationPageView.swift; path = ../../../../../Desktop/DevDoc/ViewTest/MC3View/MC3View/ValidationPageView.swift; sourceTree = "<group>"; };
 		BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPageViewModel.swift; sourceTree = "<group>"; };
 		BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvidenceItemViewModel.swift; sourceTree = "<group>"; };
+		931C2A432C71E04500554592 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,6 +500,7 @@
 			children = (
 				931C29A62C719E2A00554592 /* Audio.swift */,
 				931C29C02C71A47700554592 /* PinLocation.swift */,
+				931C2A432C71E04500554592 /* Recording.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -950,6 +954,7 @@
 				931C29C32C71A51D00554592 /* RoutePolyline.swift in Sources */,
 				8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */,
 				931C29C72C71A5C700554592 /* iOSLocationView.swift in Sources */,
+				931C2A442C71E04500554592 /* Recording.swift in Sources */,
 				931C29BF2C71A46500554592 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -993,6 +998,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				931C2A452C71E04500554592 /* Recording.swift in Sources */,
 				931C29AE2C719E7E00554592 /* RecordFunction.swift in Sources */,
 				931C29A82C719E2A00554592 /* Audio.swift in Sources */,
 				BF0228202C71FA7B00177974 /* ColorExtension.swift in Sources */,
