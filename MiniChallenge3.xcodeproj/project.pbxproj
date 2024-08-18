@@ -273,8 +273,7 @@
 		931C29A32C719DE100554592 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				931C29B72C719EE100554592 /* iOSMainView.swift */,
-				931C29B32C719ECB00554592 /* WatchMainView.swift */,
+				931C29B92C71A0A100554592 /* DummyView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,6 +294,15 @@
 				931C29A62C719E2A00554592 /* Audio.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		931C29B92C71A0A100554592 /* DummyView */ = {
+			isa = PBXGroup;
+			children = (
+				931C29B72C719EE100554592 /* iOSMainView.swift */,
+				931C29B32C719ECB00554592 /* WatchMainView.swift */,
+			);
+			path = DummyView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
