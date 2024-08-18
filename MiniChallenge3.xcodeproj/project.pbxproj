@@ -12,7 +12,12 @@
 		8B162A5D2C6DE1C200BBB6A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A5C2C6DE1C200BBB6A9 /* MainViewController.swift */; };
 		8B162A602C6DE33800BBB6A9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A5F2C6DE33800BBB6A9 /* CustomButton.swift */; };
 		8B4420002C6DECE0003872C4 /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B441FFF2C6DECE0003872C4 /* UIColor+CustomColors.swift */; };
+		8B4420022C6E01B5003872C4 /* CustomToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4420012C6E01B5003872C4 /* CustomToggleButton.swift */; };
+		8B4420042C6E0E2C003872C4 /* CustomLabelRegular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4420032C6E0E2C003872C4 /* CustomLabelRegular.swift */; };
 		8B72E63C2C6DE88F00B5FE73 /* MainViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B72E63B2C6DE88F00B5FE73 /* MainViewControllerRepresentable.swift */; };
+		8B94F0862C6F50A300E35A12 /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94F0852C6F50A300E35A12 /* ChatBoxView.swift */; };
+		8B94F0882C71D69500E35A12 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94F0872C71D69500E35A12 /* ReportViewController.swift */; };
+		8B94F08A2C71DB4F00E35A12 /* CustomSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94F0892C71DB4F00E35A12 /* CustomSwitchButton.swift */; };
 		8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */; };
 		8BFFF95A2C57D51F00A2F088 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9592C57D51F00A2F088 /* ContentView.swift */; };
 		8BFFF95C2C57D52100A2F088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95B2C57D52100A2F088 /* Assets.xcassets */; };
@@ -45,7 +50,12 @@
 		8B162A5C2C6DE1C200BBB6A9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8B162A5F2C6DE33800BBB6A9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8B441FFF2C6DECE0003872C4 /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+CustomColors.swift"; path = "MiniChallenge3/UIKitViewRepresentable/UIColor+CustomColors.swift"; sourceTree = SOURCE_ROOT; };
+		8B4420012C6E01B5003872C4 /* CustomToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleButton.swift; sourceTree = "<group>"; };
+		8B4420032C6E0E2C003872C4 /* CustomLabelRegular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelRegular.swift; sourceTree = "<group>"; };
 		8B72E63B2C6DE88F00B5FE73 /* MainViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		8B94F0852C6F50A300E35A12 /* ChatBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxView.swift; sourceTree = "<group>"; };
+		8B94F0872C71D69500E35A12 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		8B94F0892C71DB4F00E35A12 /* CustomSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchButton.swift; sourceTree = "<group>"; };
 		8BFFF9542C57D51F00A2F088 /* MiniChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChallenge3App.swift; sourceTree = "<group>"; };
 		8BFFF9592C57D51F00A2F088 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +99,7 @@
 				8B162A5E2C6DE29D00BBB6A9 /* UIKitComponents */,
 				8B162A522C6DB13900BBB6A9 /* LoginViewController.swift */,
 				8B162A5C2C6DE1C200BBB6A9 /* MainViewController.swift */,
+				8B94F0872C71D69500E35A12 /* ReportViewController.swift */,
 			);
 			path = UIKitViewControllers;
 			sourceTree = "<group>";
@@ -106,6 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				8B162A5F2C6DE33800BBB6A9 /* CustomButton.swift */,
+				8B4420012C6E01B5003872C4 /* CustomToggleButton.swift */,
+				8B94F0852C6F50A300E35A12 /* ChatBoxView.swift */,
+				8B4420032C6E0E2C003872C4 /* CustomLabelRegular.swift */,
+				8B94F0892C71DB4F00E35A12 /* CustomSwitchButton.swift */,
 			);
 			path = UIKitComponents;
 			sourceTree = "<group>";
@@ -331,11 +346,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B4420022C6E01B5003872C4 /* CustomToggleButton.swift in Sources */,
 				8B72E63C2C6DE88F00B5FE73 /* MainViewControllerRepresentable.swift in Sources */,
+				8B4420042C6E0E2C003872C4 /* CustomLabelRegular.swift in Sources */,
+				8B94F0862C6F50A300E35A12 /* ChatBoxView.swift in Sources */,
 				8B162A532C6DB13900BBB6A9 /* LoginViewController.swift in Sources */,
 				8BFFF95A2C57D51F00A2F088 /* ContentView.swift in Sources */,
 				8B162A602C6DE33800BBB6A9 /* CustomButton.swift in Sources */,
 				8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */,
+				8B94F08A2C71DB4F00E35A12 /* CustomSwitchButton.swift in Sources */,
+				8B94F0882C71D69500E35A12 /* ReportViewController.swift in Sources */,
 				8B162A592C6DB1E900BBB6A9 /* LoginViewRepresentable.swift in Sources */,
 				8B4420002C6DECE0003872C4 /* UIColor+CustomColors.swift in Sources */,
 				8B162A5D2C6DE1C200BBB6A9 /* MainViewController.swift in Sources */,

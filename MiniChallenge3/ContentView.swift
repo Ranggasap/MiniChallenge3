@@ -13,6 +13,7 @@ struct ContentView: View {
             Color("BackgroundColorPurple")
                 .ignoresSafeArea()
             MainViewControllerRepresentable()
+                .ignoresSafeArea(edges: .bottom)
         }
     }
 }
