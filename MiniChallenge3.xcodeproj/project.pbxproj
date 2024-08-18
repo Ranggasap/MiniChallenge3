@@ -41,6 +41,10 @@
 		931C29CE2C71ACC000554592 /* IronBacon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29C92C71ACC000554592 /* IronBacon.mp3 */; };
 		931C29CF2C71ACC000554592 /* testSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29CA2C71ACC000554592 /* testSong.mp3 */; };
 		931C29D02C71ACC000554592 /* WhatYouWant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29CB2C71ACC000554592 /* WhatYouWant.mp3 */; };
+		931C2A442C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
+		931C2A452C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
+		931C2A4B2C7247F600554592 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A4A2C7247F600554592 /* Utils.swift */; };
+		931C2A4C2C7247F600554592 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A4A2C7247F600554592 /* Utils.swift */; };
 		BF02279D2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
 		BF02279E2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
 		BF02279F2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
@@ -174,17 +178,9 @@
 		BFD4A8AA2C71FCB600D5E4C5 /* ToggleRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89F2C71FCB600D5E4C5 /* ToggleRecordView.swift */; };
 		BFD4A8AB2C71FCB600D5E4C5 /* ToggleRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89F2C71FCB600D5E4C5 /* ToggleRecordView.swift */; };
 		BFD4A8AC2C71FCB600D5E4C5 /* ToggleRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89F2C71FCB600D5E4C5 /* ToggleRecordView.swift */; };
-		BFD4A8C62C71FCEA00D5E4C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8BA2C71FCEA00D5E4C5 /* ContentView.swift */; };
-		BFD4A8C72C71FCEA00D5E4C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8BA2C71FCEA00D5E4C5 /* ContentView.swift */; };
-		BFD4A8C82C71FCEA00D5E4C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8BA2C71FCEA00D5E4C5 /* ContentView.swift */; };
-		BFD4A8C92C71FCEA00D5E4C5 /* ValidationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8BB2C71FCEA00D5E4C5 /* ValidationPageView.swift */; };
-		BFD4A8CA2C71FCEA00D5E4C5 /* ValidationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8BB2C71FCEA00D5E4C5 /* ValidationPageView.swift */; };
-		BFD4A8CB2C71FCEA00D5E4C5 /* ValidationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8BB2C71FCEA00D5E4C5 /* ValidationPageView.swift */; };
 		BFD4A8DB2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */; };
 		BFD4A8DC2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */; };
 		BFD4A8DD2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */; };
-		931C2A442C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
-		931C2A452C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,6 +274,8 @@
 		931C29C92C71ACC000554592 /* IronBacon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = IronBacon.mp3; sourceTree = "<group>"; };
 		931C29CA2C71ACC000554592 /* testSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testSong.mp3; sourceTree = "<group>"; };
 		931C29CB2C71ACC000554592 /* WhatYouWant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WhatYouWant.mp3; sourceTree = "<group>"; };
+		931C2A432C71E04500554592 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		931C2A4A2C7247F600554592 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		BF02278C2C71F97000177974 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		BF02278D2C71F97000177974 /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
@@ -303,11 +301,8 @@
 		BFD4A89D2C71FCB600D5E4C5 /* EvidenceItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvidenceItemView.swift; sourceTree = "<group>"; };
 		BFD4A89E2C71FCB600D5E4C5 /* HelloView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 		BFD4A89F2C71FCB600D5E4C5 /* ToggleRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleRecordView.swift; sourceTree = "<group>"; };
-		BFD4A8BA2C71FCEA00D5E4C5 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../../../../../Desktop/DevDoc/ViewTest/MC3View/MC3View/ContentView.swift; sourceTree = "<group>"; };
-		BFD4A8BB2C71FCEA00D5E4C5 /* ValidationPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValidationPageView.swift; path = ../../../../../Desktop/DevDoc/ViewTest/MC3View/MC3View/ValidationPageView.swift; sourceTree = "<group>"; };
 		BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPageViewModel.swift; sourceTree = "<group>"; };
 		BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvidenceItemViewModel.swift; sourceTree = "<group>"; };
-		931C2A432C71E04500554592 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +464,7 @@
 				931C29AC2C719E7E00554592 /* RecordFunction.swift */,
 				931C29C22C71A51D00554592 /* RoutePolyline.swift */,
 				931C29C42C71A56E00554592 /* LineCoordinator.swift */,
+				931C2A4A2C7247F600554592 /* Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -554,8 +550,6 @@
 		BF0228092C71F9BB00177974 /* VincentView */ = {
 			isa = PBXGroup;
 			children = (
-				BFD4A8BA2C71FCEA00D5E4C5 /* ContentView.swift */,
-				BFD4A8BB2C71FCEA00D5E4C5 /* ValidationPageView.swift */,
 				BFD4A8A02C71FCB600D5E4C5 /* Component */,
 				BFD4A89B2C71FCA100D5E4C5 /* bgStyle.swift */,
 			);
@@ -933,9 +927,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0228172C71FA7B00177974 /* DynamicIslandChecker.swift in Sources */,
-				BFD4A8C92C71FCEA00D5E4C5 /* ValidationPageView.swift in Sources */,
 				BFD4A8A72C71FCB600D5E4C5 /* HelloView.swift in Sources */,
-				BFD4A8C62C71FCEA00D5E4C5 /* ContentView.swift in Sources */,
 				931C29C52C71A56E00554592 /* LineCoordinator.swift in Sources */,
 				931C29AD2C719E7E00554592 /* RecordFunction.swift in Sources */,
 				BFD4A8DB2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */,
@@ -949,6 +941,7 @@
 				931C29BB2C71A29E00554592 /* AppDelegate.swift in Sources */,
 				931C29C12C71A47700554592 /* PinLocation.swift in Sources */,
 				BFD4A8AA2C71FCB600D5E4C5 /* ToggleRecordView.swift in Sources */,
+				931C2A4B2C7247F600554592 /* Utils.swift in Sources */,
 				931C29AA2C719E4200554592 /* WatchConnectivityManager.swift in Sources */,
 				BF02281D2C71FA7B00177974 /* ColorExtension.swift in Sources */,
 				931C29C32C71A51D00554592 /* RoutePolyline.swift in Sources */,
@@ -964,12 +957,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0228182C71FA7B00177974 /* DynamicIslandChecker.swift in Sources */,
-				BFD4A8C72C71FCEA00D5E4C5 /* ContentView.swift in Sources */,
 				BFD4A8DC2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */,
 				BFD4A8AB2C71FCB600D5E4C5 /* ToggleRecordView.swift in Sources */,
 				BF0228102C71FA5B00177974 /* FontExtension.swift in Sources */,
 				8BFFF9692C57D52100A2F088 /* MiniChallenge3Tests.swift in Sources */,
-				BFD4A8CA2C71FCEA00D5E4C5 /* ValidationPageView.swift in Sources */,
 				BFD4A8A82C71FCB600D5E4C5 /* HelloView.swift in Sources */,
 				BF02281E2C71FA7B00177974 /* ColorExtension.swift in Sources */,
 				BFD4A8A52C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */,
@@ -982,14 +973,12 @@
 			files = (
 				BFD4A8A62C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */,
 				BF0228112C71FA5B00177974 /* FontExtension.swift in Sources */,
-				BFD4A8C82C71FCEA00D5E4C5 /* ContentView.swift in Sources */,
 				8BFFF9732C57D52100A2F088 /* MiniChallenge3UITests.swift in Sources */,
 				BF0228192C71FA7B00177974 /* DynamicIslandChecker.swift in Sources */,
 				BFD4A8DD2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */,
 				8BFFF9752C57D52100A2F088 /* MiniChallenge3UITestsLaunchTests.swift in Sources */,
 				BFD4A8AC2C71FCB600D5E4C5 /* ToggleRecordView.swift in Sources */,
 				BFD4A8A92C71FCB600D5E4C5 /* HelloView.swift in Sources */,
-				BFD4A8CB2C71FCEA00D5E4C5 /* ValidationPageView.swift in Sources */,
 				BF02281F2C71FA7B00177974 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1003,6 +992,7 @@
 				931C29A82C719E2A00554592 /* Audio.swift in Sources */,
 				BF0228202C71FA7B00177974 /* ColorExtension.swift in Sources */,
 				BF0228122C71FA5B00177974 /* FontExtension.swift in Sources */,
+				931C2A4C2C7247F600554592 /* Utils.swift in Sources */,
 				931C29B42C719ECB00554592 /* WatchMainView.swift in Sources */,
 				931C29AB2C719E4200554592 /* WatchConnectivityManager.swift in Sources */,
 				931C296D2C719C7D00554592 /* Mini3App.swift in Sources */,
@@ -1190,7 +1180,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
@@ -1224,7 +1214,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
@@ -1333,7 +1323,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
@@ -1365,7 +1355,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
