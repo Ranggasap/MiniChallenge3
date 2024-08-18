@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct MiniChallenge3App: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             iOSMainView()
