@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import AVFoundation
 
 class WatchManager: recordFunction, ObservableObject {
@@ -13,9 +14,9 @@ class WatchManager: recordFunction, ObservableObject {
     @Published var isRecording = false
     @Published var isLoading = true
     @Published var counter: Int = UserDefaults.standard.integer(forKey: "recordingCounter") + 1
+    @Published var connectivity = WatchConnectivityManager()
     var audioRecorder: AVAudioRecorder?
     var currentAudioFilename: URL?
-    let connectivity = WatchConnectivityManager()
     
     func requestRecordPermission() {
         AVAudioApplication.requestRecordPermission { granted in
@@ -86,5 +87,14 @@ class WatchManager: recordFunction, ObservableObject {
         if let currentFilename = currentAudioFilename {
             connectivity.sendRecordingToiPhone(audio.recordings, currentFilename)
         }
+    }
+    
+    func toggleRecordingState() {
+        let fm = FileManager.default
+        let sourceURL = URL.documentsDirectory.appending(path: "saved_file")
+        if !fm.fileExists(atPath: sourceURL.path) {
+            try? "toggle recording state".write(to: sourceURL, atomically: true, encoding: .utf8)
+        }
+        connectivity.sendRecordingState(sourceURL)
     }
 }

@@ -41,6 +41,8 @@
 		931C29CE2C71ACC000554592 /* IronBacon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29C92C71ACC000554592 /* IronBacon.mp3 */; };
 		931C29CF2C71ACC000554592 /* testSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29CA2C71ACC000554592 /* testSong.mp3 */; };
 		931C29D02C71ACC000554592 /* WhatYouWant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29CB2C71ACC000554592 /* WhatYouWant.mp3 */; };
+		931C2A442C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
+		931C2A452C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,7 @@
 		931C29C92C71ACC000554592 /* IronBacon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = IronBacon.mp3; sourceTree = "<group>"; };
 		931C29CA2C71ACC000554592 /* testSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testSong.mp3; sourceTree = "<group>"; };
 		931C29CB2C71ACC000554592 /* WhatYouWant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WhatYouWant.mp3; sourceTree = "<group>"; };
+		931C2A432C71E04500554592 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +324,7 @@
 			children = (
 				931C29A62C719E2A00554592 /* Audio.swift */,
 				931C29C02C71A47700554592 /* PinLocation.swift */,
+				931C2A432C71E04500554592 /* Recording.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -584,6 +588,7 @@
 				931C29C32C71A51D00554592 /* RoutePolyline.swift in Sources */,
 				8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */,
 				931C29C72C71A5C700554592 /* iOSLocationView.swift in Sources */,
+				931C2A442C71E04500554592 /* Recording.swift in Sources */,
 				931C29BF2C71A46500554592 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,6 +614,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				931C2A452C71E04500554592 /* Recording.swift in Sources */,
 				931C29AE2C719E7E00554592 /* RecordFunction.swift in Sources */,
 				931C29A82C719E2A00554592 /* Audio.swift in Sources */,
 				931C29B42C719ECB00554592 /* WatchMainView.swift in Sources */,

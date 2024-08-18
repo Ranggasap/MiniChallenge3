@@ -6,20 +6,34 @@
 //
 
 import SwiftUI
+import Combine
+import WatchConnectivity
 
 struct iOSMainView: View {
-    @StateObject private var iOSVM = iOSManager()
-    @StateObject var connectivity = WatchConnectivityManager()
-    @State private var isDirected = false
+    @StateObject var iOSVM = iOSManager()
 
     var body: some View {
         NavigationStack {
             VStack {
-                Button(action: {
-                    isDirected = true
-                }, label: {
-                    Text("Navigate to LocationView")
-                })
+//                HStack {
+//                    Button(action: {
+//                        connectivity.toggleRecordState()
+//                        print("\(connectivity.isRecording)")
+//                    }, label: {
+//                        Text(connectivity.isRecording ? "Stop Recording" : "Start Recording")
+//                    })
+//                    .padding()
+//                }
+                
+                HStack {
+                    Button(action: {
+                        iOSVM.isDirected = true
+                    }, label: {
+                        Text("Navigate to LocationView")
+                    })
+                    .padding()
+                }
+                
                 if iOSVM.isLoading {
                     ProgressView("Loading recordings...") // Show a loading indicator
                         .onAppear {
@@ -38,15 +52,18 @@ struct iOSMainView: View {
                     }
                 }
             }
-            .navigationDestination(isPresented: $isDirected) {
+            .navigationDestination(isPresented: $iOSVM.isDirected) {
                 iOSLocationView()
             }
-            .onChange(of: connectivity.isReceived) { _, newValue in
-                if newValue == true {
-                    iOSVM.audio.recordings = iOSVM.fetchRecordings()
-                    connectivity.isReceived.toggle()
+            .onReceive(iOSVM.connectivity.$isReceived) { newValue in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    if newValue {
+                        iOSVM.audio.recordings = iOSVM.fetchRecordings()
+                        iOSVM.connectivity.isReceived = false
+                        iOSVM.isLoading = true
+                    }
                 }
-        }
+            }
         }
     }
 }
