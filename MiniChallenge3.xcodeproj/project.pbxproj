@@ -49,7 +49,7 @@
 		8B162A582C6DB1E900BBB6A9 /* LoginViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewRepresentable.swift; sourceTree = "<group>"; };
 		8B162A5C2C6DE1C200BBB6A9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8B162A5F2C6DE33800BBB6A9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		8B441FFF2C6DECE0003872C4 /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+CustomColors.swift"; path = "MiniChallenge3/UIKitViewRepresentable/UIColor+CustomColors.swift"; sourceTree = SOURCE_ROOT; };
+		8B441FFF2C6DECE0003872C4 /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+CustomColors.swift"; path = "MiniChallenge3/Utils/UIColor+CustomColors.swift"; sourceTree = SOURCE_ROOT; };
 		8B4420012C6E01B5003872C4 /* CustomToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleButton.swift; sourceTree = "<group>"; };
 		8B4420032C6E0E2C003872C4 /* CustomLabelRegular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelRegular.swift; sourceTree = "<group>"; };
 		8B72E63B2C6DE88F00B5FE73 /* MainViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerRepresentable.swift; sourceTree = "<group>"; };
