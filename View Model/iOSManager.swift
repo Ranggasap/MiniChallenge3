@@ -6,19 +6,27 @@
 //
 
 import Foundation
+import Combine
 
 class iOSManager: recordFunction, ObservableObject {
     @Published var audio = Audio()
     @Published var isLoading = true
     @Published var isDirected = false
+    @Published var isRecording = false
     @Published var connectivity = WatchConnectivityManager()
+    var cancellables = Set<AnyCancellable>()
     
-    func toggleRecordingState() {
-        let fm = FileManager.default
-        let sourceURL = URL.documentsDirectory.appending(path: "saved_file")
-        if !fm.fileExists(atPath: sourceURL.path) {
-            try? "toggle recording state".write(to: sourceURL, atomically: true, encoding: .utf8)
-        }
-        connectivity.sendRecordingState(sourceURL)
+    override init() {
+        super.init()
+        
+        connectivity.isRecordingSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newValue in
+                guard let self = self else { return }
+                if self.isRecording != newValue {
+                    self.isRecording = newValue
+                }
+            }
+            .store(in: &cancellables)
     }
 }

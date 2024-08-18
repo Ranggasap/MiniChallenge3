@@ -17,6 +17,21 @@ class WatchManager: recordFunction, ObservableObject {
     @Published var connectivity = WatchConnectivityManager()
     var audioRecorder: AVAudioRecorder?
     var currentAudioFilename: URL?
+    var cancellables = Set<AnyCancellable>()
+    
+    override init() {
+        super.init()
+        
+        connectivity.isRecordingSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newValue in
+                guard let self = self else { return }
+                if self.isRecording != newValue {
+                    self.isRecording = newValue
+                }
+            }
+            .store(in: &cancellables)
+    }
     
     func requestRecordPermission() {
         AVAudioApplication.requestRecordPermission { granted in
@@ -89,12 +104,22 @@ class WatchManager: recordFunction, ObservableObject {
         }
     }
     
-    func toggleRecordingState() {
-        let fm = FileManager.default
-        let sourceURL = URL.documentsDirectory.appending(path: "saved_file")
-        if !fm.fileExists(atPath: sourceURL.path) {
-            try? "toggle recording state".write(to: sourceURL, atomically: true, encoding: .utf8)
-        }
-        connectivity.sendRecordingState(sourceURL)
-    }
+//    func toggleRecordingState() {
+//        // Send a request to iOS to toggle the recording state
+//        //false
+//        let newState = !isRecording
+//        print("newState: \(newState)")
+//        connectivity.sendRecordingStateChangeRequest(newState)
+//    }
+    
+//    func toggleRecordingState() {
+////        print("wManager: \(isRecording)")
+//        let fm = FileManager.default
+//        let sourceURL = URL.documentsDirectory.appending(path: "saved_file")
+//        if !fm.fileExists(atPath: sourceURL.path) {
+//            try? "toggle recording state".write(to: sourceURL, atomically: true, encoding: .utf8)
+//        }
+//        connectivity.sendRecordingState(sourceURL)
+//        isRecording.toggle()
+//    }
 }

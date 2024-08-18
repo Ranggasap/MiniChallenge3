@@ -15,15 +15,14 @@ struct iOSMainView: View {
     var body: some View {
         NavigationStack {
             VStack {
-//                HStack {
-//                    Button(action: {
-//                        connectivity.toggleRecordState()
-//                        print("\(connectivity.isRecording)")
-//                    }, label: {
-//                        Text(connectivity.isRecording ? "Stop Recording" : "Start Recording")
-//                    })
-//                    .padding()
-//                }
+                HStack {
+                    Button(action: {
+                        iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
+                    }, label: {
+                        Text(iOSVM.isRecording ? "Stop Recording" : "Start Recording")
+                    })
+                    .padding()
+                }
                 
                 HStack {
                     Button(action: {
@@ -56,7 +55,7 @@ struct iOSMainView: View {
                 iOSLocationView()
             }
             .onReceive(iOSVM.connectivity.$isReceived) { newValue in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if newValue {
                         iOSVM.audio.recordings = iOSVM.fetchRecordings()
                         iOSVM.connectivity.isReceived = false
