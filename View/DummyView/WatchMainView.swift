@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Combine
+import WatchConnectivity
 
 struct WatchMainView: View {
     @StateObject var watchVM = WatchManager()
@@ -13,13 +15,11 @@ struct WatchMainView: View {
     var body: some View {
         VStack {
             HStack {
-                Button(watchVM.isRecording ? "Stop Recording" : "Start Recording") {
-                    if watchVM.isRecording {
-                        watchVM.stopRecording()
-                    } else {
-                        watchVM.startRecording()
-                    }
-                }
+                Button(action: {
+                    watchVM.toggleRecordingState(watchVM.connectivity, watchVM.isRecording)
+                }, label: {
+                    Text(watchVM.isRecording ? "Stop Recording" : "Start Recording")
+                })
                 .padding()
             }
             
@@ -43,6 +43,13 @@ struct WatchMainView: View {
         }
         .onAppear {
             watchVM.requestRecordPermission()
+        }
+        .onChange(of: watchVM.isRecording) { _, newValue in
+            if newValue {
+                watchVM.startRecording()
+            } else {
+                watchVM.stopRecording()
+            }
         }
     }
 }

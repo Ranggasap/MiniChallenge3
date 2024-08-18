@@ -32,4 +32,9 @@ class recordFunction {
             return []
         }
     }
+    
+    func toggleRecordingState(_ connectivity: WatchConnectivityManager, _ isRecording: Bool) {
+        let newState = !isRecording
+        connectivity.sendRecordingStateChangeRequest(newState)
+    }
 }
