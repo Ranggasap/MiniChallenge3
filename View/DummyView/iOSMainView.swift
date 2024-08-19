@@ -43,9 +43,13 @@ struct iOSMainView: View {
                     List(iOSVM.audio.recordings.sorted(by: { $0.lastPathComponent > $1.lastPathComponent }), id: \.self) { recording in
                         HStack {
                             Text(recording.lastPathComponent)
-                            Spacer()
-                            Button("Play") {
-                                iOSVM.playRecording(recording)
+//                            Spacer()
+//                            Button("Play") {
+//                                iOSVM.playRecording(recording)
+//                            }
+//                            Spacer()
+                            Button("Download") {
+                                iOSVM.downloadRecording(recording)
                             }
                         }
                     }

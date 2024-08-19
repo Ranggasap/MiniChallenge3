@@ -5,10 +5,10 @@
 //  Created by Bryan Vernanda on 18/08/24.
 //
 
-import Foundation
+import UIKit
 import Combine
 
-class iOSManager: recordFunction, ObservableObject {
+class iOSManager: NSObject, ObservableObject, UIDocumentPickerDelegate {
     @Published var audio = Audio()
     @Published var isLoading = true
     @Published var isDirected = false
@@ -17,6 +17,9 @@ class iOSManager: recordFunction, ObservableObject {
     @Published var endRecord = true
     @Published var connectivity = WatchConnectivityManager()
     var cancellables = Set<AnyCancellable>()
+    
+    // Instance of recordFunction for composition
+    let recordFunc = recordFunction()
     
     override init() {
         super.init()
@@ -35,5 +38,52 @@ class iOSManager: recordFunction, ObservableObject {
                 }
             }
             .store(in: &cancellables)
+    }
+    
+    // Delegating the methods to the composed recordFunction instance
+    func playRecording(_ recording: URL) {
+        recordFunc.playRecording(recording)
+    }
+    
+    func fetchRecordings() -> [URL] {
+        return recordFunc.fetchRecordings()
+    }
+    
+    func toggleRecordingState(_ connectivity: WatchConnectivityManager, _ isRecording: Bool) {
+        recordFunc.toggleRecordingState(connectivity, isRecording)
+    }
+    
+    func downloadRecording(_ recording: URL) {
+        guard let viewController = getRootViewController() else {
+            print("Failed to get the root view controller.")
+            return
+        }
+        
+        // Present the document picker to save the copied file
+        let documentPicker = UIDocumentPickerViewController(forExporting: [recording])
+        documentPicker.delegate = self
+        documentPicker.modalPresentationStyle = .formSheet
+        viewController.present(documentPicker, animated: true, completion: nil)
+    }
+    
+    // Function to get the root view controller
+    private func getRootViewController() -> UIViewController? {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return nil
+        }
+        return windowScene.windows.first?.rootViewController
+    }
+    
+    // MARK: - UIDocumentPickerDelegate
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let selectedURL = urls.first else {
+            return
+        }
+        
+        print("File copied to \(selectedURL)")
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print("Document picker was cancelled.")
     }
 }
