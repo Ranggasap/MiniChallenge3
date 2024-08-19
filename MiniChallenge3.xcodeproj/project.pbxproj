@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BE32E8E2C735C3800B1F94A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE32E8D2C735C3800B1F94A /* LoadingViewController.swift */; };
 		8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */; };
 		8BFFF95C2C57D52100A2F088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95B2C57D52100A2F088 /* Assets.xcassets */; };
 		8BFFF95F2C57D52100A2F088 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95E2C57D52100A2F088 /* Preview Assets.xcassets */; };
@@ -266,6 +267,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8BE32E8D2C735C3800B1F94A /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		8BFFF9542C57D51F00A2F088 /* MiniChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChallenge3App.swift; sourceTree = "<group>"; };
 		8BFFF95B2C57D52100A2F088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -399,6 +401,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8BE32E8C2C735BE100B1F94A /* UIKitViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8BE32E8D2C735C3800B1F94A /* LoadingViewController.swift */,
+			);
+			path = UIKitViewControllers;
+			sourceTree = "<group>";
+		};
 		8BFFF94B2C57D51F00A2F088 = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +584,7 @@
 		931C2A822C7250A500554592 /* App(iOS) */ = {
 			isa = PBXGroup;
 			children = (
+				8BE32E8C2C735BE100B1F94A /* UIKitViewControllers */,
 				8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */,
 				931C29BA2C71A29E00554592 /* AppDelegate.swift */,
 				931C29BC2C71A2DD00554592 /* AppConstants.swift */,
@@ -1065,6 +1076,7 @@
 				931C29B02C719E9800554592 /* iOSManager.swift in Sources */,
 				931C29B82C719EE100554592 /* iOSMainView.swift in Sources */,
 				BFD4A8A42C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */,
+				8BE32E8E2C735C3800B1F94A /* LoadingViewController.swift in Sources */,
 				931C29BD2C71A2DD00554592 /* AppConstants.swift in Sources */,
 				931C29A72C719E2A00554592 /* Audio.swift in Sources */,
 				BFD4A89C2C71FCA100D5E4C5 /* bgStyle.swift in Sources */,
