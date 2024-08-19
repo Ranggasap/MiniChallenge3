@@ -9,47 +9,47 @@ import SwiftUI
 
 struct ContentView: View {
     // pake state ini buat masing" view, atau bagusnya kalau dibikin observableobject bikin pattern1, pattern2 buat call masing" pattern dan colorbackgroundnya (1,2,3,dst) (semua yang disini pindahin ke observableobject, jdi cuman perlu call 1 state disini
-    @State private var pattern = "ItemBackground1"
-    @State private var colorBg = "ColorBackground1"
-    @State private var pattern2 = "ItemBackground2"
-    @State private var colorBg2 = "ColorBackground2"
     @State private var username = "Natalie"
-    @State private var isAutoRecording = false
-    @State private var isRecord = false
-    @State private var endRecord = true
+    @State private var navigateToValidation = false
+    @StateObject var iOSVM = iOSManager()
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ZStack {
-                if endRecord{
-                    bgStyle(pattern: $pattern, colorBg: $colorBg)
+                if iOSVM.endRecord{
+                    bgStyle(pattern: "ItemBackground1", colorBg: "ColorBackground1")
+                    AvatarView(avatar: "avatar1")
                 }else{
-                    bgStyle(pattern: $pattern2, colorBg: $colorBg2)
+                    bgStyle(pattern: "ItemBackground2", colorBg: "ColorBackground2")
+                    AvatarView(avatar: "avatar2")
                 }
+                
+                BubbleChatView(text: "How was your day? Keep your head high, knowing that you have the power within you to face any challenge.")
                 
                 HelloView(username: $username)
                 
                 VStack{
                     Spacer()
                     VStack(spacing:16){
-                        if !isRecord{
-                            ToggleRecordView(isAutoRecording: $isAutoRecording)
+                        if !iOSVM.isRecording{
+                            ToggleRecordView(isAutoRecording: $iOSVM.isAutoRecording)
                         }
-                        if isRecord && endRecord{
+                        if iOSVM.isRecording && iOSVM.endRecord{
                             HStack(spacing:20){
-                                NavigationLink(destination:ValidationPageView()){
-                                    RoundedRectangle(cornerRadius: 14)
-                                        .foregroundColor(.buttonColor3)
-                                        .frame(height: 55)
-                                        .overlay{
-                                            Text("Yes")
-                                                .foregroundColor(.fontColor1)
-                                                .font(.lt(size: 20, weight: .bold))
-                                        }
-                                }
+                                RoundedRectangle(cornerRadius: 14)
+                                    .foregroundColor(.buttonColor3)
+                                    .frame(height: 55)
+                                    .overlay {
+                                        Text("Yes")
+                                            .foregroundColor(.fontColor1)
+                                            .font(.lt(size: 20, weight: .bold))
+                                    }
+                                    .simultaneousGesture(TapGesture().onEnded {
+                                        iOSVM.isRecording = false
+                                        navigateToValidation = true
+                                    })
                                 Button(action: {
-                                    isRecord = false
-                                    endRecord = true
+                                    iOSVM.isRecording = false
                                 }) {
                                     RoundedRectangle(cornerRadius: 14)
                                         .stroke(.buttonColor3, lineWidth: 2)
@@ -64,14 +64,19 @@ struct ContentView: View {
                             .padding(.horizontal, 32)
                         }else{
                             Button(action: {
-                                isRecord = true
-                                endRecord.toggle()
+                                if iOSVM.isRecording != true {//true
+                                    iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
+                                } else if iOSVM.isRecording && !iOSVM.endRecord {
+                                    iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
+                                } else {
+                                    iOSVM.endRecord.toggle()
+                                }
                             }) {
                             RoundedRectangle(cornerRadius: 14)
-                                .foregroundColor(isRecord ? .buttonColor2 : .buttonColor1)
+                                .foregroundColor(iOSVM.isRecording ? .buttonColor2 : .buttonColor1)
                                 .frame(width: UIScreen.main.bounds.width-64, height: 62)
                                 .overlay{
-                                    Text(isRecord ? "End Record" : "Start Record")
+                                    Text(iOSVM.isRecording ? "End Record" : "Start Record")
                                         .font(.lt(size: 20, weight: .bold))
                                         .foregroundColor(.fontColor1)
                                 }
@@ -86,6 +91,9 @@ struct ContentView: View {
                 }
                 
                 
+            }
+            .navigationDestination(isPresented: $navigateToValidation) {
+                ValidationPageView(navigateToValidation: $navigateToValidation)
             }
         }
         .navigationViewStyle(.stack)
