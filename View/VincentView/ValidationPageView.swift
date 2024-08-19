@@ -20,7 +20,7 @@ struct ValidationPageView: View {
     
     var body: some View {
         ZStack {
-            bgStyle(pattern: $pattern, colorBg: $colorBg)
+            bgStyle(pattern: "ItemBackground1", colorBg: "ColorBackground1")
             
             VStack(alignment:.leading, spacing:16){
                 Button(action: {

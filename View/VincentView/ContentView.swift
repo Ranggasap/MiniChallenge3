@@ -9,10 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     // pake state ini buat masing" view, atau bagusnya kalau dibikin observableobject bikin pattern1, pattern2 buat call masing" pattern dan colorbackgroundnya (1,2,3,dst) (semua yang disini pindahin ke observableobject, jdi cuman perlu call 1 state disini
-    @State private var pattern = "ItemBackground1"
-    @State private var colorBg = "ColorBackground1"
-    @State private var pattern2 = "ItemBackground2"
-    @State private var colorBg2 = "ColorBackground2"
     @State private var username = "Natalie"
     @State private var isAutoRecording = false
     @State private var isRecord = false
@@ -22,10 +18,14 @@ struct ContentView: View {
         NavigationView{
             ZStack {
                 if endRecord{
-                    bgStyle(pattern: $pattern, colorBg: $colorBg)
+                    bgStyle(pattern: "ItemBackground1", colorBg: "ColorBackground1")
+                    AvatarView(avatar: "avatar1")
                 }else{
-                    bgStyle(pattern: $pattern2, colorBg: $colorBg2)
+                    bgStyle(pattern: "ItemBackground2", colorBg: "ColorBackground2")
+                    AvatarView(avatar: "avatar2")
                 }
+                
+                BubbleChatView(text: "How was your day? Keep your head high, knowing that you have the power within you to face any challenge.")
                 
                 HelloView(username: $username)
                 
