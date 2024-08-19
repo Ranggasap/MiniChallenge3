@@ -11,6 +11,7 @@ struct ValidationPageView: View {
     @State private var pattern = "ItemBackground1"
     @State private var colorBg = "ColorBackground1"
     @State private var isAutoRecording = true
+    @Binding var navigateToValidation: Bool
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -27,6 +28,7 @@ struct ValidationPageView: View {
                     if currentCase > 1 {
                         currentCase -= 1
                     } else {
+                        navigateToValidation = false
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }) {
@@ -130,6 +132,6 @@ struct ValidationPageView: View {
 }
 
 #Preview {
-    ValidationPageView()
+    ValidationPageView(navigateToValidation: .constant(true))
 }
 
