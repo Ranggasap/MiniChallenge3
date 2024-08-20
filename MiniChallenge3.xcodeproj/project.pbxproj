@@ -10,6 +10,9 @@
 		8BE3702F2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3702E2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift */; };
 		8BE370312C74469500AFFC8D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE370302C74469500AFFC8D /* LoadingViewController.swift */; };
 		8BE370332C74482800AFFC8D /* RecordFunctionUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE370322C74482800AFFC8D /* RecordFunctionUnitTests.swift */; };
+		8BE370382C74501800AFFC8D /* WatchUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE370372C74501800AFFC8D /* WatchUI.swift */; };
+		8BE3703A2C7481C500AFFC8D /* IdleWatchUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE370392C7481C500AFFC8D /* IdleWatchUI.swift */; };
+		8BE3703C2C7481FE00AFFC8D /* RecordingWatchUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3703B2C7481FE00AFFC8D /* RecordingWatchUI.swift */; };
 		8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */; };
 		8BFFF95C2C57D52100A2F088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95B2C57D52100A2F088 /* Assets.xcassets */; };
 		8BFFF95F2C57D52100A2F088 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95E2C57D52100A2F088 /* Preview Assets.xcassets */; };
@@ -264,6 +267,9 @@
 		8BE3702E2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		8BE370302C74469500AFFC8D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		8BE370322C74482800AFFC8D /* RecordFunctionUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFunctionUnitTests.swift; sourceTree = "<group>"; };
+		8BE370372C74501800AFFC8D /* WatchUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchUI.swift; sourceTree = "<group>"; };
+		8BE370392C7481C500AFFC8D /* IdleWatchUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleWatchUI.swift; sourceTree = "<group>"; };
+		8BE3703B2C7481FE00AFFC8D /* RecordingWatchUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingWatchUI.swift; sourceTree = "<group>"; };
 		8BFFF9542C57D51F00A2F088 /* MiniChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChallenge3App.swift; sourceTree = "<group>"; };
 		8BFFF95B2C57D52100A2F088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -416,6 +422,16 @@
 			path = UIKitViewControllerRepresentable;
 			sourceTree = "<group>";
 		};
+		8BE370342C744FD700AFFC8D /* WatchUI */ = {
+			isa = PBXGroup;
+			children = (
+				8BE370372C74501800AFFC8D /* WatchUI.swift */,
+				8BE370392C7481C500AFFC8D /* IdleWatchUI.swift */,
+				8BE3703B2C7481FE00AFFC8D /* RecordingWatchUI.swift */,
+			);
+			path = WatchUI;
+			sourceTree = "<group>";
+		};
 		8BFFF94B2C57D51F00A2F088 = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +555,9 @@
 		931C29A32C719DE100554592 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8BE370342C744FD700AFFC8D /* WatchUI */,
+				8BE3702D2C74462000AFFC8D /* UIKitViewControllerRepresentable */,
+				8BE3702C2C7445C700AFFC8D /* UIKitViewControllers */,
 				BF02280C2C71F9D300177974 /* AppView */,
 				BF0228092C71F9BB00177974 /* VincentView */,
 				931C29B92C71A0A100554592 /* DummyView */,
@@ -592,8 +611,6 @@
 		931C2A822C7250A500554592 /* App(iOS) */ = {
 			isa = PBXGroup;
 			children = (
-				8BE3702D2C74462000AFFC8D /* UIKitViewControllerRepresentable */,
-				8BE3702C2C7445C700AFFC8D /* UIKitViewControllers */,
 				8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */,
 				931C29BA2C71A29E00554592 /* AppDelegate.swift */,
 				931C29BC2C71A2DD00554592 /* AppConstants.swift */,
@@ -1142,13 +1159,16 @@
 				931C2A452C71E04500554592 /* Recording.swift in Sources */,
 				931C29AE2C719E7E00554592 /* RecordFunction.swift in Sources */,
 				931C29A82C719E2A00554592 /* Audio.swift in Sources */,
+				8BE3703A2C7481C500AFFC8D /* IdleWatchUI.swift in Sources */,
 				BF0228202C71FA7B00177974 /* ColorExtension.swift in Sources */,
 				BF0228122C71FA5B00177974 /* FontExtension.swift in Sources */,
 				931C2A4C2C7247F600554592 /* Utils.swift in Sources */,
 				931C29B42C719ECB00554592 /* WatchMainView.swift in Sources */,
+				8BE370382C74501800AFFC8D /* WatchUI.swift in Sources */,
 				931C29AB2C719E4200554592 /* WatchConnectivityManager.swift in Sources */,
 				931C296D2C719C7D00554592 /* Mini3App.swift in Sources */,
 				931C29B22C719EA700554592 /* WatchManager.swift in Sources */,
+				8BE3703C2C7481FE00AFFC8D /* RecordingWatchUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1511,7 +1531,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -1543,7 +1563,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
