@@ -557,8 +557,8 @@
 			isa = PBXGroup;
 			children = (
 				931C29B72C719EE100554592 /* iOSMainView.swift */,
-				931C29C62C71A5C700554592 /* iOSLocationView.swift */,
 				931C29B32C719ECB00554592 /* WatchMainView.swift */,
+				931C29C62C71A5C700554592 /* iOSLocationView.swift */,
 				93BA05412C7468DC007E4049 /* iOSLocationViewDetail.swift */,
 			);
 			path = DummyView;

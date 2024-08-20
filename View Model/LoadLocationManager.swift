@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 import AVFoundation
 
-class LoadLocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+class LoadLocationManager: ObservableObject {
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -30,32 +30,6 @@ class LoadLocationManager: NSObject, CLLocationManagerDelegate, ObservableObject
         self.showSlider = showSlider
         self.audioPlayer = audioPlayer
         self.maxSliderValue = maxSliderValue
-    }
-    
-    func disable() {
-        updateRegionForEntireRoute()
-        sliderValue = maxSliderValue
-        showSlider = true
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let currentLocation = locations.last {
-            appendPin(location: currentLocation)
-            updateRegion(location: currentLocation)
-        }
-    }
-    
-    func appendPin(location: CLLocation) {
-        let timestamp = Date()  // Capture the timestamp immediately
-        pins.append(PinLocation(coordinate: location.coordinate, timestamp: timestamp))
-        routeCoordinates.append((location.coordinate, timestamp))
-    }
-    
-    func updateRegion(location: CLLocation) {
-        region = MKCoordinateRegion(
-            center: location.coordinate,
-            span: MKCoordinateSpan(latitudeDelta: 0.0015, longitudeDelta: 0.0015)
-        )
     }
     
     func updateRegionForEntireRoute() {
@@ -88,28 +62,6 @@ class LoadLocationManager: NSObject, CLLocationManagerDelegate, ObservableObject
     func timestampForSliderValue() -> TimeInterval? {
         return sliderValue
     }
-    
-    func outputSliderValueLocationData() {
-        // Get the exact coordinate at the current slider value
-        guard let firstTimestamp = routeCoordinates.first?.timestamp else {
-            print("No location data available.")
-            return
-        }
-        
-        // Calculate the target timestamp
-        let targetTimestamp = firstTimestamp.addingTimeInterval(sliderValue)
-        
-        // Find the closest coordinate to the target timestamp
-        if let closestLocation = routeCoordinates.min(by: { abs($0.timestamp.timeIntervalSince(targetTimestamp)) < abs($1.timestamp.timeIntervalSince(targetTimestamp)) }) {
-            let latitude = closestLocation.coordinate.latitude
-            let longitude = closestLocation.coordinate.longitude
-            print("Current location at slider value (\(sliderValue) seconds):")
-            print("Lat: \(latitude), Lon: \(longitude)")
-        } else {
-            print("No location data available for the current slider value.")
-        }
-    }
-    
     
     func playAudio(fromTimestamp timestamp: TimeInterval) {
         guard let url = Bundle.main.url(forResource: "testSong", withExtension: "mp3") else {
