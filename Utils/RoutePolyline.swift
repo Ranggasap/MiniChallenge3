@@ -10,7 +10,7 @@ import MapKit
 
 struct RoutePolyline: UIViewRepresentable {
     var routeCoordinates: [CLLocationCoordinate2D]
-    var startEndPins: (start: iOSLocationView.PinLocation?, end: iOSLocationView.PinLocation?)
+    var startEndPins: (start: PinLocation?, end: PinLocation?)
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()

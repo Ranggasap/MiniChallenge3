@@ -10,10 +10,10 @@ import CoreLocation
 import MapKit
 import AVFoundation
 
-extension iOSLocationView {
+//extension iOSLocationView {
     class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         @Published var isLocationTrackingEnabled = false
-        @Published var location: CLLocation?
+        @Published var storeLocation: [SavedLocation] = []
         @Published var region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
             span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -38,6 +38,14 @@ extension iOSLocationView {
         }
         
         func enable() {
+            region = MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            )
+            pins = []
+            routeCoordinates = []
+            sliderValue = 0
+            showSlider = false
             mgr.startUpdatingLocation()
         }
         
@@ -46,11 +54,11 @@ extension iOSLocationView {
             updateRegionForEntireRoute()
             sliderValue = maxSliderValue
             showSlider = true
+            storeLocation.append(SavedLocation(routeCoordinates: routeCoordinates, pins: pins, sliderValue: sliderValue, showSlider: showSlider, region: region, maxSliderValue: maxSliderValue))
         }
         
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             if let currentLocation = locations.last {
-                location = currentLocation
                 appendPin(location: currentLocation)
                 updateRegion(location: currentLocation)
             }
@@ -78,13 +86,16 @@ extension iOSLocationView {
         }
         
         func startStopLocationTracking() {
-            isLocationTrackingEnabled.toggle()
-            if isLocationTrackingEnabled {
-                enable()
-                showSlider = false
-            } else {
-                disable()
+            DispatchQueue.main.async {
+                self.isLocationTrackingEnabled.toggle()
+                if self.isLocationTrackingEnabled {
+                    self.enable()
+                    self.showSlider = false
+                } else {
+                    self.disable()
+                }
             }
+
         }
         // test
         var maxSliderValue: Double {
@@ -92,7 +103,8 @@ extension iOSLocationView {
                   let lastTimestamp = routeCoordinates.last?.timestamp else {
                 return 0
             }
-            return lastTimestamp.timeIntervalSince(firstTimestamp)
+            let value = lastTimestamp.timeIntervalSince(firstTimestamp)
+            return value > 0 ? value : 0.1  // Ensure it is positive
         }
         
         
@@ -116,7 +128,6 @@ extension iOSLocationView {
         
         
         func timestampForSliderValue() -> TimeInterval? {
-            guard let firstTimestamp = routeCoordinates.first?.timestamp else { return nil }
             
             return sliderValue
         }
@@ -158,4 +169,4 @@ extension iOSLocationView {
             audioPlayer?.pause()
         }
     }
-}
+//}

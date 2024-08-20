@@ -51,6 +51,9 @@
 		931C2A922C7250F400554592 /* WidgetForiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A912C7250F400554592 /* WidgetForiOS.swift */; };
 		931C2A942C7250F500554592 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 931C2A932C7250F500554592 /* Assets.xcassets */; };
 		931C2A982C7250F500554592 /* WidgetForiOSExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 931C2A882C7250F400554592 /* WidgetForiOSExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		93BA053B2C743C14007E4049 /* SavedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA053A2C743C14007E4049 /* SavedLocation.swift */; };
+		93BA05422C7468DC007E4049 /* iOSLocationViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05412C7468DC007E4049 /* iOSLocationViewDetail.swift */; };
+		93BA05442C749D0B007E4049 /* LoadLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05432C749D0B007E4049 /* LoadLocationManager.swift */; };
 		BF02279D2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
 		BF02279E2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
 		BF02279F2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
@@ -305,6 +308,9 @@
 		931C2A912C7250F400554592 /* WidgetForiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetForiOS.swift; sourceTree = "<group>"; };
 		931C2A932C7250F500554592 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		931C2A952C7250F500554592 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93BA053A2C743C14007E4049 /* SavedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocation.swift; sourceTree = "<group>"; };
+		93BA05412C7468DC007E4049 /* iOSLocationViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLocationViewDetail.swift; sourceTree = "<group>"; };
+		93BA05432C749D0B007E4049 /* LoadLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationManager.swift; sourceTree = "<group>"; };
 		BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		BF02278C2C71F97000177974 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		BF02278D2C71F97000177974 /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
@@ -530,6 +536,7 @@
 				931C29AF2C719E9800554592 /* iOSManager.swift */,
 				931C29B12C719EA700554592 /* WatchManager.swift */,
 				931C29BE2C71A46500554592 /* LocationManager.swift */,
+				93BA05432C749D0B007E4049 /* LoadLocationManager.swift */,
 				BFD4A8CF2C71FCF200D5E4C5 /* VincentViewModel */,
 			);
 			path = "View Model";
@@ -541,6 +548,7 @@
 				931C29A62C719E2A00554592 /* Audio.swift */,
 				931C29C02C71A47700554592 /* PinLocation.swift */,
 				931C2A432C71E04500554592 /* Recording.swift */,
+				93BA053A2C743C14007E4049 /* SavedLocation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -551,6 +559,7 @@
 				931C29B72C719EE100554592 /* iOSMainView.swift */,
 				931C29C62C71A5C700554592 /* iOSLocationView.swift */,
 				931C29B32C719ECB00554592 /* WatchMainView.swift */,
+				93BA05412C7468DC007E4049 /* iOSLocationViewDetail.swift */,
 			);
 			path = DummyView;
 			sourceTree = "<group>";
@@ -1060,6 +1069,7 @@
 				931C29AD2C719E7E00554592 /* RecordFunction.swift in Sources */,
 				BFD4A8DB2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */,
 				BF02280F2C71FA5B00177974 /* FontExtension.swift in Sources */,
+				93BA05442C749D0B007E4049 /* LoadLocationManager.swift in Sources */,
 				931C29B02C719E9800554592 /* iOSManager.swift in Sources */,
 				931C29B82C719EE100554592 /* iOSMainView.swift in Sources */,
 				BFD4A8A42C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */,
@@ -1068,6 +1078,7 @@
 				BFD4A89C2C71FCA100D5E4C5 /* bgStyle.swift in Sources */,
 				BF2911B52C7387DA007BA6D7 /* PulseView.swift in Sources */,
 				931C29BB2C71A29E00554592 /* AppDelegate.swift in Sources */,
+				93BA053B2C743C14007E4049 /* SavedLocation.swift in Sources */,
 				BF2911B32C7387AD007BA6D7 /* BubbleChatView.swift in Sources */,
 				931C29C12C71A47700554592 /* PinLocation.swift in Sources */,
 				BFD4A8AA2C71FCB600D5E4C5 /* ToggleRecordView.swift in Sources */,
@@ -1077,6 +1088,7 @@
 				BF02281D2C71FA7B00177974 /* ColorExtension.swift in Sources */,
 				931C29C32C71A51D00554592 /* RoutePolyline.swift in Sources */,
 				8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */,
+				93BA05422C7468DC007E4049 /* iOSLocationViewDetail.swift in Sources */,
 				931C29C72C71A5C700554592 /* iOSLocationView.swift in Sources */,
 				931C2A442C71E04500554592 /* Recording.swift in Sources */,
 				931C29BF2C71A46500554592 /* LocationManager.swift in Sources */,
