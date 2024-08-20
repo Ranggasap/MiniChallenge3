@@ -44,8 +44,8 @@ struct iOSLocationView: View {
                     }
                 }
             }
-            .onChange(of: model.showSlider) { _, newValue in
-                if model.showSlider && model.routeCoordinates.count > 1 {
+            .onChange(of: model.loadLocManager.showSlider) { _, newValue in
+                if model.loadLocManager.showSlider && model.loadLocManager.routeCoordinates.count > 1 {
                     isNavigate = true
                 }
             }

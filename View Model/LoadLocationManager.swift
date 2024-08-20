@@ -15,12 +15,12 @@ class LoadLocationManager: ObservableObject {
         center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     )
-    @Published var pins: [PinLocation]
-    @Published var routeCoordinates: [(coordinate: CLLocationCoordinate2D, timestamp: Date)]
-    @Published var sliderValue: Double
-    @Published var showSlider: Bool
+    @Published var pins: [PinLocation] = []
+    @Published var routeCoordinates: [(coordinate: CLLocationCoordinate2D, timestamp: Date)] = []
+    @Published var sliderValue: Double = 0
+    @Published var showSlider = false
     var audioPlayer: AVPlayer?
-    @Published var maxSliderValue: Double
+    var maxSliderValue: Double
     
     init(region: MKCoordinateRegion, pins: [PinLocation], routeCoordinates: [(coordinate: CLLocationCoordinate2D, timestamp: Date)], sliderValue: Double, showSlider: Bool, audioPlayer: AVPlayer? = nil, maxSliderValue: Double) {
         self.region = region
