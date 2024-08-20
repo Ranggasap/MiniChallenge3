@@ -13,8 +13,8 @@ struct MiniChallenge3App: App {
     
     var body: some Scene {
         WindowGroup {
-            iOSMainView()
-//            ContentView() // Frontend
+//            iOSMainView()
+            ContentView() // Frontend
         }
     }
 }
