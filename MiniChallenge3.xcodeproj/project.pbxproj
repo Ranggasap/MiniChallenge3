@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BE3702F2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3702E2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift */; };
+		8BE370312C74469500AFFC8D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE370302C74469500AFFC8D /* LoadingViewController.swift */; };
 		8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */; };
 		8BFFF95C2C57D52100A2F088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95B2C57D52100A2F088 /* Assets.xcassets */; };
 		8BFFF95F2C57D52100A2F088 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95E2C57D52100A2F088 /* Preview Assets.xcassets */; };
@@ -258,6 +260,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8BE3702E2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		8BE370302C74469500AFFC8D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		8BFFF9542C57D51F00A2F088 /* MiniChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChallenge3App.swift; sourceTree = "<group>"; };
 		8BFFF95B2C57D52100A2F088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -394,6 +398,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8BE3702C2C7445C700AFFC8D /* UIKitViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8BE370302C74469500AFFC8D /* LoadingViewController.swift */,
+			);
+			path = UIKitViewControllers;
+			sourceTree = "<group>";
+		};
+		8BE3702D2C74462000AFFC8D /* UIKitViewControllerRepresentable */ = {
+			isa = PBXGroup;
+			children = (
+				8BE3702E2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift */,
+			);
+			path = UIKitViewControllerRepresentable;
+			sourceTree = "<group>";
+		};
 		8BFFF94B2C57D51F00A2F088 = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +589,8 @@
 		931C2A822C7250A500554592 /* App(iOS) */ = {
 			isa = PBXGroup;
 			children = (
+				8BE3702D2C74462000AFFC8D /* UIKitViewControllerRepresentable */,
+				8BE3702C2C7445C700AFFC8D /* UIKitViewControllers */,
 				8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */,
 				931C29BA2C71A29E00554592 /* AppDelegate.swift */,
 				931C29BC2C71A2DD00554592 /* AppConstants.swift */,
@@ -1066,6 +1088,7 @@
 				931C29BD2C71A2DD00554592 /* AppConstants.swift in Sources */,
 				931C29A72C719E2A00554592 /* Audio.swift in Sources */,
 				BFD4A89C2C71FCA100D5E4C5 /* bgStyle.swift in Sources */,
+				8BE3702F2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift in Sources */,
 				BF2911B52C7387DA007BA6D7 /* PulseView.swift in Sources */,
 				931C29BB2C71A29E00554592 /* AppDelegate.swift in Sources */,
 				BF2911B32C7387AD007BA6D7 /* BubbleChatView.swift in Sources */,
@@ -1076,6 +1099,7 @@
 				931C29AA2C719E4200554592 /* WatchConnectivityManager.swift in Sources */,
 				BF02281D2C71FA7B00177974 /* ColorExtension.swift in Sources */,
 				931C29C32C71A51D00554592 /* RoutePolyline.swift in Sources */,
+				8BE370312C74469500AFFC8D /* LoadingViewController.swift in Sources */,
 				8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */,
 				931C29C72C71A5C700554592 /* iOSLocationView.swift in Sources */,
 				931C2A442C71E04500554592 /* Recording.swift in Sources */,
