@@ -15,8 +15,10 @@ struct IdleWatchUI: View {
         ZStack(alignment: .top){
             Color("ColorBackground1")
                 .ignoresSafeArea()
+            
             Image(uiImage: UIImage(named: "DonutBitedWatchDark")!)
                 .offset(x: -75, y: 75)
+            
             Image(uiImage: UIImage(named: "DeerHornWatchDark")!)
                 .resizable()
                 .scaledToFit()
@@ -25,10 +27,7 @@ struct IdleWatchUI: View {
                 .frame(width: 100)
             
             
-            
-            
             VStack{
-                
                 Image(uiImage: UIImage(named: "DandenionWatchLight")!)
                     .resizable()
                     .scaledToFit()
@@ -47,10 +46,30 @@ struct IdleWatchUI: View {
                 .background(Color("ButtonColor1"))
                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: 200, height: 10)))
             }
-            .frame(maxWidth: .infinity)
             .background(Color.clear)
         }
+
         
+    }
+}
+
+
+struct AutoRecordIndicatorOff: View {
+    
+    @Binding var isAutoRecord: Bool
+    
+    var body: some View {
+        ZStack{
+            Circle()
+            Circle()
+                .foregroundColor(.black)
+                .padding(4)
+        }
+        .onTapGesture {
+            withAnimation{
+                isAutoRecord = true
+            }
+        }
     }
 }
 
@@ -58,4 +77,6 @@ struct IdleWatchUI: View {
     @State var isRecording = false
     return IdleWatchUI(isRecording: $isRecording)
 }
+
+
 

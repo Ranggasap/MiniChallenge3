@@ -32,18 +32,12 @@ struct RecordingWatchUI: View {
                     .scaledToFit()
                     .frame(width: 145)
                 
-              
             }
             .offset(x:0, y: -9)
             .ignoresSafeArea()
             
             
             VStack{
-                
-                HStack{
-                    
-                }
-                
                 Image(uiImage: UIImage(named: "DandenionWatchLight")!)
                     .resizable()
                     .scaledToFit()
@@ -62,13 +56,39 @@ struct RecordingWatchUI: View {
                 .background(Color("ButtonColor1"))
                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: 200, height: 10)))
             }
-            .frame(maxWidth: .infinity)
             .background(Color.clear)
         }
     }
 }
 
+struct AutoRecordIndicatorOn: View {
+    
+    @Binding var isAutoRecord: Bool
+    
+    var body: some View {
+        ZStack{
+            Circle()
+            Circle()
+                .foregroundColor(Color("ColorBackground2"))
+                .padding(6)
+            Circle()
+                .padding(8)
+            Circle()
+                .foregroundColor(Color("ColorBackground2"))
+                .padding(12)
+        }
+        .onTapGesture {
+            withAnimation{
+                isAutoRecord = false
+            }
+        }
+    }
+}
+
+
 #Preview {
     @State var isRecording = false
     return RecordingWatchUI(isRecording: $isRecording)
 }
+
+
