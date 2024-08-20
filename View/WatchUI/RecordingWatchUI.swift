@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RecordingWatchUI: View {
+    
+    @Binding var isRecording: Bool
+    
     var body: some View {
         ZStack(alignment: .top){
             Color("ColorBackground2")
@@ -46,9 +49,11 @@ struct RecordingWatchUI: View {
                     .scaledToFit()
                 
                 Button(action: {
-                    
+                    withAnimation{
+                        isRecording = false
+                    }
                 }) {
-                    Text("Start Record")
+                    Text("Add Pin Point")
                         .padding()
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -64,5 +69,6 @@ struct RecordingWatchUI: View {
 }
 
 #Preview {
-    RecordingWatchUI()
+    @State var isRecording = false
+    return RecordingWatchUI(isRecording: $isRecording)
 }

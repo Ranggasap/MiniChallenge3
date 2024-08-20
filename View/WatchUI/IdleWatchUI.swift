@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct IdleWatchUI: View {
+    
+    @Binding var isRecording: Bool
+    
     var body: some View {
         ZStack(alignment: .top){
             Color("ColorBackground1")
@@ -31,7 +34,9 @@ struct IdleWatchUI: View {
                     .scaledToFit()
                 
                 Button(action: {
-                    
+                    withAnimation{
+                        isRecording = true
+                    }
                 }) {
                     Text("Start Record")
                         .padding()
@@ -50,6 +55,7 @@ struct IdleWatchUI: View {
 }
 
 #Preview {
-    IdleWatchUI()
+    @State var isRecording = false
+    return IdleWatchUI(isRecording: $isRecording)
 }
 
