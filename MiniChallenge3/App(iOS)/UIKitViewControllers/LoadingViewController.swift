@@ -22,13 +22,64 @@ class LoadingViewController: UIViewController {
     }
     
     func animateDonutsAndDeerHorn() {
-        let donutBitedViews = [donutBited1, donutBited2, donutBited3, donutBited4]
+       
         
-        // Spring animation for donutBited views
+        deerHorn.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        UIView.animate(withDuration: 1.0,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 0.3,
+                       options: .curveEaseInOut,
+                       animations: {
+                           self.deerHorn.transform = .identity
+                       }, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
+            self.animateDonuts()
+        }
+        
+    }
+    
+    private func animateShrinkAndDisappear() {
+        let donutBitedViews = [donutBited1, donutBited2, donutBited3, donutBited4]
+            
+            // First, apply a "bouncy" effect only to the donutBited views
+            UIView.animate(withDuration: 0.6,
+                           delay: 1.0,
+                           usingSpringWithDamping: 0.3,
+                           initialSpringVelocity: 0.5,
+                           options: .curveEaseInOut,
+                           animations: {
+                               donutBitedViews.forEach { view in
+                                   view.transform = CGAffineTransform(scaleX: 1.2, y: 1.2) // Slightly enlarge for bounce effect
+                               }
+                           }, completion: { _ in
+                               // Then, shrink and disappear quickly
+                               UIView.animate(withDuration: 0.3,
+                                              animations: {
+                                                  donutBitedViews.forEach { view in
+                                                      view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                                                      view.alpha = 0.0
+                                                  }
+                                                  // Shrink and disappear the deerHorn without bouncy effect
+                                                  self.deerHorn.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                                                  self.deerHorn.alpha = 0.0
+                                              })
+                           })
+        
+    }
+    
+    private func animateDonuts(){
+        let donutBitedViews = [donutBited4, donutBited3, donutBited2, donutBited1]
+        
+        donutBitedViews.forEach { $0.transform = CGAffineTransform(scaleX: 0.0, y: 0.0) }
+            
+            
+        // Spring animation for donutBited views after deerHorn appears
         for (index, donutView) in donutBitedViews.enumerated() {
-            donutView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            donutView.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
             UIView.animate(withDuration: 1.0,
-                           delay: Double(index) * 0.2,
+                           delay: Double(index) * 0.255,
                            usingSpringWithDamping: 0.5,
                            initialSpringVelocity: 0.3,
                            options: .curveEaseInOut,
@@ -37,33 +88,29 @@ class LoadingViewController: UIViewController {
                            }, completion: nil)
         }
         
-        deerHorn.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
-            
-        // Animation to show deerHorn with a spring effect after 3 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            UIView.animate(withDuration: 1.0,
-                           delay: 0,
-                           usingSpringWithDamping: 0.5,
-                           initialSpringVelocity: 0.3,
-                           options: .curveEaseInOut,
-                           animations: {
-                               self.deerHorn.transform = .identity
-                           }, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
+            self.animateShrinkAndDisappear()
         }
     }
 
     func configureBackground(){
         
-        view.addSubview(deerHorn)
         view.addSubview(donutBited1)
         view.addSubview(donutBited2)
         view.addSubview(donutBited3)
         view.addSubview(donutBited4)
+        view.addSubview(deerHorn)
         
         donutBited1.contentMode = .scaleAspectFit
         donutBited2.contentMode = .scaleAspectFit
         donutBited3.contentMode = .scaleAspectFit
         donutBited4.contentMode = .scaleAspectFit
+        
+        donutBited1.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        donutBited2.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        donutBited3.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        donutBited4.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        
         
         donutBited1.translatesAutoresizingMaskIntoConstraints = false
         donutBited2.translatesAutoresizingMaskIntoConstraints = false
