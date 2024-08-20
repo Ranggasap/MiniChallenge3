@@ -8,40 +8,43 @@
 import SwiftUI
 
 struct ValidationPageView: View {
-    @State private var pattern = "ItemBackground1"
-    @State private var colorBg = "ColorBackground1"
     @State private var isAutoRecording = true
     @Binding var navigateToValidation: Bool
+    var onPinValidation: Bool
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State private var currentCase: Int = 1
+    @State var currentCase: Int = 1
     @State private var showingAlert = false
+    @StateObject var iOSVM = iOSManager()
     @StateObject private var listViewModel = EvidenceListViewModel()
     
     var body: some View {
         ZStack {
             bgStyle(pattern: "ItemBackground1", colorBg: "ColorBackground1")
             
-            VStack(alignment:.leading, spacing:16){
+            VStack(alignment: .leading, spacing: 16) {
                 Button(action: {
-                    if currentCase > 1 {
-                        currentCase -= 1
-                    } else {
+                    if onPinValidation && currentCase == 3{
+                        iOSVM.alreadyRecord = true
+                        print(iOSVM.alreadyRecord)
                         navigateToValidation = false
                         self.presentationMode.wrappedValue.dismiss()
+                    } else {
+                        handleBackAction()
                     }
                 }) {
                     HStack {
                         Image(systemName: "chevron.left")
                             .imageScale(.large)
-                        Text("Back")
+                        Text(onPinValidation  && currentCase == 3 ? "Cancel" : "Back")
                     }
-                    .foregroundColor(.buttonColor6)
+                    .foregroundColor(getBackButtonColor())
                 }
+                .disabled(onPinValidation && currentCase == 2)
                 
                 HStack {
-                    VStack(alignment:.leading, spacing:8){
+                    VStack(alignment: .leading, spacing: 8) {
                         Text("Share your story")
                             .font(.lt(size: 32, weight: .bold))
                         Text("Your story empowers and helps other women")
@@ -59,15 +62,16 @@ struct ValidationPageView: View {
             
             VStack {
                 Spacer()
-                // Indicator
-                HStack(spacing: 8) {
-                    ForEach(1...3, id: \.self) { index in
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(height: 12)
-                            .foregroundColor(index <= currentCase ? .indicatorColor2 : .indicatorColor1)
+                if !onPinValidation {
+                    HStack(spacing: 8) {
+                        ForEach(1...3, id: \.self) { index in
+                            RoundedRectangle(cornerRadius: 8)
+                                .frame(height: 12)
+                                .foregroundColor(index <= currentCase ? .indicatorColor2 : .indicatorColor1)
+                        }
                     }
+                    .padding(.horizontal, 16)
                 }
-                .padding(.horizontal, 16)
                 
                 Rectangle()
                     .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -79,7 +83,7 @@ struct ValidationPageView: View {
                                 Image(systemName: "mappin.and.ellipse.circle.fill")
                                     .resizable()
                                     .frame(width: 28, height: 28)
-                                    .foregroundColor(.iconColor1)
+                                    .foregroundColor(.iconColor2)
                                 
                                 Text(listViewModel.getCaseTitle(for: currentCase))
                                     .foregroundColor(.fontColor4)
@@ -91,12 +95,10 @@ struct ValidationPageView: View {
                             ScrollView {
                                 listViewModel.getCurrentCaseView(for: currentCase)
                             }
+                            .scrollIndicators(.hidden)
+                            
                             Button(action: {
-                                if currentCase < 3 {
-                                    currentCase += 1
-                                } else {
-                                    showingAlert = true
-                                }
+                                handleNextAction()
                             }) {
                                 RoundedRectangle(cornerRadius: 14)
                                     .frame(width: UIScreen.main.bounds.width - 64, height: 62)
@@ -108,16 +110,25 @@ struct ValidationPageView: View {
                                     }
                             }
                             .alert(isPresented: $showingAlert) {
-                                Alert(
-                                    title: Text("Are you sure?"),
-                                    message: Text("A message should be a short,\ncomplete sentence."),
-                                    primaryButton: .default(
-                                        Text("Submit")
-                                    ),
-                                    secondaryButton: .cancel(
-                                        Text("Cancel")
+                                if currentCase == 2 {
+                                    return Alert(
+                                        title: Text("Do you want to report?"),
+                                        message: Text("Helps other women avoid catcalled by reporting this incident"),
+                                        primaryButton: .default(Text("Yes")) {
+                                            currentCase += 1
+                                        },
+                                        secondaryButton: .cancel(Text("No"))
                                     )
-                                )
+                                } else {
+                                    return Alert(
+                                        title: Text("Are you sure?"),
+                                        message: Text("Share to us if you got catcalled while walking just now"),
+                                        primaryButton: .default(Text("Yes")) {
+                                            handleAlertYesAction()
+                                        },
+                                        secondaryButton: .cancel(Text("No"))
+                                    )
+                                }
                             }
                         }
                         .padding(.top, 24)
@@ -129,9 +140,54 @@ struct ValidationPageView: View {
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }
+    
+    private func handleBackAction() {
+        if currentCase > 1 {
+            currentCase -= 1
+        } else {
+            navigateToValidation = false
+            self.presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
+    private func handleNextAction() {
+        if currentCase == 2 {
+            showingAlert = true
+        } else if !onPinValidation {
+            if currentCase < 3 {
+                currentCase += 1
+            } else {
+                showingAlert = true
+            }
+        } else {
+            if currentCase == 2 {
+                currentCase += 1
+            } else {
+                showingAlert = true
+            }
+        }
+    }
+    
+    private func handleAlertYesAction() {
+        if currentCase == 2 {
+            currentCase += 1
+        } else {
+            // Implement the function to navigate to the view after submission
+        }
+    }
+    
+    private func getBackButtonColor() -> Color {
+        if onPinValidation && currentCase != 3 {
+            return .clear
+        } else if onPinValidation {
+            return currentCase == 3 ? .buttonColor6 : .clear
+        } else {
+            return .buttonColor6
+        }
+    }
 }
 
 #Preview {
-    ValidationPageView(navigateToValidation: .constant(true))
+    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false)
 }
 
