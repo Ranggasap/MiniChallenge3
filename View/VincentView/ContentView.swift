@@ -64,9 +64,7 @@ struct ContentView: View {
                             .padding(.horizontal, 32)
                         }else{
                             Button(action: {
-                                if iOSVM.isRecording != true {//true
-                                    iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
-                                } else if iOSVM.isRecording && !iOSVM.endRecord {
+                                if (iOSVM.isRecording != true) || (iOSVM.isRecording && !iOSVM.endRecord){
                                     iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
                                 } else {
                                     iOSVM.endRecord.toggle()
