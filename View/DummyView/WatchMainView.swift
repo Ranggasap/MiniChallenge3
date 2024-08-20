@@ -30,7 +30,7 @@ struct WatchMainView: View {
                         watchVM.isLoading = false // Hide the loading indicator
                     }
             } else {
-                List(watchVM.audio.recordings.sorted(by: { $0.lastPathComponent > $1.lastPathComponent }), id: \.self) { recording in
+                List(watchVM.audio.recordings.sorted(by: { $0.lastPathComponent < $1.lastPathComponent }), id: \.self) { recording in
                     HStack {
                         Text(recording.lastPathComponent)
                         Spacer()

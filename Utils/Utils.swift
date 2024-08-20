@@ -15,4 +15,5 @@ enum messageSent: String {
     case recordStateChangeRequest = "recordStateChangeRequest"
     case recordState = "recordState"
     case done = "done"
+    case stored = "stored"
 }

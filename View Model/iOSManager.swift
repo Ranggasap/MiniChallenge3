@@ -15,6 +15,7 @@ class iOSManager: NSObject, ObservableObject, UIDocumentPickerDelegate {
     @Published var isAutoRecording = false
     @Published var isRecording = false
     @Published var endRecord = true
+    @Published var isStored = false
     @Published var connectivity = WatchConnectivityManager()
     var cancellables = Set<AnyCancellable>()
     
@@ -50,7 +51,12 @@ class iOSManager: NSObject, ObservableObject, UIDocumentPickerDelegate {
     }
     
     func toggleRecordingState(_ connectivity: WatchConnectivityManager, _ isRecording: Bool) {
-        recordFunc.toggleRecordingState(connectivity, isRecording)
+        let newState = !isRecording
+        connectivity.sendStateChangeRequest(newState, messageSent.recordState.rawValue, false)
+    }
+    
+    func toggleStoredState(_ connectivity: WatchConnectivityManager, _ isStored: Bool) {
+        connectivity.sendStateChangeRequest(false, messageSent.stored.rawValue, isStored)
     }
     
     func downloadRecording(_ recording: URL) {

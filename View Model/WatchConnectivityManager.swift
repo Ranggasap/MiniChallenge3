@@ -15,6 +15,11 @@ class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
         get { isRecordingSubject.value }
         set { isRecordingSubject.send(newValue) }
     }
+    var isStoredSubject = CurrentValueSubject<Bool, Never>(false)
+    var isStored: Bool {
+        get { isStoredSubject.value }
+        set { isStoredSubject.send(newValue) }
+    }
     
     override init() {
         super.init()
@@ -39,11 +44,17 @@ class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
         // iOS specific implementation
     }
     
-    func sendRecordingStateChangeRequest(_ isRecording: Bool) {
+    func sendStateChangeRequest(_ isRecording: Bool, _ storeRecord: String, _ isStored: Bool) {
         let session = WCSession.default
         if session.activationState == .activated {
-            session.sendMessage([messageSent.recordState.rawValue: isRecording], replyHandler: nil) { error in
-                print("Error sending request: \(error.localizedDescription)")
+            if storeRecord == messageSent.stored.rawValue {
+                session.sendMessage([messageSent.stored.rawValue: isStored], replyHandler: nil) { error in
+                    print("Error sending request: \(error.localizedDescription)")
+                }
+            } else {
+                session.sendMessage([messageSent.recordState.rawValue: isRecording], replyHandler: nil) { error in
+                    print("Error sending request: \(error.localizedDescription)")
+                }
             }
         } else {
             print("Session is not activated")
@@ -55,7 +66,7 @@ class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
         if let request = message[messageSent.recordStateChangeRequest.rawValue] as? Bool {
             let tempIsRec = self.isRecording
             
-            self.isRecording = request //true
+            self.isRecording = request
             
             if tempIsRec == self.isRecording {
                 session.sendMessage([messageSent.recordState.rawValue: self.isRecording], replyHandler: nil) { error in
@@ -113,6 +124,8 @@ class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
             }
         } else if let request = message[messageSent.done.rawValue] as? Bool {
             self.isRecording = request
+        } else if let request = message[messageSent.stored.rawValue] as? Bool {
+            self.isStored = request
         }
     }
 #endif
@@ -133,7 +146,6 @@ class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
                         try FileManager.default.moveItem(at: file.fileURL, to: destinationURL)
                         print("File moved successfully to: \(destinationURL.path)")
                         DispatchQueue.main.async {
-                            print("File Received1!")
                             self.isReceived.toggle()
                         }
                     } catch {

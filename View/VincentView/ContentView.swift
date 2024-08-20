@@ -45,11 +45,17 @@ struct ContentView: View {
                                             .font(.lt(size: 20, weight: .bold))
                                     }
                                     .simultaneousGesture(TapGesture().onEnded {
-                                        iOSVM.isRecording = false
-                                        navigateToValidation = true
+                                        iOSVM.toggleStoredState(iOSVM.connectivity, true)
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                            iOSVM.isRecording = false
+                                            navigateToValidation = true
+                                        }
                                     })
                                 Button(action: {
-                                    iOSVM.isRecording = false
+                                    iOSVM.toggleStoredState(iOSVM.connectivity, false)
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        iOSVM.isRecording = false
+                                    }
                                 }) {
                                     RoundedRectangle(cornerRadius: 14)
                                         .stroke(.buttonColor3, lineWidth: 2)
