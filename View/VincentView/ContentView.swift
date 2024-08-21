@@ -96,6 +96,8 @@ struct ContentView: View {
         }
         .navigationViewStyle(.stack)
     }
+    
+    
 }
 
 #Preview {
