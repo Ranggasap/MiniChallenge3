@@ -9,6 +9,7 @@ import UIKit
 import Combine
 
 class iOSManager: NSObject, ObservableObject, UIDocumentPickerDelegate {
+    @Published var alreadyRecord = false
     @Published var audio = Audio()
     @Published var isLoading = true
     @Published var isDirected = false

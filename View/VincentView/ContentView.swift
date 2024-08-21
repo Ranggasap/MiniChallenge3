@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     // pake state ini buat masing" view, atau bagusnya kalau dibikin observableobject bikin pattern1, pattern2 buat call masing" pattern dan colorbackgroundnya (1,2,3,dst) (semua yang disini pindahin ke observableobject, jdi cuman perlu call 1 state disini
     @State private var username = "Natalie"
-    @State private var navigateToValidation = false
     @StateObject var iOSVM = iOSManager()
+    @StateObject private var listViewModel = EvidenceListViewModel()
     
     var body: some View {
         NavigationStack{
@@ -19,12 +19,13 @@ struct ContentView: View {
                 if iOSVM.endRecord{
                     bgStyle(pattern: "ItemBackground1", colorBg: "ColorBackground1")
                     AvatarView(avatar: "avatar1")
+                    BubbleChatView(text: "How was your day? Keep your head high, knowing that you have the power within you to face any challenge.")
                 }else{
                     bgStyle(pattern: "ItemBackground2", colorBg: "ColorBackground2")
+                    PulseView()
                     AvatarView(avatar: "avatar2")
+                    BubbleChatView(text: "Right now, I company you and observe your surrounding on your apple watch")
                 }
-                
-                BubbleChatView(text: "How was your day? Keep your head high, knowing that you have the power within you to face any challenge.")
                 
                 HelloView(username: $username)
                 
@@ -46,7 +47,7 @@ struct ContentView: View {
                                     }
                                     .simultaneousGesture(TapGesture().onEnded {
                                         iOSVM.isRecording = false
-                                        navigateToValidation = true
+                                        listViewModel.navigateToPinValidation = true
                                     })
                                 Button(action: {
                                     iOSVM.isRecording = false
@@ -80,6 +81,25 @@ struct ContentView: View {
                                 }
                                 .padding(.horizontal, 32)
                             }
+                            if iOSVM.alreadyRecord{
+                                Button(action: {
+                                    
+                                }) {
+                                RoundedRectangle(cornerRadius: 14)
+                                        .stroke(lineWidth: 2)
+                                        .foregroundColor(.buttonColor3)
+                                    .frame(width: UIScreen.main.bounds.width-64, height: 62)
+                                    .overlay{
+                                        Text("Report")
+                                            .font(.lt(size: 20, weight: .bold))
+                                            .foregroundColor(.fontColor3)
+                                    }
+                                    .padding(.horizontal, 32)
+                                }
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    listViewModel.navigateToValidation = true
+                                })
+                            }
                         }
                     }
                     .padding(.top, 28)
@@ -90,15 +110,19 @@ struct ContentView: View {
                 
                 
             }
-            .navigationDestination(isPresented: $navigateToValidation) {
-                ValidationPageView(navigateToValidation: $navigateToValidation)
+            .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, currentCase: 2)
             }
+            .navigationDestination(isPresented: $listViewModel.navigateToValidation) {
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, currentCase: 1)
+            }
+            
         }
         .navigationViewStyle(.stack)
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(iOSVM: iOSManager())
 }
 
