@@ -25,6 +25,8 @@ class iOSManager: NSObject, ObservableObject, UIDocumentPickerDelegate {
     override init() {
         super.init()
         
+        self.alreadyRecord = alreadyRecord
+        
         connectivity.isRecordingSubject
             .receive(on: DispatchQueue.main)
             .sink { [weak self] newValue in

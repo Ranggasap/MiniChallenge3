@@ -10,8 +10,8 @@ import SwiftUI
 struct ValidationPageView: View {
     @State private var isAutoRecording = true
     @Binding var navigateToValidation: Bool
-    var onPinValidation: Bool
-    
+    @State var onPinValidation: Bool
+    @Binding var alreadyRecord: Bool
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var currentCase: Int = 1
@@ -26,8 +26,7 @@ struct ValidationPageView: View {
             VStack(alignment: .leading, spacing: 16) {
                 Button(action: {
                     if onPinValidation && currentCase == 3{
-                        iOSVM.alreadyRecord = true
-                        print(iOSVM.alreadyRecord)
+                        alreadyRecord = true
                         navigateToValidation = false
                         self.presentationMode.wrappedValue.dismiss()
                     } else {
@@ -110,25 +109,14 @@ struct ValidationPageView: View {
                                     }
                             }
                             .alert(isPresented: $showingAlert) {
-                                if currentCase == 2 {
-                                    return Alert(
-                                        title: Text("Do you want to report?"),
-                                        message: Text("Helps other women avoid catcalled by reporting this incident"),
-                                        primaryButton: .default(Text("Yes")) {
-                                            currentCase += 1
-                                        },
-                                        secondaryButton: .cancel(Text("No"))
-                                    )
-                                } else {
-                                    return Alert(
-                                        title: Text("Are you sure?"),
-                                        message: Text("Share to us if you got catcalled while walking just now"),
-                                        primaryButton: .default(Text("Yes")) {
-                                            handleAlertYesAction()
-                                        },
-                                        secondaryButton: .cancel(Text("No"))
-                                    )
-                                }
+                                Alert(
+                                    title: Text("Are you sure?"),
+                                    message: Text("Make sure every data you choose and fill are correct."),
+                                    primaryButton: .default(Text("Submit")) {
+                                        handleAlertYesAction()
+                                    },
+                                    secondaryButton: .cancel(Text("Cancel"))
+                                )
                             }
                         }
                         .padding(.top, 24)
@@ -151,9 +139,7 @@ struct ValidationPageView: View {
     }
     
     private func handleNextAction() {
-        if currentCase == 2 {
-            showingAlert = true
-        } else if !onPinValidation {
+        if !onPinValidation {
             if currentCase < 3 {
                 currentCase += 1
             } else {
@@ -172,7 +158,10 @@ struct ValidationPageView: View {
         if currentCase == 2 {
             currentCase += 1
         } else {
-            // Implement the function to navigate to the view after submission
+            alreadyRecord = true
+            navigateToValidation = false
+            currentCase = 2
+            self.presentationMode.wrappedValue.dismiss()
         }
     }
     
@@ -188,6 +177,6 @@ struct ValidationPageView: View {
 }
 
 #Preview {
-    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false)
+    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, alreadyRecord: .constant(false))
 }
 

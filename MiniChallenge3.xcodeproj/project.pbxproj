@@ -174,11 +174,10 @@
 		BF0228202C71FA7B00177974 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0228162C71FA7B00177974 /* ColorExtension.swift */; };
 		BF0228212C71FA7B00177974 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0228162C71FA7B00177974 /* ColorExtension.swift */; };
 		BF0228222C71FA7B00177974 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0228162C71FA7B00177974 /* ColorExtension.swift */; };
+		BF227A332C7595A600B64EE5 /* UpdateLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF227A322C7595A600B64EE5 /* UpdateLocationView.swift */; };
 		BF2911B12C738791007BA6D7 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B02C738791007BA6D7 /* AvatarView.swift */; };
 		BF2911B32C7387AD007BA6D7 /* BubbleChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */; };
 		BF2911B52C7387DA007BA6D7 /* PulseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B42C7387DA007BA6D7 /* PulseView.swift */; };
-		BF2911B82C7388E4007BA6D7 /* ValidationPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */; };
-		BF2911BA2C743C18007BA6D7 /* PinPointPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B92C743C18007BA6D7 /* PinPointPageView.swift */; };
 		BFD4A89C2C71FCA100D5E4C5 /* bgStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89B2C71FCA100D5E4C5 /* bgStyle.swift */; };
 		BFD4A8A42C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89D2C71FCB600D5E4C5 /* EvidenceItemView.swift */; };
 		BFD4A8A72C71FCB600D5E4C5 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89E2C71FCB600D5E4C5 /* HelloView.swift */; };
@@ -327,15 +326,14 @@
 		BF02280E2C71FA5B00177974 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		BF0228152C71FA7B00177974 /* DynamicIslandChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicIslandChecker.swift; sourceTree = "<group>"; };
 		BF0228162C71FA7B00177974 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		BF227A322C7595A600B64EE5 /* UpdateLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationView.swift; sourceTree = "<group>"; };
 		BF2911B02C738791007BA6D7 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChatView.swift; sourceTree = "<group>"; };
 		BF2911B42C7387DA007BA6D7 /* PulseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseView.swift; sourceTree = "<group>"; };
-		BF2911B92C743C18007BA6D7 /* PinPointPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPointPageView.swift; sourceTree = "<group>"; };
 		BFD4A89B2C71FCA100D5E4C5 /* bgStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bgStyle.swift; sourceTree = "<group>"; };
 		BFD4A89D2C71FCB600D5E4C5 /* EvidenceItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvidenceItemView.swift; sourceTree = "<group>"; };
 		BFD4A89E2C71FCB600D5E4C5 /* HelloView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 		BFD4A89F2C71FCB600D5E4C5 /* ToggleRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleRecordView.swift; sourceTree = "<group>"; };
-		BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPageViewModel.swift; sourceTree = "<group>"; };
 		BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvidenceItemViewModel.swift; sourceTree = "<group>"; };
 		BFD4A8DF2C72F93900D5E4C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFD4A8E32C72F95900D5E4C5 /* ValidationPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPageView.swift; sourceTree = "<group>"; };
@@ -644,7 +642,7 @@
 			children = (
 				BFD4A8DF2C72F93900D5E4C5 /* ContentView.swift */,
 				BFD4A8E32C72F95900D5E4C5 /* ValidationPageView.swift */,
-				BF2911B92C743C18007BA6D7 /* PinPointPageView.swift */,
+				BF227A322C7595A600B64EE5 /* UpdateLocationView.swift */,
 				BFD4A8A02C71FCB600D5E4C5 /* Component */,
 				BFD4A89B2C71FCA100D5E4C5 /* bgStyle.swift */,
 				BF2911B42C7387DA007BA6D7 /* PulseView.swift */,
@@ -685,7 +683,6 @@
 			isa = PBXGroup;
 			children = (
 				BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */,
-				BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */,
 			);
 			path = VincentViewModel;
 			sourceTree = "<group>";
@@ -1059,12 +1056,12 @@
 				BFD4A8E42C72F95900D5E4C5 /* ValidationPageView.swift in Sources */,
 				BFD4A8A72C71FCB600D5E4C5 /* HelloView.swift in Sources */,
 				BFD4A8E02C72F93900D5E4C5 /* ContentView.swift in Sources */,
+				BF227A332C7595A600B64EE5 /* UpdateLocationView.swift in Sources */,
 				931C29C52C71A56E00554592 /* LineCoordinator.swift in Sources */,
 				931C29AD2C719E7E00554592 /* RecordFunction.swift in Sources */,
 				BFD4A8DB2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */,
 				BF02280F2C71FA5B00177974 /* FontExtension.swift in Sources */,
 				931C29B02C719E9800554592 /* iOSManager.swift in Sources */,
-				BF2911BA2C743C18007BA6D7 /* PinPointPageView.swift in Sources */,
 				931C29B82C719EE100554592 /* iOSMainView.swift in Sources */,
 				BFD4A8A42C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */,
 				931C29BD2C71A2DD00554592 /* AppConstants.swift in Sources */,
@@ -1084,7 +1081,6 @@
 				931C29C72C71A5C700554592 /* iOSLocationView.swift in Sources */,
 				931C2A442C71E04500554592 /* Recording.swift in Sources */,
 				931C29BF2C71A46500554592 /* LocationManager.swift in Sources */,
-				BF2911B82C7388E4007BA6D7 /* ValidationPageViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
