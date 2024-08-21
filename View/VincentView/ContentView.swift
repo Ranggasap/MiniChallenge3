@@ -13,8 +13,6 @@ struct ContentView: View {
     @State private var navigateToValidation = false
     @StateObject var iOSVM = iOSManager()
     
-    var dummyLocationViewModel: DummyLocationViewModel = DummyLocationViewModel()
-    
     var body: some View {
         NavigationStack{
             ZStack {
@@ -97,9 +95,6 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(.stack)
-        .onAppear {
-            dummyLocationViewModel.triggerAppleDeveloperAcademyNotification()
-        }
     }
     
     
