@@ -26,13 +26,17 @@ struct ValidationPageView: View {
     @StateObject var iOSVM = iOSManager()
     @StateObject private var listViewModel = EvidenceListViewModel()
     
-    @StateObject var reportVm: ReportManager
+    @StateObject var locationManager = GeofencingManager()
+    
+//    @StateObject var reportVm: ReportManager
+    
+  
     
     
-    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, reportVm: ReportManager, alreadyRecord: Binding<Bool>) {
+    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, /*reportVm: ReportManager,*/ alreadyRecord: Binding<Bool>) {
         self._navigateToValidation = navigateToValidation
         self._onPinValidation = State(initialValue: onPinValidation)
-        _reportVm = StateObject(wrappedValue: reportVm)
+//        _reportVm = StateObject(wrappedValue: reportVm)
         self._alreadyRecord = alreadyRecord
     }
     
@@ -166,6 +170,14 @@ struct ValidationPageView: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        //TODO: cek onchange
+        .onChange(of: locationManager.currentLocation) { newLocation in
+            if let location = newLocation {
+                listViewModel.reportVm.fetchReportsNearUserLocation(userLocation: location)
+                print(location)
+            }
+        }
+        
     }
     
     private func handleBackAction() {
@@ -199,6 +211,7 @@ struct ValidationPageView: View {
             alreadyRecord = true
             navigateToValidation = false
             currentCase = 2
+            listViewModel.saveReportToCloud()
             self.presentationMode.wrappedValue.dismiss()
             
         }
@@ -217,7 +230,7 @@ struct ValidationPageView: View {
 
 #Preview {
     
-    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, reportVm: ReportManager(), alreadyRecord: .constant(true))
+    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, /*reportVm: ReportManager(),*/ alreadyRecord: .constant(true))
     
 }
 

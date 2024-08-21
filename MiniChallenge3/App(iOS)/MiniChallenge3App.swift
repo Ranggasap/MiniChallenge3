@@ -23,6 +23,7 @@ struct MiniChallenge3App: App {
         WindowGroup {
 //            iOSMainView()
             ContentView() // Frontend
+//            DummyCloudKit(userVm: UserAppManager(container: container), reportVm: ReportManager(container: container))
             
         }
 //        .modelContainer(for: SavedLocation.self)

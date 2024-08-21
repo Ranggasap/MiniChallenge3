@@ -57,6 +57,8 @@ class GeofencingManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
             locationManager.startMonitoring(for: region)
             monitoredRegions.append(region)
         }
+        
+        print(monitoredRegions)
     }
     
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
