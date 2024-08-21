@@ -7,6 +7,8 @@
 
 import SwiftUI
 import CloudKit
+import SwiftData
+
 
 @main
 struct MiniChallenge3App: App {
@@ -19,14 +21,9 @@ struct MiniChallenge3App: App {
         @StateObject  var listViewModel = EvidenceListViewModel()
         
         WindowGroup {
-//            iOSMainView()
+            iOSMainView()
 //            ContentView() // Frontend
-            
-            
-            ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager(container: container))
-           
-            
-//            DummyCloudKit(userVm: UserAppManager(container: container), reportVm: ReportManager(container: container))
         }
+        .modelContainer(for: SavedLocation.self)
     }
 }

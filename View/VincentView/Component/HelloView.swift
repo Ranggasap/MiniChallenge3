@@ -17,7 +17,10 @@ struct HelloView: View {
                     .font(.lt(size: 32, weight: .bold))
                     .foregroundColor(.fontColor1)
                 Spacer()
-                Image(.notificationIcon)
+                Circle()
+                    .frame(width: 44, height: 44)
+                    .foregroundColor(.buttonColor7)
+//                Image(.notificationIcon)
             }
             .frame(width: UIScreen.main.bounds.width-32)
             
@@ -26,4 +29,8 @@ struct HelloView: View {
         .padding(.top, DynamicIslandChecker.getTopPadding())
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
+}
+
+#Preview {
+    HelloView(username: .constant("Vincent"))
 }

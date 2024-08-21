@@ -7,7 +7,7 @@
 
 import MapKit
 
-class lineCoordinator: NSObject, MKMapViewDelegate {
+class LineCoordinator: NSObject, MKMapViewDelegate {
     var parent: RoutePolyline
 
     init(_ parent: RoutePolyline) {
@@ -25,7 +25,7 @@ class lineCoordinator: NSObject, MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "pin")
         annotationView.markerTintColor = annotation.title == "Start" ? .green : .red
         annotationView.glyphText = annotation.title == "Start" ? "S" : "E"
         return annotationView

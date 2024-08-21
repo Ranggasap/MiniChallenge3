@@ -11,7 +11,7 @@ import SwiftUI
 struct Mini3_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            WatchMainView()
+            WatchUI()
         }
     }
 }

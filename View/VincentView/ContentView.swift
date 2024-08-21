@@ -9,123 +9,141 @@ import SwiftUI
 import CloudKit
 
 struct ContentView: View {
-    // pake state ini buat masing" view, atau bagusnya kalau dibikin observableobject bikin pattern1, pattern2 buat call masing" pattern dan colorbackgroundnya (1,2,3,dst) (semua yang disini pindahin ke observableobject, jdi cuman perlu call 1 state disini
     @State private var username = "Natalie"
-    @StateObject var iOSVM = iOSManager()
-    @StateObject private var listViewModel = EvidenceListViewModel()
+
     
     let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
+
+    @State var alreadyRecord = false
+    @StateObject var iOSVM = iOSManager()
+    @StateObject private var listViewModel = EvidenceListViewModel()
+
     
+    // test state
+//    @State var isRecord = false
+//    @State var isAutoRecording = false
+//    @State var isEndRecord = true
+    
+    @State private var showingAlert = false
+
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             ZStack {
-                if iOSVM.endRecord{
+                //testview
+                if !iOSVM.isRecording {
                     bgStyle(pattern: "ItemBackground1", colorBg: "ColorBackground1")
                     AvatarView(avatar: "avatar1")
                     BubbleChatView(text: "How was your day? Keep your head high, knowing that you have the power within you to face any challenge.")
-                }else{
+
+                } else {
+
                     bgStyle(pattern: "ItemBackground2", colorBg: "ColorBackground2")
                     PulseView()
                     AvatarView(avatar: "avatar2")
                     BubbleChatView(text: "Right now, I company you and observe your surrounding on your apple watch")
                 }
-                
+
                 HelloView(username: $username)
-                
-                VStack{
+                VStack {
                     Spacer()
-                    VStack(spacing:16){
+                    VStack(spacing: 16) {
                         if !iOSVM.isRecording{
                             ToggleRecordView(isAutoRecording: $iOSVM.isAutoRecording)
                         }
-                        if iOSVM.isRecording && iOSVM.endRecord{
-                            HStack(spacing:20){
-                                RoundedRectangle(cornerRadius: 14)
-                                    .foregroundColor(.buttonColor3)
-                                    .frame(height: 55)
-                                    .overlay {
-                                        Text("Yes")
-                                            .foregroundColor(.fontColor1)
-                                            .font(.lt(size: 20, weight: .bold))
-                                    }
-                                    .simultaneousGesture(TapGesture().onEnded {
-                                        iOSVM.isRecording = false
-                                        listViewModel.navigateToPinValidation = true
-                                    })
-                                Button(action: {
-                                    iOSVM.isRecording = false
-                                }) {
-                                    RoundedRectangle(cornerRadius: 14)
-                                        .stroke(.buttonColor3, lineWidth: 2)
-                                        .frame(height: 55)
-                                        .overlay{
-                                            Text("No")
-                                                .foregroundColor(.fontColor3)
-                                                .font(.lt(size: 20, weight: .bold))
-                                        }
-                                }
+
+                        Button(action: {
+                            if iOSVM.isRecording {
+                                iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
+                                iOSVM.isRecording.toggle()
+                                iOSVM.endRecord = true
+                                showingAlert = true
+                            } else {
+                                iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
+                                iOSVM.isRecording.toggle()
+
                             }
-                            .padding(.horizontal, 32)
-                        }else{
-                            Button(action: {
-                                if (iOSVM.isRecording != true) || (iOSVM.isRecording && !iOSVM.endRecord){
-                                    iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
-                                } else {
-                                    iOSVM.endRecord.toggle()
-                                }
-                            }) {
+                        }) {
                             RoundedRectangle(cornerRadius: 14)
-                                .foregroundColor(iOSVM.isRecording ? .buttonColor2 : .buttonColor1)
-                                .frame(width: UIScreen.main.bounds.width-64, height: 62)
-                                .overlay{
+                                .foregroundColor(iOSVM.endRecord && iOSVM.isRecording ? .buttonColor2 : .buttonColor1)
+                                .frame(width: UIScreen.main.bounds.width - 64, height: 62)
+                                .overlay {
                                     Text(iOSVM.isRecording ? "End Record" : "Start Record")
                                         .font(.lt(size: 20, weight: .bold))
                                         .foregroundColor(.fontColor1)
                                 }
                                 .padding(.horizontal, 32)
+                            
+                        }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            if iOSVM.endRecord && iOSVM.isRecording{
+                                listViewModel.navigateToValidation = true
                             }
-                            if iOSVM.alreadyRecord{
-                                Button(action: {
-                                    
-                                }) {
+
+                        
+                        if alreadyRecord {
+                            Button(action: {
+                                // report action
+                            }) {
                                 RoundedRectangle(cornerRadius: 14)
-                                        .stroke(lineWidth: 2)
-                                        .foregroundColor(.buttonColor3)
-                                    .frame(width: UIScreen.main.bounds.width-64, height: 62)
-                                    .overlay{
+                                    .stroke(lineWidth: 2)
+                                    .foregroundColor(.buttonColor3)
+                                    .frame(width: UIScreen.main.bounds.width - 64, height: 62)
+                                    .overlay {
+
                                         Text("Report")
                                             .font(.lt(size: 20, weight: .bold))
                                             .foregroundColor(.fontColor3)
                                     }
                                     .padding(.horizontal, 32)
-                                }
-                                .simultaneousGesture(TapGesture().onEnded {
-                                    listViewModel.navigateToValidation = true
-                                })
+
                             }
+                            .simultaneousGesture(TapGesture().onEnded {
+                                listViewModel.navigateToValidation = true
+                            })
+
                         }
                     }
                     .padding(.top, 28)
                     .padding(.bottom, DynamicIslandChecker.getBotPadding())
                     .background(.containerColor1)
-                    .clipShape(.rect(topLeadingRadius: 24, topTrailingRadius: 24))
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
                 }
                 
-                
             }
+
+            // ini flow lama yg no progress bar and back
             .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, reportVm: ReportManager())
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, alreadyRecord: $alreadyRecord, currentCase: 2)
             }
+            //
             .navigationDestination(isPresented: $listViewModel.navigateToValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager())
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, alreadyRecord: $alreadyRecord, currentCase: 1)
+            }
+            .alert(isPresented: $showingAlert) {
+                Alert(
+                    title: Text("Did you feel uncomfortable?"),
+                    message: Text("Share to us if you got catcalled while walking just now"),
+                    primaryButton: .default(Text("Yes")) {
+                        iOSVM.isRecording = false
+                        listViewModel.navigateToPinValidation = true
+                    },
+                    secondaryButton: .cancel(Text("No")) {
+                        iOSVM.isRecording = false
+                    }
+                )
+
             }
             
         }
         .navigationViewStyle(.stack)
     }
+    
+    
 }
 
 #Preview {
-    ContentView(iOSVM: iOSManager())
+
+    ContentView(alreadyRecord: false, iOSVM: iOSManager())
+
 }
 

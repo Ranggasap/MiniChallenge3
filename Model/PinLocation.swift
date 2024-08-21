@@ -7,10 +7,8 @@
 
 import CoreLocation
 
-extension iOSLocationView {
-    struct PinLocation: Identifiable {
-        let id = UUID()
-        var coordinate: CLLocationCoordinate2D
-        var timestamp: Date
-    }
+struct PinLocation: Identifiable {
+    let id = UUID()
+    var coordinate: CLLocationCoordinate2D
+    var timestamp: Date
 }

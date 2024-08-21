@@ -13,11 +13,11 @@ class WatchManager: recordFunction, ObservableObject {
     @Published var audio = Audio()
     @Published var isRecording = false
     @Published var isLoading = true
-    @Published var counter: Int = UserDefaults.standard.integer(forKey: "recordingCounter") + 1
     @Published var connectivity = WatchConnectivityManager()
     var audioRecorder: AVAudioRecorder?
     var currentAudioFilename: URL?
     var cancellables = Set<AnyCancellable>()
+    var initializeState = false
     
     override init() {
         super.init()
@@ -29,6 +29,23 @@ class WatchManager: recordFunction, ObservableObject {
                 if self.isRecording != newValue {
                     self.isRecording = newValue
                 }
+            }
+            .store(in: &cancellables)
+        
+        connectivity.isStoredSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newValue in
+                guard let self = self else { return }
+                if self.initializeState {
+                    if newValue == true {
+                        connectivity.sendRecordingToiPhone(audio.recordings, currentAudioFilename!)
+                    } else {
+                        removeLastRecording()
+                    }
+                } else {
+                    self.initializeState = true
+                }
+
             }
             .store(in: &cancellables)
     }
@@ -70,13 +87,17 @@ class WatchManager: recordFunction, ObservableObject {
             AVEncoderBitRateKey: 192000
         ] as [String : Any]
 
+        // Get the document directory path
         let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let audioFilename = documentPath.appendingPathComponent("recording-\(counter).m4a")
-        currentAudioFilename = audioFilename
 
-        // Update counter and store it persistently
-        counter += 1
-        UserDefaults.standard.set(counter, forKey: "recordingCounter")
+        // Create a timestamp string
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd-HHmmss"
+        let timestamp = dateFormatter.string(from: Date())
+
+        // Create the audio filename with the timestamp
+        let audioFilename = documentPath.appendingPathComponent("recording-\(timestamp).m4a")
+        currentAudioFilename = audioFilename
 
         audioRecorder = try AVAudioRecorder(url: audioFilename, settings: recordingSettings)
         audioRecorder?.prepareToRecord()
@@ -97,29 +118,30 @@ class WatchManager: recordFunction, ObservableObject {
         audioRecorder?.stop()
         isRecording = false
         audio.recordings = fetchRecordings()
-        
-        // Send only the current recording to the iPhone
-        if let currentFilename = currentAudioFilename {
-            connectivity.sendRecordingToiPhone(audio.recordings, currentFilename)
-        }
     }
     
-//    func toggleRecordingState() {
-//        // Send a request to iOS to toggle the recording state
-//        //false
-//        let newState = !isRecording
-//        print("newState: \(newState)")
-//        connectivity.sendRecordingStateChangeRequest(newState)
-//    }
+    func toggleRecordingState(_ connectivity: WatchConnectivityManager, _ isRecording: Bool) {
+        let newState = !isRecording
+        connectivity.sendRecordingStateChangeRequest(newState)
+    }
     
-//    func toggleRecordingState() {
-////        print("wManager: \(isRecording)")
-//        let fm = FileManager.default
-//        let sourceURL = URL.documentsDirectory.appending(path: "saved_file")
-//        if !fm.fileExists(atPath: sourceURL.path) {
-//            try? "toggle recording state".write(to: sourceURL, atomically: true, encoding: .utf8)
-//        }
-//        connectivity.sendRecordingState(sourceURL)
-//        isRecording.toggle()
-//    }
+    func removeLastRecording() {
+        if !audio.recordings.isEmpty {
+            print("before: \(audio.recordings.count)")
+            
+            do {
+                //will need to be adjusted if using different file name (if changed)
+                try FileManager.default.removeItem(at: audio.recordings.removeLast())
+            } catch {
+                print("Failed to delete recording: \(error.localizedDescription)")
+            }
+            
+            isRecording = false //to reset the list (optional since not implement design yet)
+            audio.recordings = fetchRecordings()
+            
+            print("after: \(audio.recordings.count)")
+        } else {
+            print("No recordings to remove.")
+        }
+    }
 }
