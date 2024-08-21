@@ -25,6 +25,7 @@ struct RoutePolyline: UIViewRepresentable {
         if !routeCoordinates.isEmpty {
             let polyline = MKPolyline(coordinates: routeCoordinates, count: routeCoordinates.count)
             mapView.addOverlay(polyline)
+            mapView.setVisibleMapRect(polyline.boundingMapRect, animated: true)
         }
 
         if let startPin = startEndPins.start {
@@ -42,7 +43,7 @@ struct RoutePolyline: UIViewRepresentable {
         }
     }
 
-    func makeCoordinator() -> lineCoordinator {
-        lineCoordinator(self)
+    func makeCoordinator() -> LineCoordinator {
+        LineCoordinator(self)
     }
 }

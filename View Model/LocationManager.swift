@@ -45,7 +45,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         loadLocManager.pins = []
         loadLocManager.routeCoordinates = []
         loadLocManager.sliderValue = 0
-        storeLocation = []
         loadLocManager.showSlider = false
         mgr.startUpdatingLocation()
     }
@@ -189,6 +188,12 @@ extension iOSLocationView {
     
     func convertToTempData() {
         for location in savedLocations {
+            
+            if model.storeLocation.contains(where: { $0.id == location.id }) {
+                print("Location with id \(location.id) already exists in storeLocation. Skipping...")
+                continue
+            }
+            
             var pinLoc: [PinLocation] = []
             var routeCoor: [(coordinate: CLLocationCoordinate2D, timestamp: Date)] = []
 
@@ -197,25 +202,22 @@ extension iOSLocationView {
                 let timestamp = Date(timeIntervalSince1970: pin.pinDate)
                 pinLoc.append(PinLocation(coordinate: coordinate, timestamp: timestamp))
             }
-            
-            print("\npinLoc: \(pinLoc)\n")
+            pinLoc.sort(by: { $0.timestamp < $1.timestamp })
             
             for route in location.routeCoordinates {
                 let coordinate = CLLocationCoordinate2D(latitude: route.routeLatitude, longitude: route.routeLongitude)
                 let timestamp = Date(timeIntervalSince1970: route.routeTimestamp)
                 routeCoor.append((coordinate: coordinate, timestamp: timestamp))
             }
-            
-            print("\nrouteCoor: \(routeCoor)\n")
+            routeCoor.sort(by: { $0.timestamp < $1.timestamp })
 
             let region = MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: location.regionCenterLatitude, longitude: location.regionCenterLongitude),
                 span: MKCoordinateSpan(latitudeDelta: location.regionSpanLatitude, longitudeDelta: location.regionSpanLongitude)
             )
-            
-            print("\nregion: \(region)\n")
 
             let saveLoc = SaveLoc(
+                id: location.id,
                 routeCoordinates: routeCoor,
                 pins: pinLoc,
                 sliderValue: location.sliderValue,
@@ -224,10 +226,7 @@ extension iOSLocationView {
                 maxSliderValue: location.maxSliderValue
             )
             
-            print("\nsaveLoc: \(saveLoc)\n")
-            
             model.storeLocation.append(saveLoc)
-            print("\nstoreLoc: \(model.storeLocation.count)\n")
         }
     }
 }

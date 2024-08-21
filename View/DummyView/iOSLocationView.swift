@@ -50,9 +50,7 @@ struct iOSLocationView: View {
             .onChange(of: model.isDisabled) {
                 if model.isDisabled {
                     storeLocationToSwiftData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        convertToTempData()
-                    }
+                    convertToTempData()
                 }
             }
             .onChange(of: model.loadLocManager.showSlider) { _, newValue in

@@ -28,8 +28,12 @@ struct iOSLocationViewDetail: View {
               })
           .font(.title)
           .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-
+            
             RoutePolyline(routeCoordinates: model.routeUpToSliderValue(), startEndPins: model.startEndPinLocations())
+                .onAppear {
+                    print("routeCoor: \(model.routeUpToSliderValue())\n")
+                    print("startEndPin: \(model.startEndPinLocations())\n")
+                }
             .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
 
             if model.showSlider && model.routeCoordinates.count > 1 {
