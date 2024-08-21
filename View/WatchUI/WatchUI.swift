@@ -11,16 +11,18 @@ struct WatchUI: View {
     @State var isRecording: Bool = false
     @State var isAutoRecord: Bool = false
     
+    @StateObject var watchVM = WatchManager()
+    
     var body: some View {
         ZStack(alignment: .top){
             
-            if isRecording {
-                RecordingWatchUI(isRecording: $isRecording)
+            if watchVM.isRecording {
+                RecordingWatchUI(watchVM: watchVM, isRecording: $isRecording)
                     .transition(.opacity)
                 HStack{
-                    
                     StopRecordingBackButton(isRecording: $isRecording)
                         .frame(width: 30)
+                    
                     Spacer()
                         .frame(width: 125)
                 }
@@ -28,7 +30,7 @@ struct WatchUI: View {
                 .padding(.top, 20)
                 .ignoresSafeArea()
             } else {
-                IdleWatchUI(isRecording: $isRecording)
+                IdleWatchUI(watchVM: watchVM, isRecording: $isRecording)
                     .transition(.opacity)
                 
             }
@@ -57,8 +59,19 @@ struct WatchUI: View {
             }
             
         }
+        .onAppear {
+            watchVM.requestRecordPermission()
+        }
+        .onChange(of: watchVM.isRecording) { _, newValue in
+            if newValue {
+                watchVM.startRecording()
+            } else {
+                watchVM.stopRecording()
+            }
+        }
         .animation(.easeInOut(duration: 0.2), value: isRecording)
     }
+    
 }
 
 struct StopRecordingBackButton: View {

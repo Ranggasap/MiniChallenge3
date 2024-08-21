@@ -27,3 +27,7 @@ struct HelloView: View {
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }
+
+#Preview {
+    HelloView(username: .constant("Vincent"))
+}
