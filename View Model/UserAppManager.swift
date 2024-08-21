@@ -58,6 +58,7 @@ class UserAppManager: CloudKitConnection, ObservableObject {
                             self.currentUser = user
 //                            print(self.currentUser?.userID)
                             
+                            
                         }
                         
                         return user

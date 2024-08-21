@@ -15,7 +15,7 @@ class CloudKitConnection {
     
     init(container: CKContainer = CKContainer.default()) {
         self.container = container
-        self.publicDatabase = container.privateCloudDatabase
+        self.publicDatabase = container.publicCloudDatabase
     }
     
     

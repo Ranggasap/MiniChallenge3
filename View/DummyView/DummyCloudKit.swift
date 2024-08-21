@@ -27,6 +27,9 @@ struct DummyCloudKit: View {
                 userVm.fetchUsers()
             }
             
+            Text("current user is \(userVm.currentUser?.firstName)")
+                
+            
             Button(action: {
                 let newUser = UserApp(firstName: "Luci", lastName: "Hahaha", email: "admin_hahaha@gmail.com")
                 userVm.createUser(user: newUser) { result in

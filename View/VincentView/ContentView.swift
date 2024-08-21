@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct ContentView: View {
     // pake state ini buat masing" view, atau bagusnya kalau dibikin observableobject bikin pattern1, pattern2 buat call masing" pattern dan colorbackgroundnya (1,2,3,dst) (semua yang disini pindahin ke observableobject, jdi cuman perlu call 1 state disini
     @State private var username = "Natalie"
     @StateObject var iOSVM = iOSManager()
     @StateObject private var listViewModel = EvidenceListViewModel()
+    
+    let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
     
     var body: some View {
         NavigationStack{
@@ -111,10 +114,10 @@ struct ContentView: View {
                 
             }
             .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, currentCase: 2)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, reportVm: ReportManager())
             }
             .navigationDestination(isPresented: $listViewModel.navigateToValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, currentCase: 1)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager())
             }
             
         }

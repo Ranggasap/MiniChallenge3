@@ -15,12 +15,18 @@ struct MiniChallenge3App: App {
     var body: some Scene {
         let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
         
+        @StateObject var iOSVM = iOSManager()
+        @StateObject  var listViewModel = EvidenceListViewModel()
+        
         WindowGroup {
 //            iOSMainView()
 //            ContentView() // Frontend
             
             
-            DummyCloudKit(userVm: UserAppManager(container: container), reportVm: ReportManager(container: container))
+            ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager(container: container))
+           
+            
+//            DummyCloudKit(userVm: UserAppManager(container: container), reportVm: ReportManager(container: container))
         }
     }
 }

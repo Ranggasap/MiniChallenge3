@@ -11,7 +11,7 @@ import CloudKit
 struct ValidationPageView: View {
     @State private var isAutoRecording = true
     @Binding var navigateToValidation: Bool
-    var onPinValidation: Bool
+    @State var onPinValidation: Bool //gw ubah jadi state
     
     @State private var showLoginPage = false
     
@@ -26,9 +26,12 @@ struct ValidationPageView: View {
     
     @StateObject var reportVm: ReportManager
     
-    init(reportVm: ReportManager) {
-        _reportVm = StateObject(wrappedValue: reportVm)
-    }
+    
+    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, reportVm: ReportManager) {
+            self._navigateToValidation = navigateToValidation
+            self._onPinValidation = State(initialValue: onPinValidation)
+            _reportVm = StateObject(wrappedValue: reportVm)
+        }
     
     
     var body: some View {
@@ -110,15 +113,9 @@ struct ValidationPageView: View {
                             .scrollIndicators(.hidden)
                             
                             Button(action: {
-                                if currentCase < 3 {
-                                    currentCase += 1
-                                } else {
-                                    if userId.isEmpty{
-                                        showLoginPage.toggle()
-                                    } else{
-                                        showingAlert = true
-                                    }
-                                }
+                                
+                                handleNextAction()
+                                
                             }) {
                                 RoundedRectangle(cornerRadius: 14)
                                     .frame(width: UIScreen.main.bounds.width - 64, height: 62)
@@ -163,7 +160,7 @@ struct ValidationPageView: View {
                 
                 VStack {
                     let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
-                    SignInWithAppleComponent(userVm: UserAppManager(container: container))
+                    SignInWithAppleComponent(userVm: UserAppManager(container: container), showLoginPage: $showLoginPage)
                     
                 }
                 .frame(width: 300, height: 400)
@@ -186,13 +183,19 @@ struct ValidationPageView: View {
     }
     
     private func handleNextAction() {
-        if currentCase == 2 {
-            showingAlert = true
-        } else if !onPinValidation {
+//        if currentCase == 2 {
+//            showingAlert = true
+//        } else 
+        if !onPinValidation {
             if currentCase < 3 {
                 currentCase += 1
             } else {
-                showingAlert = true
+                if userId.isEmpty{
+                    showLoginPage.toggle()
+                } else{
+                    showingAlert = true
+                }
+
             }
         } else {
             if currentCase == 2 {
@@ -224,7 +227,6 @@ struct ValidationPageView: View {
 
 #Preview {
 
-    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false)
-
+    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, reportVm: ReportManager())
 }
 

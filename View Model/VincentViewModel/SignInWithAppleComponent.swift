@@ -20,9 +20,15 @@ struct SignInWithAppleComponent: View {
     
     @StateObject var userVm: UserAppManager
     
-    init(userVm: UserAppManager) {
-        _userVm = StateObject(wrappedValue: userVm)
-    }
+//    init(userVm: UserAppManager, showLoginPage: Bool) {
+//        _userVm = StateObject(wrappedValue: userVm)
+//        
+//    }
+    
+    init(userVm: UserAppManager, showLoginPage: Binding<Bool>) {
+           _userVm = StateObject(wrappedValue: userVm)
+           _showLoginPage = showLoginPage
+       }
     
     var body: some View {
         VStack{
@@ -80,5 +86,5 @@ struct SignInWithAppleComponent: View {
 }
 
 #Preview {
-    SignInWithAppleComponent(userVm: UserAppManager())
+    SignInWithAppleComponent(userVm: UserAppManager(), showLoginPage: .constant(true))
 }
