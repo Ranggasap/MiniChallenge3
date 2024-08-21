@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630E5B302C75876C00E49885 /* DummyCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630E5B2F2C75876C00E49885 /* DummyCloudKit.swift */; };
+		631EC7DE2C74E1AB00DBBA4D /* UserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7DD2C74E1AB00DBBA4D /* UserApp.swift */; };
+		631EC7E12C74E1B000DBBA4D /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7E02C74E1B000DBBA4D /* Report.swift */; };
+		631EC7E42C74E26600DBBA4D /* CloudKitConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7E32C74E26600DBBA4D /* CloudKitConnection.swift */; };
+		631EC7E72C74E2E100DBBA4D /* UserAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7E62C74E2E100DBBA4D /* UserAppManager.swift */; };
+		631EC7EA2C74E30D00DBBA4D /* ReportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7E92C74E30D00DBBA4D /* ReportManager.swift */; };
+		631EC7ED2C74E4D900DBBA4D /* GeofencingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7EC2C74E4D900DBBA4D /* GeofencingManager.swift */; };
 		8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */; };
 		8BFFF95C2C57D52100A2F088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95B2C57D52100A2F088 /* Assets.xcassets */; };
 		8BFFF95F2C57D52100A2F088 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95E2C57D52100A2F088 /* Preview Assets.xcassets */; };
@@ -258,6 +265,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		630E5B2E2C75873E00E49885 /* MiniChallenge3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiniChallenge3.entitlements; sourceTree = "<group>"; };
+		630E5B2F2C75876C00E49885 /* DummyCloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCloudKit.swift; sourceTree = "<group>"; };
+		631EC7DD2C74E1AB00DBBA4D /* UserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApp.swift; sourceTree = "<group>"; };
+		631EC7E02C74E1B000DBBA4D /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		631EC7E32C74E26600DBBA4D /* CloudKitConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitConnection.swift; sourceTree = "<group>"; };
+		631EC7E62C74E2E100DBBA4D /* UserAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAppManager.swift; sourceTree = "<group>"; };
+		631EC7E92C74E30D00DBBA4D /* ReportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportManager.swift; sourceTree = "<group>"; };
+		631EC7EC2C74E4D900DBBA4D /* GeofencingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingManager.swift; sourceTree = "<group>"; };
 		8BFFF9542C57D51F00A2F088 /* MiniChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChallenge3App.swift; sourceTree = "<group>"; };
 		8BFFF95B2C57D52100A2F088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -433,6 +448,7 @@
 		8BFFF9562C57D51F00A2F088 /* MiniChallenge3 */ = {
 			isa = PBXGroup;
 			children = (
+				630E5B2E2C75873E00E49885 /* MiniChallenge3.entitlements */,
 				931C29992C719CB500554592 /* Info.plist */,
 				931C2A822C7250A500554592 /* App(iOS) */,
 				8BFFF95B2C57D52100A2F088 /* Assets.xcassets */,
@@ -530,6 +546,10 @@
 				931C29AF2C719E9800554592 /* iOSManager.swift */,
 				931C29B12C719EA700554592 /* WatchManager.swift */,
 				931C29BE2C71A46500554592 /* LocationManager.swift */,
+				631EC7E32C74E26600DBBA4D /* CloudKitConnection.swift */,
+				631EC7E62C74E2E100DBBA4D /* UserAppManager.swift */,
+				631EC7E92C74E30D00DBBA4D /* ReportManager.swift */,
+				631EC7EC2C74E4D900DBBA4D /* GeofencingManager.swift */,
 				BFD4A8CF2C71FCF200D5E4C5 /* VincentViewModel */,
 			);
 			path = "View Model";
@@ -539,6 +559,8 @@
 			isa = PBXGroup;
 			children = (
 				931C29A62C719E2A00554592 /* Audio.swift */,
+				631EC7DD2C74E1AB00DBBA4D /* UserApp.swift */,
+				631EC7E02C74E1B000DBBA4D /* Report.swift */,
 				931C29C02C71A47700554592 /* PinLocation.swift */,
 				931C2A432C71E04500554592 /* Recording.swift */,
 			);
@@ -551,6 +573,7 @@
 				931C29B72C719EE100554592 /* iOSMainView.swift */,
 				931C29C62C71A5C700554592 /* iOSLocationView.swift */,
 				931C29B32C719ECB00554592 /* WatchMainView.swift */,
+				630E5B2F2C75876C00E49885 /* DummyCloudKit.swift */,
 			);
 			path = DummyView;
 			sourceTree = "<group>";
@@ -1053,11 +1076,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0228172C71FA7B00177974 /* DynamicIslandChecker.swift in Sources */,
+				630E5B302C75876C00E49885 /* DummyCloudKit.swift in Sources */,
+				631EC7EA2C74E30D00DBBA4D /* ReportManager.swift in Sources */,
 				BFD4A8E42C72F95900D5E4C5 /* ValidationPageView.swift in Sources */,
+				631EC7E42C74E26600DBBA4D /* CloudKitConnection.swift in Sources */,
+				631EC7E12C74E1B000DBBA4D /* Report.swift in Sources */,
 				BFD4A8A72C71FCB600D5E4C5 /* HelloView.swift in Sources */,
 				BFD4A8E02C72F93900D5E4C5 /* ContentView.swift in Sources */,
 				931C29C52C71A56E00554592 /* LineCoordinator.swift in Sources */,
+				631EC7E72C74E2E100DBBA4D /* UserAppManager.swift in Sources */,
+				631EC7ED2C74E4D900DBBA4D /* GeofencingManager.swift in Sources */,
 				931C29AD2C719E7E00554592 /* RecordFunction.swift in Sources */,
+				631EC7DE2C74E1AB00DBBA4D /* UserApp.swift in Sources */,
 				BFD4A8DB2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */,
 				BF02280F2C71FA5B00177974 /* FontExtension.swift in Sources */,
 				931C29B02C719E9800554592 /* iOSManager.swift in Sources */,
@@ -1315,10 +1345,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MiniChallenge3/MiniChallenge3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = UC6TG39XPP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
@@ -1336,7 +1367,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1350,10 +1381,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MiniChallenge3/MiniChallenge3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = UC6TG39XPP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
@@ -1371,7 +1403,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1390,7 +1422,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1410,7 +1442,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1428,7 +1460,7 @@
 				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1446,7 +1478,7 @@
 				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1470,13 +1502,13 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Mini3;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ranggasaputra.MiniChallenge3;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.dandenion.MiniChallenge3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1502,13 +1534,13 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Mini3;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ranggasaputra.MiniChallenge3;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.dandenion.MiniChallenge3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1620,7 +1652,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3.WidgetForiOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3.WidgetForiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1648,7 +1680,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3.WidgetForiOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3.WidgetForiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
