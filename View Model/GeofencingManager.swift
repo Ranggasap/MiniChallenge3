@@ -49,7 +49,7 @@ class GeofencingManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
             let location = report.location
             let region = CLCircularRegion(
                 center: location.coordinate,
-                radius: 100,
+                radius: 10,
                 identifier: report.reportKronologi /*report.reportID?.recordName ?? UUID().uuidString*/
             )
             region.notifyOnEntry = true
