@@ -15,10 +15,10 @@ struct ValidationPageView: View {
     @State private var showLoginPage = false
     @AppStorage("userId") var userId : String = ""
     
-
+    
     @State var onPinValidation: Bool
     @Binding var alreadyRecord: Bool
-
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var currentCase: Int = 1
@@ -29,11 +29,12 @@ struct ValidationPageView: View {
     @StateObject var reportVm: ReportManager
     
     
-    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, reportVm: ReportManager) {
-            self._navigateToValidation = navigateToValidation
-            self._onPinValidation = State(initialValue: onPinValidation)
-            _reportVm = StateObject(wrappedValue: reportVm)
-        }
+    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, reportVm: ReportManager, alreadyRecord: Binding<Bool>) {
+        self._navigateToValidation = navigateToValidation
+        self._onPinValidation = State(initialValue: onPinValidation)
+        _reportVm = StateObject(wrappedValue: reportVm)
+        self._alreadyRecord = alreadyRecord
+    }
     
     
     var body: some View {
@@ -43,9 +44,9 @@ struct ValidationPageView: View {
             VStack(alignment: .leading, spacing: 16) {
                 Button(action: {
                     if onPinValidation && currentCase == 3{
-
+                        
                         alreadyRecord = true
-
+                        
                         navigateToValidation = false
                         self.presentationMode.wrappedValue.dismiss()
                     } else {
@@ -116,9 +117,9 @@ struct ValidationPageView: View {
                             .scrollIndicators(.hidden)
                             
                             Button(action: {
-
+                                
                                 handleNextAction()
-
+                                
                             }) {
                                 RoundedRectangle(cornerRadius: 14)
                                     .frame(width: UIScreen.main.bounds.width - 64, height: 62)
@@ -130,7 +131,7 @@ struct ValidationPageView: View {
                                     }
                             }
                             .alert(isPresented: $showingAlert) {
-
+                                
                                 Alert(
                                     title: Text("Are you sure?"),
                                     message: Text("Make sure every data you choose and fill are correct."),
@@ -139,7 +140,7 @@ struct ValidationPageView: View {
                                     },
                                     secondaryButton: .cancel(Text("Cancel"))
                                 )
-
+                                
                             }
                         }
                         .padding(.top, 24)
@@ -194,12 +195,12 @@ struct ValidationPageView: View {
         if currentCase == 2 {
             currentCase += 1
         } else {
-
+            
             alreadyRecord = true
             navigateToValidation = false
             currentCase = 2
             self.presentationMode.wrappedValue.dismiss()
-
+            
         }
     }
     
@@ -215,8 +216,8 @@ struct ValidationPageView: View {
 }
 
 #Preview {
-
-    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, alreadyRecord: .constant(false))
-
+    
+    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, reportVm: ReportManager(), alreadyRecord: .constant(true))
+    
 }
 
