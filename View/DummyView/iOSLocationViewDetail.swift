@@ -30,17 +30,13 @@ struct iOSLocationViewDetail: View {
           .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
             
             RoutePolyline(routeCoordinates: model.routeUpToSliderValue(), startEndPins: model.startEndPinLocations())
-                .onAppear {
-                    print("routeCoor: \(model.routeUpToSliderValue())\n")
-                    print("startEndPin: \(model.startEndPinLocations())\n")
-                }
             .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
 
             if model.showSlider && model.routeCoordinates.count > 1 {
                 Slider(
                   value: $model.sliderValue,
                   in: 0...model.maxSliderValue,
-                  step: 0.1
+                  step: 0.01
                 )
                 .padding()
                 .onChange(of: model.sliderValue) {

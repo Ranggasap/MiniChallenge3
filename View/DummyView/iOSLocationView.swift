@@ -31,7 +31,7 @@ struct iOSLocationView: View {
                 .font(.title)
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                 
-                if !isNavigate {
+                if !isNavigate && savedLocations == [] {
                     Text("Location Tracker")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -43,6 +43,11 @@ struct iOSLocationView: View {
                         ) {
                             Text(savedLocation.id.uuidString)
                                 .font(.headline)
+                        }
+                    }
+                    .onAppear {
+                        if !isNavigate {
+                            convertToTempData()
                         }
                     }
                 }
