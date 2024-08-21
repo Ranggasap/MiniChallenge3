@@ -10,152 +10,223 @@ import CoreLocation
 import MapKit
 import AVFoundation
 
-extension iOSLocationView {
-    class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
-        @Published var isLocationTrackingEnabled = false
-        @Published var location: CLLocation?
-        @Published var region = MKCoordinateRegion(
+class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+    @Published var isLocationTrackingEnabled = false
+    @Published var isDisabled = false
+    @Published var storeLocation: [SaveLoc] = []
+    
+    // composition
+    @Published var loadLocManager: LoadLocationManager
+    
+    let mgr: CLLocationManager
+    
+    override init() {
+        self.loadLocManager = LoadLocationManager(region: MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
+            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        ), pins: [], routeCoordinates: [], sliderValue: 0, showSlider: false, maxSliderValue: 0)
+        
+        mgr = CLLocationManager()
+        mgr.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        mgr.distanceFilter = kCLDistanceFilterNone
+        mgr.requestAlwaysAuthorization()
+        mgr.allowsBackgroundLocationUpdates = true
+        
+        super.init()
+        mgr.delegate = self
+    }
+    
+    func enable() {
+        isDisabled = false
+        loadLocManager.region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
             span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         )
-        @Published var pins: [PinLocation] = []
-        @Published var routeCoordinates: [(coordinate: CLLocationCoordinate2D, timestamp: Date)] = []
-        @Published var sliderValue: Double = 0
-        @Published var showSlider = false
-        
-        let mgr: CLLocationManager
-        var audioPlayer: AVPlayer?
-        
-        override init() {
-            mgr = CLLocationManager()
-            mgr.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-            mgr.distanceFilter = kCLDistanceFilterNone
-            mgr.requestAlwaysAuthorization()
-            mgr.allowsBackgroundLocationUpdates = true
-            
-            super.init()
-            mgr.delegate = self
+        loadLocManager.pins = []
+        loadLocManager.routeCoordinates = []
+        loadLocManager.sliderValue = 0
+        loadLocManager.showSlider = false
+        mgr.startUpdatingLocation()
+    }
+    
+    func disable() {
+        mgr.stopUpdatingLocation()
+        updateRegionForEntireRoute()
+        countMaxSliderValue()
+        loadLocManager.sliderValue = loadLocManager.maxSliderValue
+        loadLocManager.showSlider = true
+        isDisabled = true
+    }
+    
+    func countMaxSliderValue() {
+        guard let firstTimestamp = loadLocManager.routeCoordinates.first?.timestamp,
+              let lastTimestamp = loadLocManager.routeCoordinates.last?.timestamp else {
+            return
         }
-        
-        func enable() {
-            mgr.startUpdatingLocation()
+        let value = lastTimestamp.timeIntervalSince(firstTimestamp)
+        loadLocManager.maxSliderValue = value > 0 ? value : 0.1  // Ensure it is positive
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let currentLocation = locations.last {
+            appendPin(location: currentLocation)
+            updateRegion(location: currentLocation)
         }
-        
-        func disable() {
-            mgr.stopUpdatingLocation()
-            updateRegionForEntireRoute()
-            sliderValue = maxSliderValue
-            showSlider = true
-        }
-        
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            if let currentLocation = locations.last {
-                location = currentLocation
-                appendPin(location: currentLocation)
-                updateRegion(location: currentLocation)
+    }
+    
+    func appendPin(location: CLLocation) {
+        let timestamp = Date()  // Capture the timestamp immediately
+        loadLocManager.pins.append(PinLocation(coordinate: location.coordinate, timestamp: timestamp))
+        loadLocManager.routeCoordinates.append((location.coordinate, timestamp))
+    }
+    
+    func updateRegion(location: CLLocation) {
+        loadLocManager.region = MKCoordinateRegion(
+            center: location.coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 0.0015, longitudeDelta: 0.0015)
+        )
+    }
+    
+    func startStopLocationTracking() {
+        DispatchQueue.main.async {
+            self.isLocationTrackingEnabled.toggle()
+            if self.isLocationTrackingEnabled {
+                self.enable()
+                self.loadLocManager.showSlider = false
+            } else {
+                self.disable()
             }
         }
-        
-        func appendPin(location: CLLocation) {
-            let timestamp = Date()  // Capture the timestamp immediately
-            pins.append(PinLocation(coordinate: location.coordinate, timestamp: timestamp))
-            routeCoordinates.append((location.coordinate, timestamp))
+    }
+    
+    func updateRegionForEntireRoute() {
+        loadLocManager.updateRegionForEntireRoute()
+    }
+    
+    func routeUpToSliderValue() -> [CLLocationCoordinate2D] {
+        return loadLocManager.routeUpToSliderValue()
+    }
+    
+    
+    func startEndPinLocations() -> (start: PinLocation?, end: PinLocation?) {
+        return loadLocManager.startEndPinLocations()
+    }
+    
+    
+    func timestampForSliderValue() -> TimeInterval? {
+        return loadLocManager.timestampForSliderValue()
+    }
+    
+    func playAudio(fromTimestamp timestamp: TimeInterval) {
+        loadLocManager.playAudio(fromTimestamp: timestamp)
+    }
+    
+    func pauseAudio(){
+        loadLocManager.pauseAudio()
+    }
+    
+    //TODO: not needed I guess??
+    func outputSliderValueLocationData() {
+        // Get the exact coordinate at the current slider value
+        guard let firstTimestamp = loadLocManager.routeCoordinates.first?.timestamp else {
+            print("No location data available.")
+            return
         }
         
-        func updateRegion(location: CLLocation) {
-            region = MKCoordinateRegion(
-                center: location.coordinate,
-                span: MKCoordinateSpan(latitudeDelta: 0.0015, longitudeDelta: 0.0015)
+        // Calculate the target timestamp
+        let targetTimestamp = firstTimestamp.addingTimeInterval(loadLocManager.sliderValue)
+        
+        // Find the closest coordinate to the target timestamp
+        if let closestLocation = loadLocManager.routeCoordinates.min(by: { abs($0.timestamp.timeIntervalSince(targetTimestamp)) < abs($1.timestamp.timeIntervalSince(targetTimestamp)) }) {
+            let latitude = closestLocation.coordinate.latitude
+            let longitude = closestLocation.coordinate.longitude
+            print("Current location at slider value (\(loadLocManager.sliderValue) seconds):")
+            print("Lat: \(latitude), Lon: \(longitude)")
+        } else {
+            print("No location data available for the current slider value.")
+        }
+    }
+    
+}
+
+extension iOSLocationView {
+    func storeLocationToSwiftData() {
+        // Create a new SavedLocation object with the current values from loadLocManager
+        let savedLocation = SavedLocation(
+            sliderValue: model.loadLocManager.sliderValue,
+            showSlider: model.loadLocManager.showSlider,
+            regionCenterLatitude: model.loadLocManager.region.center.latitude,
+            regionCenterLongitude: model.loadLocManager.region.center.longitude,
+            regionSpanLatitude: model.loadLocManager.region.span.latitudeDelta,
+            regionSpanLongitude: model.loadLocManager.region.span.longitudeDelta,
+            maxSliderValue: model.loadLocManager.maxSliderValue
+        )
+        
+        // Insert the savedLocation into the SwiftData context
+        savedLocation.insert(context)
+        
+        // Convert routeCoordinates to RouteCoordinate objects and append them to savedLocation
+        for location in model.loadLocManager.routeCoordinates {
+            let routeCoordinate = RouteCoordinate(
+                routeLatitude: location.coordinate.latitude,
+                routeLongitude: location.coordinate.longitude,
+                routeTimestamp: location.timestamp.timeIntervalSince1970
             )
+            savedLocation.routeCoordinates.append(routeCoordinate)
         }
         
-        func updateRegionForEntireRoute() {
-            guard !routeCoordinates.isEmpty else { return }
-            let coordinates = routeCoordinates.map { $0.coordinate }
-            let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
-            let mapRect = polyline.boundingMapRect
-            region = MKCoordinateRegion(mapRect)
+        // Convert pins to PinnedLocation objects and append them to savedLocation
+        for pin in model.loadLocManager.pins {
+            let pinnedLocation = PinnedLocation(
+                pinLatitude: pin.coordinate.latitude,
+                pinLongitude: pin.coordinate.longitude,
+                pinDate: pin.timestamp.timeIntervalSince1970
+            )
+            savedLocation.pinnedLocations.append(pinnedLocation)
         }
-        
-        func startStopLocationTracking() {
-            isLocationTrackingEnabled.toggle()
-            if isLocationTrackingEnabled {
-                enable()
-                showSlider = false
-            } else {
-                disable()
-            }
-        }
-        // test
-        var maxSliderValue: Double {
-            guard let firstTimestamp = routeCoordinates.first?.timestamp,
-                  let lastTimestamp = routeCoordinates.last?.timestamp else {
-                return 0
-            }
-            return lastTimestamp.timeIntervalSince(firstTimestamp)
-        }
-        
-        
-        func routeUpToSliderValue() -> [CLLocationCoordinate2D] {
-            guard let firstTimestamp = routeCoordinates.first?.timestamp else { return [] }
+    }
+    
+    func convertToTempData() {
+        for location in savedLocations {
             
-            let targetTimestamp = firstTimestamp.addingTimeInterval(sliderValue)
-            return routeCoordinates.filter { $0.timestamp <= targetTimestamp }.map { $0.coordinate }
-        }
-        
-        
-        func startEndPinLocations() -> (start: PinLocation?, end: PinLocation?) {
-            guard let firstTimestamp = routeCoordinates.first?.timestamp else { return (nil, nil) }
-            
-            let targetTimestamp = firstTimestamp.addingTimeInterval(sliderValue)
-            let startPin = pins.first
-            let endPin = pins.last { $0.timestamp <= targetTimestamp }
-            
-            return (startPin, endPin)
-        }
-        
-        
-        func timestampForSliderValue() -> TimeInterval? {
-            guard let firstTimestamp = routeCoordinates.first?.timestamp else { return nil }
-            
-            return sliderValue
-        }
-        
-        func outputSliderValueLocationData() {
-            // Get the exact coordinate at the current slider value
-            guard let firstTimestamp = routeCoordinates.first?.timestamp else {
-                print("No location data available.")
-                return
+            if model.storeLocation.contains(where: { $0.id == location.id }) {
+                print("Location with id \(location.id) already exists in storeLocation. Skipping...")
+                continue
             }
             
-            // Calculate the target timestamp
-            let targetTimestamp = firstTimestamp.addingTimeInterval(sliderValue)
+            var pinLoc: [PinLocation] = []
+            var routeCoor: [(coordinate: CLLocationCoordinate2D, timestamp: Date)] = []
+
+            for pin in location.pinnedLocations {
+                let coordinate = CLLocationCoordinate2D(latitude: pin.pinLatitude, longitude: pin.pinLongitude)
+                let timestamp = Date(timeIntervalSince1970: pin.pinDate)
+                pinLoc.append(PinLocation(coordinate: coordinate, timestamp: timestamp))
+            }
+            pinLoc.sort(by: { $0.timestamp < $1.timestamp })
             
-            // Find the closest coordinate to the target timestamp
-            if let closestLocation = routeCoordinates.min(by: { abs($0.timestamp.timeIntervalSince(targetTimestamp)) < abs($1.timestamp.timeIntervalSince(targetTimestamp)) }) {
-                let latitude = closestLocation.coordinate.latitude
-                let longitude = closestLocation.coordinate.longitude
-                print("Current location at slider value (\(sliderValue) seconds):")
-                print("Lat: \(latitude), Lon: \(longitude)")
-            } else {
-                print("No location data available for the current slider value.")
+            for route in location.routeCoordinates {
+                let coordinate = CLLocationCoordinate2D(latitude: route.routeLatitude, longitude: route.routeLongitude)
+                let timestamp = Date(timeIntervalSince1970: route.routeTimestamp)
+                routeCoor.append((coordinate: coordinate, timestamp: timestamp))
             }
-        }
-        
-        
-        func playAudio(fromTimestamp timestamp: TimeInterval) {
-            guard let url = Bundle.main.url(forResource: "testSong", withExtension: "mp3") else {
-                print("Audio file not found")
-                return
-            }
-            audioPlayer = AVPlayer(url: url)
-            let seekTime = CMTime(seconds: timestamp, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-            audioPlayer?.seek(to: seekTime)
-            audioPlayer?.play()
-        }
-        
-        func pauseAudio(){
-            audioPlayer?.pause()
+            routeCoor.sort(by: { $0.timestamp < $1.timestamp })
+
+            let region = MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: location.regionCenterLatitude, longitude: location.regionCenterLongitude),
+                span: MKCoordinateSpan(latitudeDelta: location.regionSpanLatitude, longitudeDelta: location.regionSpanLongitude)
+            )
+
+            let saveLoc = SaveLoc(
+                id: location.id,
+                routeCoordinates: routeCoor,
+                pins: pinLoc,
+                sliderValue: location.sliderValue,
+                showSlider: location.showSlider,
+                region: region,
+                maxSliderValue: location.maxSliderValue
+            )
+            
+            model.storeLocation.append(saveLoc)
         }
     }
 }

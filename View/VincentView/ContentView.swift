@@ -50,7 +50,6 @@ struct ContentView: View {
                             } else {
                                 iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
                                 iOSVM.isRecording.toggle()
-                                
                             }
                         }) {
                             RoundedRectangle(cornerRadius: 14)

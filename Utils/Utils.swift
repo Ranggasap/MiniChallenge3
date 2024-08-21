@@ -15,4 +15,11 @@ enum messageSent: String {
     case recordStateChangeRequest = "recordStateChangeRequest"
     case recordState = "recordState"
     case done = "done"
+    case stored = "stored"
+}
+
+enum PlayerScrubState {
+    case reset
+    case scrubStarted
+    case scrubEnded(TimeInterval)
 }

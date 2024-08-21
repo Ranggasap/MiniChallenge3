@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MiniChallenge3App: App {
@@ -13,8 +14,9 @@ struct MiniChallenge3App: App {
     
     var body: some Scene {
         WindowGroup {
-//            iOSMainView()
-            ContentView(alreadyRecord: false) // Frontend
+            iOSMainView()
+//            ContentView() // Frontend
         }
+        .modelContainer(for: SavedLocation.self)
     }
 }
