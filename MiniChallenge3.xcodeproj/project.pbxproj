@@ -24,6 +24,9 @@
 		8BE370412C75983A00AFFC8D /* DummyLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3703F2C7597A400AFFC8D /* DummyLocationViewModel.swift */; };
 		8BE370422C759E3400AFFC8D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3703D2C758E6A00AFFC8D /* NotificationManager.swift */; };
 		8BE370462C75A76400AFFC8D /* iOSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C29AF2C719E9800554592 /* iOSManager.swift */; };
+		8BE3704E2C75FB5100AFFC8D /* LocationNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3704D2C75FB5100AFFC8D /* LocationNotificationManager.swift */; };
+		8BE370502C75FC3800AFFC8D /* NotificationManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3704F2C75FC3800AFFC8D /* NotificationManager2.swift */; };
+		8BE370522C75FD8700AFFC8D /* TestingLocationNotif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE370512C75FD8700AFFC8D /* TestingLocationNotif.swift */; };
 		8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */; };
 		8BFFF95C2C57D52100A2F088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95B2C57D52100A2F088 /* Assets.xcassets */; };
 		8BFFF95F2C57D52100A2F088 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFF95E2C57D52100A2F088 /* Preview Assets.xcassets */; };
@@ -57,8 +60,6 @@
 		931C29CE2C71ACC000554592 /* IronBacon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29C92C71ACC000554592 /* IronBacon.mp3 */; };
 		931C29CF2C71ACC000554592 /* testSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29CA2C71ACC000554592 /* testSong.mp3 */; };
 		931C29D02C71ACC000554592 /* WhatYouWant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29CB2C71ACC000554592 /* WhatYouWant.mp3 */; };
-		931C2A442C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
-		931C2A452C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
 		931C2A4B2C7247F600554592 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A4A2C7247F600554592 /* Utils.swift */; };
 		931C2A4C2C7247F600554592 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A4A2C7247F600554592 /* Utils.swift */; };
 		931C2A8B2C7250F400554592 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C2A8A2C7250F400554592 /* WidgetKit.framework */; };
@@ -198,10 +199,7 @@
 		BF2911B12C738791007BA6D7 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B02C738791007BA6D7 /* AvatarView.swift */; };
 		BF2911B32C7387AD007BA6D7 /* BubbleChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */; };
 		BF2911B52C7387DA007BA6D7 /* PulseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B42C7387DA007BA6D7 /* PulseView.swift */; };
-
-		BF2911B82C7388E4007BA6D7 /* ValidationPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */; };
 		BF2911BA2C743C18007BA6D7 /* PinPointPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B92C743C18007BA6D7 /* PinPointPageView.swift */; };
-
 		BFD4A89C2C71FCA100D5E4C5 /* bgStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89B2C71FCA100D5E4C5 /* bgStyle.swift */; };
 		BFD4A8A42C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89D2C71FCB600D5E4C5 /* EvidenceItemView.swift */; };
 		BFD4A8A72C71FCB600D5E4C5 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89E2C71FCB600D5E4C5 /* HelloView.swift */; };
@@ -299,6 +297,9 @@
 		8BE3703B2C7481FE00AFFC8D /* RecordingWatchUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingWatchUI.swift; sourceTree = "<group>"; };
 		8BE3703D2C758E6A00AFFC8D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		8BE3703F2C7597A400AFFC8D /* DummyLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyLocationViewModel.swift; sourceTree = "<group>"; };
+		8BE3704D2C75FB5100AFFC8D /* LocationNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotificationManager.swift; sourceTree = "<group>"; };
+		8BE3704F2C75FC3800AFFC8D /* NotificationManager2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager2.swift; sourceTree = "<group>"; };
+		8BE370512C75FD8700AFFC8D /* TestingLocationNotif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingLocationNotif.swift; sourceTree = "<group>"; };
 		8BFFF9542C57D51F00A2F088 /* MiniChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFFF9572C57D51F00A2F088 /* MiniChallenge3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChallenge3App.swift; sourceTree = "<group>"; };
 		8BFFF95B2C57D52100A2F088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -337,7 +338,6 @@
 		931C29C92C71ACC000554592 /* IronBacon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = IronBacon.mp3; sourceTree = "<group>"; };
 		931C29CA2C71ACC000554592 /* testSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testSong.mp3; sourceTree = "<group>"; };
 		931C29CB2C71ACC000554592 /* WhatYouWant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WhatYouWant.mp3; sourceTree = "<group>"; };
-		931C2A432C71E04500554592 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		931C2A4A2C7247F600554592 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		931C2A882C7250F400554592 /* WidgetForiOSExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetForiOSExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		931C2A8A2C7250F400554592 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -624,7 +624,6 @@
 				631EC7DD2C74E1AB00DBBA4D /* UserApp.swift */,
 				631EC7E02C74E1B000DBBA4D /* Report.swift */,
 				931C29C02C71A47700554592 /* PinLocation.swift */,
-				931C2A432C71E04500554592 /* Recording.swift */,
 				93BA053A2C743C14007E4049 /* SavedLocation.swift */,
 				93BA05472C75AA14007E4049 /* Player.swift */,
 			);
@@ -739,6 +738,9 @@
 				BF2911B42C7387DA007BA6D7 /* PulseView.swift */,
 				BF2911B02C738791007BA6D7 /* AvatarView.swift */,
 				BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */,
+				8BE3704D2C75FB5100AFFC8D /* LocationNotificationManager.swift */,
+				8BE3704F2C75FC3800AFFC8D /* NotificationManager2.swift */,
+				8BE370512C75FD8700AFFC8D /* TestingLocationNotif.swift */,
 			);
 			path = VincentView;
 			sourceTree = "<group>";
@@ -774,7 +776,6 @@
 			isa = PBXGroup;
 			children = (
 				BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */,
-				BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */,
 				630E5B332C7598A500E49885 /* SignInWithAppleComponent.swift */,
 			);
 			path = VincentViewModel;
@@ -1148,6 +1149,7 @@
 				BF0228172C71FA7B00177974 /* DynamicIslandChecker.swift in Sources */,
 				630E5B302C75876C00E49885 /* DummyCloudKit.swift in Sources */,
 				631EC7EA2C74E30D00DBBA4D /* ReportManager.swift in Sources */,
+				8BE3704E2C75FB5100AFFC8D /* LocationNotificationManager.swift in Sources */,
 				BFD4A8E42C72F95900D5E4C5 /* ValidationPageView.swift in Sources */,
 				631EC7E42C74E26600DBBA4D /* CloudKitConnection.swift in Sources */,
 				631EC7E12C74E1B000DBBA4D /* Report.swift in Sources */,
@@ -1162,7 +1164,6 @@
 				BFD4A8DB2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */,
 				BF02280F2C71FA5B00177974 /* FontExtension.swift in Sources */,
 				93BA05442C749D0B007E4049 /* LoadLocationManager.swift in Sources */,
-				931C29B02C719E9800554592 /* iOSManager.swift in Sources */,
 				BF2911BA2C743C18007BA6D7 /* PinPointPageView.swift in Sources */,
 				8BE370412C75983A00AFFC8D /* DummyLocationViewModel.swift in Sources */,
 				931C29B82C719EE100554592 /* iOSMainView.swift in Sources */,
@@ -1173,10 +1174,12 @@
 				630E5B342C7598A500E49885 /* SignInWithAppleComponent.swift in Sources */,
 				BFD4A89C2C71FCA100D5E4C5 /* bgStyle.swift in Sources */,
 				8BE370422C759E3400AFFC8D /* NotificationManager.swift in Sources */,
+				8BE370522C75FD8700AFFC8D /* TestingLocationNotif.swift in Sources */,
 				8BE3702F2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift in Sources */,
 				BF2911B52C7387DA007BA6D7 /* PulseView.swift in Sources */,
 				931C29BB2C71A29E00554592 /* AppDelegate.swift in Sources */,
 				93BA053B2C743C14007E4049 /* SavedLocation.swift in Sources */,
+				8BE370502C75FC3800AFFC8D /* NotificationManager2.swift in Sources */,
 				BF2911B32C7387AD007BA6D7 /* BubbleChatView.swift in Sources */,
 				931C29C12C71A47700554592 /* PinLocation.swift in Sources */,
 				BFD4A8AA2C71FCB600D5E4C5 /* ToggleRecordView.swift in Sources */,
@@ -1190,7 +1193,6 @@
 				8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */,
 				93BA05422C7468DC007E4049 /* iOSLocationViewDetail.swift in Sources */,
 				931C29C72C71A5C700554592 /* iOSLocationView.swift in Sources */,
-				931C2A442C71E04500554592 /* Recording.swift in Sources */,
 				931C29BF2C71A46500554592 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1223,7 +1225,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				931C2A452C71E04500554592 /* Recording.swift in Sources */,
 				931C29AE2C719E7E00554592 /* RecordFunction.swift in Sources */,
 				931C29A82C719E2A00554592 /* Audio.swift in Sources */,
 				8BE3703A2C7481C500AFFC8D /* IdleWatchUI.swift in Sources */,
@@ -1434,13 +1435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-
-				DEVELOPMENT_TEAM = UC6TG39XPP;
-
-
-				DEVELOPMENT_TEAM = M45X2698V4;
 				DEVELOPMENT_TEAM = NNX37468Q3;
-
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
@@ -1476,14 +1471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-
-
-				DEVELOPMENT_TEAM = UC6TG39XPP;
-
-
-				DEVELOPMENT_TEAM = M45X2698V4;
 				DEVELOPMENT_TEAM = NNX37468Q3;
-
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
@@ -1593,11 +1581,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = M45X2698V4;
-
-
 				DEVELOPMENT_TEAM = NNX37468Q3;
-
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
@@ -1629,10 +1613,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = M45X2698V4;
-
 				DEVELOPMENT_TEAM = NNX37468Q3;
-
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
@@ -1745,10 +1726,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M45X2698V4;
-
 				DEVELOPMENT_TEAM = NNX37468Q3;
-
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetForiOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetForiOS;
@@ -1776,10 +1754,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M45X2698V4;
-
 				DEVELOPMENT_TEAM = NNX37468Q3;
-
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetForiOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetForiOS;

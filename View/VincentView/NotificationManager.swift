@@ -12,6 +12,20 @@ struct NotificationManager {
     
     let notificationCenter = UNUserNotificationCenter.current()
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        for currentLocation in locations {
+            print("\(String(describing: index)): \(currentLocation)")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("Entered: \(region.identifier)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("Exited: \(region.identifier)")
+    }
+    
     func checkForNotificationPermission(completion: @escaping (Bool) -> Void) {
         notificationCenter.getNotificationSettings { settings in
             switch settings.authorizationStatus {
@@ -41,7 +55,8 @@ struct NotificationManager {
         
         let trigger = UNLocationNotificationTrigger(region: region, repeats: false)
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            
+        
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
         notificationCenter.add(request) { error in
             if let error = error {
                 print("Failed to schedule notification: \(error.localizedDescription)")

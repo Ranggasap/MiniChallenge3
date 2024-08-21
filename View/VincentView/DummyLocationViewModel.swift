@@ -9,9 +9,13 @@ import UserNotifications
 import CoreLocation
 
 class DummyLocationViewModel {
+    
     let notificationManager = NotificationManager()
+    let locationManager = CLLocationManager()
     
     func triggerAppleDeveloperAcademyNotification() {
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
         notificationManager.scheduleNotificationForAppleDeveloperAcademy()
     }
 }

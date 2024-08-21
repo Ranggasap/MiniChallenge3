@@ -22,8 +22,8 @@ struct MiniChallenge3App: App {
         
         WindowGroup {
 //            iOSMainView()
-            ContentView() // Frontend
-            
+            // ContentView() // Frontend
+            TestingLocationNotif()
         }
 //        .modelContainer(for: SavedLocation.self)
     }

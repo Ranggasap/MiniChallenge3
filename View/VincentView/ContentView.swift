@@ -10,7 +10,7 @@ import CloudKit
 
 struct ContentView: View {
     @State private var username = "Natalie"
-
+    
     
     let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
 
@@ -134,6 +134,9 @@ struct ContentView: View {
                     }
                 )
 
+            }
+            .onAppear{
+                
             }
             
         }
