@@ -78,6 +78,8 @@ struct ContentView: View {
                             if iOSVM.endRecord && iOSVM.isRecording{
                                 listViewModel.navigateToValidation = true
                             }
+                            
+                        })
 
                         
                         if alreadyRecord {
@@ -113,11 +115,11 @@ struct ContentView: View {
 
             // ini flow lama yg no progress bar and back
             .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, alreadyRecord: $alreadyRecord, currentCase: 2)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord)
             }
             //
             .navigationDestination(isPresented: $listViewModel.navigateToValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, alreadyRecord: $alreadyRecord, currentCase: 1)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord)
             }
             .alert(isPresented: $showingAlert) {
                 Alert(
@@ -140,6 +142,7 @@ struct ContentView: View {
     
     
 }
+                                             
 
 #Preview {
 

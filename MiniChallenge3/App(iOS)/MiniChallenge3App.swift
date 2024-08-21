@@ -21,9 +21,10 @@ struct MiniChallenge3App: App {
         @StateObject  var listViewModel = EvidenceListViewModel()
         
         WindowGroup {
-            iOSMainView()
-//            ContentView() // Frontend
+//            iOSMainView()
+            ContentView() // Frontend
+            
         }
-        .modelContainer(for: SavedLocation.self)
+//        .modelContainer(for: SavedLocation.self)
     }
 }

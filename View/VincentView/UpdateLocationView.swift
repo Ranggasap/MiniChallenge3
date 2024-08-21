@@ -79,12 +79,7 @@ struct UpdateLocationView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                 }
             }
-            .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, alreadyRecord: $alreadyRecord, currentCase: 2)
-            }
-            .navigationDestination(isPresented: $listViewModel.navigateToValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, alreadyRecord: $alreadyRecord, currentCase: 1)
-            }
+            
             .alert(isPresented: $showingAlert) { // Present the alert
                 Alert(
                     title: Text("Did you feel uncomfortable?"),
