@@ -183,9 +183,6 @@ struct ValidationPageView: View {
     }
     
     private func handleNextAction() {
-//        if currentCase == 2 {
-//            showingAlert = true
-//        } else 
         if !onPinValidation {
             if currentCase < 3 {
                 currentCase += 1

@@ -5,7 +5,7 @@
 //  Created by Lucinda Artahni on 20/08/24.
 //
 
-//TODO: belum masukin container identifier
+
 import Foundation
 import CloudKit
 
