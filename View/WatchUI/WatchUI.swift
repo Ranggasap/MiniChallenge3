@@ -19,7 +19,7 @@ struct WatchUI: View {
                     .transition(.opacity)
                 HStack{
                     
-                    AutoRecordIndicatorOn(isAutoRecord: $isAutoRecord)
+                    StopRecordingBackButton(isRecording: $isRecording)
                         .frame(width: 30)
                     Spacer()
                         .frame(width: 125)
@@ -61,7 +61,20 @@ struct WatchUI: View {
     }
 }
 
-
+struct StopRecordingBackButton: View {
+    @Binding var isRecording: Bool
+    var body: some View {
+        ZStack{
+            Circle()
+                .foregroundColor(.black)
+                .opacity(0.7)
+            Image(systemName: "xmark")
+        }
+        .onTapGesture {
+            isRecording = false
+        }
+    }
+}
 
 
 #Preview {
