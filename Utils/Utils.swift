@@ -17,3 +17,9 @@ enum messageSent: String {
     case done = "done"
     case stored = "stored"
 }
+
+enum PlayerScrubState {
+    case reset
+    case scrubStarted
+    case scrubEnded(TimeInterval)
+}

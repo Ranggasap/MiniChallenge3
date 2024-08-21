@@ -19,7 +19,9 @@ class LoadLocationManager: ObservableObject {
     @Published var routeCoordinates: [(coordinate: CLLocationCoordinate2D, timestamp: Date)] = []
     @Published var sliderValue: Double = 0
     @Published var showSlider = false
+    @Published var player: Player
     var audioPlayer: AVPlayer?
+    var timer: Timer?
     var maxSliderValue: Double
     
     init(region: MKCoordinateRegion, pins: [PinLocation], routeCoordinates: [(coordinate: CLLocationCoordinate2D, timestamp: Date)], sliderValue: Double, showSlider: Bool, audioPlayer: AVPlayer? = nil, maxSliderValue: Double) {
@@ -30,6 +32,7 @@ class LoadLocationManager: ObservableObject {
         self.showSlider = showSlider
         self.audioPlayer = audioPlayer
         self.maxSliderValue = maxSliderValue
+        self.player = Player(avPlayer: AVPlayer(url: Bundle.main.url(forResource: "testSong", withExtension: "mp3")!), maxDuration: maxSliderValue)
     }
     
     func updateRegionForEntireRoute() {
@@ -40,13 +43,28 @@ class LoadLocationManager: ObservableObject {
         region = MKCoordinateRegion(mapRect)
     }
     
+    func updateRegionForEntireRouteForSlider() -> MKCoordinateRegion {
+        guard !routeCoordinates.isEmpty else {
+            // Return a default region if routeCoordinates is empty
+            return MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), // Default center (e.g., London)
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01) // Default span
+            )
+        }
+        
+        let coordinates = routeCoordinates.map { $0.coordinate }
+        let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+        let mapRect = polyline.boundingMapRect
+        return MKCoordinateRegion(mapRect)
+    }
+
+    
     func routeUpToSliderValue() -> [CLLocationCoordinate2D] {
         guard let firstTimestamp = routeCoordinates.first?.timestamp else { return [] }
         
         let targetTimestamp = firstTimestamp.addingTimeInterval(sliderValue)
         return routeCoordinates.filter { $0.timestamp <= targetTimestamp }.map { $0.coordinate }
     }
-    
     
     func startEndPinLocations() -> (start: PinLocation?, end: PinLocation?) {
         guard let firstTimestamp = routeCoordinates.first?.timestamp else { return (nil, nil) }
@@ -58,23 +76,16 @@ class LoadLocationManager: ObservableObject {
         return (startPin, endPin)
     }
     
-    
     func timestampForSliderValue() -> TimeInterval? {
         return sliderValue
     }
     
     func playAudio(fromTimestamp timestamp: TimeInterval) {
-        guard let url = Bundle.main.url(forResource: "testSong", withExtension: "mp3") else {
-            print("Audio file not found")
-            return
-        }
-        audioPlayer = AVPlayer(url: url)
-        let seekTime = CMTime(seconds: timestamp, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-        audioPlayer?.seek(to: seekTime)
-        audioPlayer?.play()
+        player.scrubState = .scrubEnded(timestamp)
+        player.play()
     }
     
-    func pauseAudio(){
-        audioPlayer?.pause()
+    func pauseAudio() {
+        player.pause()
     }
 }
