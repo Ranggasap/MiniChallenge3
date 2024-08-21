@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct ValidationPageView: View {
     @State private var pattern = "ItemBackground1"
@@ -13,11 +14,22 @@ struct ValidationPageView: View {
     @State private var isAutoRecording = true
     @Binding var navigateToValidation: Bool
     
+    @State private var showLoginPage = false
+    
+    @AppStorage("userId") var userId : String = ""
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State private var currentCase: Int = 1
     @State private var showingAlert = false
     @StateObject private var listViewModel = EvidenceListViewModel()
+    
+    @StateObject var reportVm: ReportManager
+    
+    init(reportVm: ReportManager) {
+        _reportVm = StateObject(wrappedValue: reportVm)
+    }
+    
     
     var body: some View {
         ZStack {
@@ -95,7 +107,11 @@ struct ValidationPageView: View {
                                 if currentCase < 3 {
                                     currentCase += 1
                                 } else {
-                                    showingAlert = true
+                                    if userId.isEmpty{
+                                        showLoginPage.toggle()
+                                    } else{
+                                        showingAlert = true
+                                    }
                                 }
                             }) {
                                 RoundedRectangle(cornerRadius: 14)
@@ -125,6 +141,21 @@ struct ValidationPageView: View {
                         .padding(.bottom, DynamicIslandChecker.getBotPadding())
                     }
             }
+            
+            if showLoginPage {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
+                    SignInWithAppleComponent(userVm: UserAppManager(container: container))
+                    
+                }
+                .frame(width: 300, height: 400)
+                .background(Color.white)
+                .cornerRadius(20)
+                .shadow(radius: 10)
+            }
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
@@ -133,5 +164,6 @@ struct ValidationPageView: View {
 
 #Preview {
     ValidationPageView(navigateToValidation: .constant(true))
+
 }
 

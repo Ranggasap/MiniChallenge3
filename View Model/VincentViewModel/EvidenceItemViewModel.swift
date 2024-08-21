@@ -13,6 +13,7 @@ class EvidenceItemViewModel: ObservableObject {
     var streetDetail: String
     var recordingTime: String
     
+    
     init(streetName: String, streetDetail: String, recordingTime: String) {
         self.streetName = streetName
         self.streetDetail = streetDetail
@@ -26,7 +27,8 @@ class EvidenceItemViewModel: ObservableObject {
 
 class EvidenceListViewModel: ObservableObject {
     @Published var evidenceItems: [EvidenceItemViewModel] = []
-
+    
+    
     func collapseAllExcept(selectedItem: EvidenceItemViewModel) {
         for item in evidenceItems {
             if item !== selectedItem {
@@ -34,7 +36,7 @@ class EvidenceListViewModel: ObservableObject {
             }
         }
     }
-
+    
     @ViewBuilder
     func getCurrentCaseView(for currentCase: Int) -> some View {
         switch currentCase {
@@ -163,7 +165,7 @@ class EvidenceListViewModel: ObservableObject {
                 }
                 Spacer()
             }
-
+            
         default:
             EmptyView()
         }
@@ -181,7 +183,7 @@ class EvidenceListViewModel: ObservableObject {
             return ""
         }
     }
-
+    
     func getCaseTitle(for currentCase: Int) -> String {
         switch currentCase {
         case 1:
@@ -194,4 +196,6 @@ class EvidenceListViewModel: ObservableObject {
             return ""
         }
     }
+    
+
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		630E5B302C75876C00E49885 /* DummyCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630E5B2F2C75876C00E49885 /* DummyCloudKit.swift */; };
+		630E5B342C7598A500E49885 /* SignInWithAppleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630E5B332C7598A500E49885 /* SignInWithAppleComponent.swift */; };
 		631EC7DE2C74E1AB00DBBA4D /* UserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7DD2C74E1AB00DBBA4D /* UserApp.swift */; };
 		631EC7E12C74E1B000DBBA4D /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7E02C74E1B000DBBA4D /* Report.swift */; };
 		631EC7E42C74E26600DBBA4D /* CloudKitConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7E32C74E26600DBBA4D /* CloudKitConnection.swift */; };
@@ -267,6 +268,7 @@
 /* Begin PBXFileReference section */
 		630E5B2E2C75873E00E49885 /* MiniChallenge3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiniChallenge3.entitlements; sourceTree = "<group>"; };
 		630E5B2F2C75876C00E49885 /* DummyCloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCloudKit.swift; sourceTree = "<group>"; };
+		630E5B332C7598A500E49885 /* SignInWithAppleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleComponent.swift; sourceTree = "<group>"; };
 		631EC7DD2C74E1AB00DBBA4D /* UserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApp.swift; sourceTree = "<group>"; };
 		631EC7E02C74E1B000DBBA4D /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		631EC7E32C74E26600DBBA4D /* CloudKitConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitConnection.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 			children = (
 				BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */,
 				BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */,
+				630E5B332C7598A500E49885 /* SignInWithAppleComponent.swift */,
 			);
 			path = VincentViewModel;
 			sourceTree = "<group>";
@@ -1095,6 +1098,7 @@
 				BFD4A8A42C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */,
 				931C29BD2C71A2DD00554592 /* AppConstants.swift in Sources */,
 				931C29A72C719E2A00554592 /* Audio.swift in Sources */,
+				630E5B342C7598A500E49885 /* SignInWithAppleComponent.swift in Sources */,
 				BFD4A89C2C71FCA100D5E4C5 /* bgStyle.swift in Sources */,
 				BF2911B52C7387DA007BA6D7 /* PulseView.swift in Sources */,
 				931C29BB2C71A29E00554592 /* AppDelegate.swift in Sources */,
