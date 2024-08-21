@@ -20,12 +20,18 @@ class EvidenceItemViewModel: ObservableObject {
     }
     
     func toggleExpand() {
-        isExpanded.toggle()
+        isExpanded = true
     }
 }
 
 class EvidenceListViewModel: ObservableObject {
+    @Published var navigateToValidation = false
+    @Published var navigateToPinValidation = false
     @Published var evidenceItems: [EvidenceItemViewModel] = []
+    
+    @Published var selectedStreetName: String = ""
+    @Published var selectedStreetDetail: String = ""
+    @Published var selectedRecordingTime: String = ""
 
     func collapseAllExcept(selectedItem: EvidenceItemViewModel) {
         for item in evidenceItems {
@@ -41,8 +47,15 @@ class EvidenceListViewModel: ObservableObject {
         case 1:
             VStack(spacing: 24) {
                 ForEach(Array(evidenceItems.prefix(3)), id: \.streetName) { item in
-                    EvidenceItemView(viewModel: item) {
+                    EvidenceItemView(viewModel: item) { streetName, recordingTime in
+                        // Store the selected data
                         self.collapseAllExcept(selectedItem: item)
+                        self.selectedStreetName = streetName
+                        self.selectedStreetDetail = item.streetDetail
+                        self.selectedRecordingTime = recordingTime
+                        
+                        // Debugging
+                        print("Tapped on street: \(streetName) at time: \(recordingTime)")
                     }
                 }
                 Spacer()
@@ -76,10 +89,10 @@ class EvidenceListViewModel: ObservableObject {
                                     Image(.icon1)
                                 }
                             VStack(alignment: .leading, spacing: 3) {
-                                Text("BSD Boulevard 1170 Street")
+                                Text(selectedStreetName)
                                     .foregroundColor(.fontColor4)
                                     .font(.lt(size: 16, weight: .semibold))
-                                Text("290 m away, near GOP Office Park")
+                                Text(selectedStreetDetail)
                                     .foregroundColor(.fontColor6)
                                     .font(.lt(size: 15))
                             }
@@ -91,8 +104,8 @@ class EvidenceListViewModel: ObservableObject {
             }
             
         case 3:
-            VStack(spacing:24){
-                VStack(alignment:.leading, spacing:12){
+            VStack(spacing: 24) {
+                VStack(alignment: .leading, spacing: 12) {
                     Text("Evidence")
                         .foregroundColor(.fontColor4)
                         .font(.lt(size: 20, weight: .bold))
@@ -101,14 +114,14 @@ class EvidenceListViewModel: ObservableObject {
                         .foregroundColor(.containerColor2)
                         .shadow(radius: 2, y: 4)
                         .overlay {
-                            VStack(alignment:.leading, spacing:4){
-                                Text("6 Aug 2024")
+                            VStack(alignment:.leading, spacing:4) {
+                                Text(selectedStreetName)
                                     .foregroundColor(.fontColor4)
                                     .font(.lt(size: 16, weight: .semibold))
-                                HStack{
-                                    Text("BSD Green Office Park")
+                                HStack {
+                                    Text(selectedStreetDetail)
                                     Spacer()
-                                    Text("05:24")
+                                    Text(selectedRecordingTime)
                                 }
                                 .foregroundColor(.fontColor5)
                                 .font(.lt(size: 16))
@@ -117,7 +130,7 @@ class EvidenceListViewModel: ObservableObject {
                         }
                 }
                 
-                VStack(alignment:.leading, spacing:12){
+                VStack(alignment: .leading, spacing: 12) {
                     Text("Location")
                         .foregroundColor(.fontColor4)
                         .font(.lt(size: 20, weight: .bold))
@@ -134,10 +147,10 @@ class EvidenceListViewModel: ObservableObject {
                                         Image(.icon1)
                                     }
                                 VStack(alignment: .leading, spacing: 3) {
-                                    Text("BSD Boulevard 1170 Street")
+                                    Text(selectedStreetName) // Use selected data
                                         .foregroundColor(.fontColor4)
                                         .font(.lt(size: 16, weight: .semibold))
-                                    Text("290 m away, near GOP Office Park")
+                                    Text(selectedStreetDetail) // Use selected data
                                         .foregroundColor(.fontColor6)
                                         .font(.lt(size: 15))
                                 }
@@ -147,7 +160,7 @@ class EvidenceListViewModel: ObservableObject {
                         }
                 }
                 
-                VStack(alignment:.leading, spacing:12){
+                VStack(alignment: .leading, spacing: 12) {
                     Text("Other details")
                         .foregroundColor(.fontColor4)
                         .font(.lt(size: 20, weight: .bold))
@@ -156,14 +169,14 @@ class EvidenceListViewModel: ObservableObject {
                         .foregroundColor(.containerColor2)
                         .shadow(radius: 2, y: 4)
                         .overlay {
-                            // textfield buat notes
+                            // textfield for notes
                             Text("")
                                 .disableAutocorrection(true)
                         }
                 }
                 Spacer()
             }
-
+            
         default:
             EmptyView()
         }
@@ -194,4 +207,5 @@ class EvidenceListViewModel: ObservableObject {
             return ""
         }
     }
+    
 }

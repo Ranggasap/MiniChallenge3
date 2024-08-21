@@ -9,6 +9,7 @@ import UIKit
 import Combine
 
 class iOSManager: NSObject, ObservableObject, UIDocumentPickerDelegate {
+    @Published var alreadyRecord = false
     @Published var audio = Audio()
     @Published var isLoading = true
     @Published var isDirected = false
@@ -24,6 +25,8 @@ class iOSManager: NSObject, ObservableObject, UIDocumentPickerDelegate {
     
     override init() {
         super.init()
+        
+        self.alreadyRecord = alreadyRecord
         
         connectivity.isRecordingSubject
             .receive(on: DispatchQueue.main)
