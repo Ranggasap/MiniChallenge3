@@ -13,6 +13,7 @@ class EvidenceItemViewModel: ObservableObject {
     var streetDetail: String
     var recordingTime: String
     
+    
     init(streetName: String, streetDetail: String, recordingTime: String) {
         self.streetName = streetName
         self.streetDetail = streetDetail
@@ -29,6 +30,7 @@ class EvidenceListViewModel: ObservableObject {
     @Published var navigateToPinValidation = false
     @Published var evidenceItems: [EvidenceItemViewModel] = []
     
+
     @Published var selectedStreetName: String = ""
     @Published var selectedStreetDetail: String = ""
     @Published var selectedRecordingTime: String = ""
@@ -40,7 +42,7 @@ class EvidenceListViewModel: ObservableObject {
             }
         }
     }
-
+    
     @ViewBuilder
     func getCurrentCaseView(for currentCase: Int) -> some View {
         switch currentCase {
@@ -194,7 +196,7 @@ class EvidenceListViewModel: ObservableObject {
             return ""
         }
     }
-
+    
     func getCaseTitle(for currentCase: Int) -> String {
         switch currentCase {
         case 1:
@@ -207,5 +209,5 @@ class EvidenceListViewModel: ObservableObject {
             return ""
         }
     }
-    
+
 }

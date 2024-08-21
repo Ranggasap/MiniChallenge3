@@ -6,13 +6,20 @@
 //
 
 import SwiftUI
+import CloudKit
 import SwiftData
+
 
 @main
 struct MiniChallenge3App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
+        let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
+        
+        @StateObject var iOSVM = iOSManager()
+        @StateObject  var listViewModel = EvidenceListViewModel()
+        
         WindowGroup {
             iOSMainView()
 //            ContentView() // Frontend

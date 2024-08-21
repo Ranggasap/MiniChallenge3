@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct ContentView: View {
     @State private var username = "Natalie"
+
+    
+    let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
+
     @State var alreadyRecord = false
     @StateObject var iOSVM = iOSManager()
     @StateObject private var listViewModel = EvidenceListViewModel()
+
     
     // test state
 //    @State var isRecord = false
@@ -28,12 +34,15 @@ struct ContentView: View {
                     bgStyle(pattern: "ItemBackground1", colorBg: "ColorBackground1")
                     AvatarView(avatar: "avatar1")
                     BubbleChatView(text: "How was your day? Keep your head high, knowing that you have the power within you to face any challenge.")
+
                 } else {
+
                     bgStyle(pattern: "ItemBackground2", colorBg: "ColorBackground2")
                     PulseView()
                     AvatarView(avatar: "avatar2")
                     BubbleChatView(text: "Right now, I company you and observe your surrounding on your apple watch")
                 }
+
                 HelloView(username: $username)
                 VStack {
                     Spacer()
@@ -41,6 +50,7 @@ struct ContentView: View {
                         if !iOSVM.isRecording{
                             ToggleRecordView(isAutoRecording: $iOSVM.isAutoRecording)
                         }
+
                         Button(action: {
                             if iOSVM.isRecording {
                                 iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
@@ -50,6 +60,7 @@ struct ContentView: View {
                             } else {
                                 iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
                                 iOSVM.isRecording.toggle()
+
                             }
                         }) {
                             RoundedRectangle(cornerRadius: 14)
@@ -67,7 +78,7 @@ struct ContentView: View {
                             if iOSVM.endRecord && iOSVM.isRecording{
                                 listViewModel.navigateToValidation = true
                             }
-                        })
+
                         
                         if alreadyRecord {
                             Button(action: {
@@ -78,15 +89,18 @@ struct ContentView: View {
                                     .foregroundColor(.buttonColor3)
                                     .frame(width: UIScreen.main.bounds.width - 64, height: 62)
                                     .overlay {
+
                                         Text("Report")
                                             .font(.lt(size: 20, weight: .bold))
                                             .foregroundColor(.fontColor3)
                                     }
                                     .padding(.horizontal, 32)
+
                             }
                             .simultaneousGesture(TapGesture().onEnded {
                                 listViewModel.navigateToValidation = true
                             })
+
                         }
                     }
                     .padding(.top, 28)
@@ -96,6 +110,7 @@ struct ContentView: View {
                 }
                 
             }
+
             // ini flow lama yg no progress bar and back
             .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
                 ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, alreadyRecord: $alreadyRecord, currentCase: 2)
@@ -116,7 +131,9 @@ struct ContentView: View {
                         iOSVM.isRecording = false
                     }
                 )
+
             }
+            
         }
         .navigationViewStyle(.stack)
     }
@@ -125,6 +142,8 @@ struct ContentView: View {
 }
 
 #Preview {
+
     ContentView(alreadyRecord: false, iOSVM: iOSManager())
+
 }
 

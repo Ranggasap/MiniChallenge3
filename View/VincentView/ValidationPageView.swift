@@ -6,18 +6,35 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct ValidationPageView: View {
     @State private var isAutoRecording = true
     @Binding var navigateToValidation: Bool
+    
+    @State private var showLoginPage = false
+    @AppStorage("userId") var userId : String = ""
+    
+
     @State var onPinValidation: Bool
     @Binding var alreadyRecord: Bool
+
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var currentCase: Int = 1
     @State private var showingAlert = false
     @StateObject var iOSVM = iOSManager()
     @StateObject private var listViewModel = EvidenceListViewModel()
+    
+    @StateObject var reportVm: ReportManager
+    
+    
+    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, reportVm: ReportManager) {
+            self._navigateToValidation = navigateToValidation
+            self._onPinValidation = State(initialValue: onPinValidation)
+            _reportVm = StateObject(wrappedValue: reportVm)
+        }
+    
     
     var body: some View {
         ZStack {
@@ -26,7 +43,9 @@ struct ValidationPageView: View {
             VStack(alignment: .leading, spacing: 16) {
                 Button(action: {
                     if onPinValidation && currentCase == 3{
+
                         alreadyRecord = true
+
                         navigateToValidation = false
                         self.presentationMode.wrappedValue.dismiss()
                     } else {
@@ -97,7 +116,9 @@ struct ValidationPageView: View {
                             .scrollIndicators(.hidden)
                             
                             Button(action: {
+
                                 handleNextAction()
+
                             }) {
                                 RoundedRectangle(cornerRadius: 14)
                                     .frame(width: UIScreen.main.bounds.width - 64, height: 62)
@@ -109,6 +130,7 @@ struct ValidationPageView: View {
                                     }
                             }
                             .alert(isPresented: $showingAlert) {
+
                                 Alert(
                                     title: Text("Are you sure?"),
                                     message: Text("Make sure every data you choose and fill are correct."),
@@ -117,12 +139,28 @@ struct ValidationPageView: View {
                                     },
                                     secondaryButton: .cancel(Text("Cancel"))
                                 )
+
                             }
                         }
                         .padding(.top, 24)
                         .padding(.horizontal, 16)
                         .padding(.bottom, DynamicIslandChecker.getBotPadding())
                     }
+            }
+            
+            if showLoginPage {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
+                    SignInWithAppleComponent(userVm: UserAppManager(container: container), showLoginPage: $showLoginPage)
+                    
+                }
+                .frame(width: 300, height: 400)
+                .background(Color.white)
+                .cornerRadius(20)
+                .shadow(radius: 10)
             }
         }
         .navigationBarTitle("")
@@ -143,13 +181,11 @@ struct ValidationPageView: View {
             if currentCase < 3 {
                 currentCase += 1
             } else {
-                showingAlert = true
-            }
-        } else {
-            if currentCase == 2 {
-                currentCase += 1
-            } else {
-                showingAlert = true
+                if userId.isEmpty{
+                    showLoginPage.toggle()
+                } else{
+                    showingAlert = true
+                }
             }
         }
     }
@@ -158,10 +194,12 @@ struct ValidationPageView: View {
         if currentCase == 2 {
             currentCase += 1
         } else {
+
             alreadyRecord = true
             navigateToValidation = false
             currentCase = 2
             self.presentationMode.wrappedValue.dismiss()
+
         }
     }
     
@@ -177,6 +215,8 @@ struct ValidationPageView: View {
 }
 
 #Preview {
+
     ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, alreadyRecord: .constant(false))
+
 }
 
