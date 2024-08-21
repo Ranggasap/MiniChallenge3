@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MiniChallenge3App: App {
@@ -16,5 +17,6 @@ struct MiniChallenge3App: App {
             iOSMainView()
 //            ContentView() // Frontend
         }
+        .modelContainer(for: SavedLocation.self)
     }
 }

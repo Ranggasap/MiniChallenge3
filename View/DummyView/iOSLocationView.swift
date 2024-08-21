@@ -7,11 +7,14 @@
 
 import SwiftUI
 import CoreLocation
-//import MapKit
+import SwiftData
+import MapKit
 
 struct iOSLocationView: View {
     @StateObject var model = LocationManager()
+    @Environment(\.modelContext) var context
     @State private var isNavigate = false
+    @Query(sort: \SavedLocation.id) var savedLocations: [SavedLocation]
 
     var body: some View {
         NavigationStack {
@@ -41,6 +44,14 @@ struct iOSLocationView: View {
                             Text(savedLocation.id.uuidString)
                                 .font(.headline)
                         }
+                    }
+                }
+            }
+            .onChange(of: model.isDisabled) {
+                if model.isDisabled {
+                    storeLocationToSwiftData()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        convertToTempData()
                     }
                 }
             }
