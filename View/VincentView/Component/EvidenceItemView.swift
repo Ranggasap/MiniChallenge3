@@ -9,14 +9,14 @@ import SwiftUI
 
 struct EvidenceItemView: View {
     @ObservedObject var viewModel: EvidenceItemViewModel
-    var onTap: () -> Void
-    
+    var onTap: (String, String) -> Void  // Update onTap to accept data
+
     var body: some View {
         VStack {
             HStack(spacing: 12) {
                 Circle()
                     .frame(width: 30, height: 30)
-                    .foregroundColor(.iconColor2)
+                    .foregroundColor(viewModel.isExpanded ? .iconColor2 : .iconColor1)
                     .overlay {
                         Image(.icon2)
                     }
@@ -36,16 +36,49 @@ struct EvidenceItemView: View {
             }
             if viewModel.isExpanded {
                 VStack(spacing: 10) {
-//                    Text("Audio Record for \(viewModel.streetName)")
-//                        .foregroundColor(.fontColor4)
                     Slider(value: .constant(0.2))
-                    HStack(spacing:16){
-                        Image(systemName: "gobackward.10")
+                    HStack{
+                        // dummy icon biar seimbang
+                        Image(systemName: "square.and.arrow.up")
                             .font(.system(size: 24))
-                        Image(systemName: "play")
-                            .font(.system(size: 32))
-                        Image(systemName: "goforward.10")
-                            .font(.system(size: 24))
+                            .foregroundColor(.clear)
+                            .disabled(true)
+                        Spacer()
+                        
+                        HStack(spacing:16){
+                            Button(action: {
+                                // backward 10 sec
+                            }) {
+                                Image(systemName: "gobackward.10")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.buttonColor5)
+                            }
+                            
+                            Button(action: {
+                                // implement play music
+                            }) {
+                                Image(systemName: "play.fill")
+                                    .font(.system(size: 32))
+                                    .foregroundColor(.buttonColor3)
+                            }
+                            
+                            Button(action: {
+                                // forward 10 sec
+                            }) {
+                                Image(systemName: "goforward.10")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.buttonColor5)
+                            }
+                        }
+                        
+                        Spacer()
+                        Button(action: {
+                            // implement download
+                        }) {
+                            Image(systemName: "square.and.arrow.up")
+                                .font(.system(size: 24))
+                                .foregroundColor(.buttonColor3)
+                        }
                     }
                 }
             }
@@ -56,7 +89,8 @@ struct EvidenceItemView: View {
         .shadow(radius: 2, y: 4)
         .onTapGesture {
             viewModel.toggleExpand()
-            onTap()
+            // example data yang di kirim
+            onTap(viewModel.streetName, viewModel.recordingTime)
         }
     }
 }

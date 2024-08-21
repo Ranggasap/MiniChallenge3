@@ -182,10 +182,10 @@
 		BF0228202C71FA7B00177974 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0228162C71FA7B00177974 /* ColorExtension.swift */; };
 		BF0228212C71FA7B00177974 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0228162C71FA7B00177974 /* ColorExtension.swift */; };
 		BF0228222C71FA7B00177974 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0228162C71FA7B00177974 /* ColorExtension.swift */; };
+		BF227A332C7595A600B64EE5 /* UpdateLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF227A322C7595A600B64EE5 /* UpdateLocationView.swift */; };
 		BF2911B12C738791007BA6D7 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B02C738791007BA6D7 /* AvatarView.swift */; };
 		BF2911B32C7387AD007BA6D7 /* BubbleChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */; };
 		BF2911B52C7387DA007BA6D7 /* PulseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B42C7387DA007BA6D7 /* PulseView.swift */; };
-		BF2911B82C7388E4007BA6D7 /* ValidationPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */; };
 		BFD4A89C2C71FCA100D5E4C5 /* bgStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89B2C71FCA100D5E4C5 /* bgStyle.swift */; };
 		BFD4A8A42C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89D2C71FCB600D5E4C5 /* EvidenceItemView.swift */; };
 		BFD4A8A72C71FCB600D5E4C5 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4A89E2C71FCB600D5E4C5 /* HelloView.swift */; };
@@ -342,6 +342,7 @@
 		BF02280E2C71FA5B00177974 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		BF0228152C71FA7B00177974 /* DynamicIslandChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicIslandChecker.swift; sourceTree = "<group>"; };
 		BF0228162C71FA7B00177974 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		BF227A322C7595A600B64EE5 /* UpdateLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationView.swift; sourceTree = "<group>"; };
 		BF2911B02C738791007BA6D7 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChatView.swift; sourceTree = "<group>"; };
 		BF2911B42C7387DA007BA6D7 /* PulseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseView.swift; sourceTree = "<group>"; };
@@ -349,7 +350,6 @@
 		BFD4A89D2C71FCB600D5E4C5 /* EvidenceItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvidenceItemView.swift; sourceTree = "<group>"; };
 		BFD4A89E2C71FCB600D5E4C5 /* HelloView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 		BFD4A89F2C71FCB600D5E4C5 /* ToggleRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleRecordView.swift; sourceTree = "<group>"; };
-		BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPageViewModel.swift; sourceTree = "<group>"; };
 		BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvidenceItemViewModel.swift; sourceTree = "<group>"; };
 		BFD4A8DF2C72F93900D5E4C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFD4A8E32C72F95900D5E4C5 /* ValidationPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPageView.swift; sourceTree = "<group>"; };
@@ -690,11 +690,12 @@
 				8BE3703D2C758E6A00AFFC8D /* NotificationManager.swift */,
 				8BE3703F2C7597A400AFFC8D /* DummyLocationViewModel.swift */,
 				BFD4A8E32C72F95900D5E4C5 /* ValidationPageView.swift */,
+				BF227A322C7595A600B64EE5 /* UpdateLocationView.swift */,
 				BFD4A8A02C71FCB600D5E4C5 /* Component */,
 				BFD4A89B2C71FCA100D5E4C5 /* bgStyle.swift */,
+				BF2911B42C7387DA007BA6D7 /* PulseView.swift */,
 				BF2911B02C738791007BA6D7 /* AvatarView.swift */,
 				BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */,
-				BF2911B42C7387DA007BA6D7 /* PulseView.swift */,
 			);
 			path = VincentView;
 			sourceTree = "<group>";
@@ -730,7 +731,6 @@
 			isa = PBXGroup;
 			children = (
 				BFD4A8DA2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift */,
-				BFD4A8D12C71FCF200D5E4C5 /* ValidationPageViewModel.swift */,
 			);
 			path = VincentViewModel;
 			sourceTree = "<group>";
@@ -1104,6 +1104,7 @@
 				BFD4A8E42C72F95900D5E4C5 /* ValidationPageView.swift in Sources */,
 				BFD4A8A72C71FCB600D5E4C5 /* HelloView.swift in Sources */,
 				BFD4A8E02C72F93900D5E4C5 /* ContentView.swift in Sources */,
+				BF227A332C7595A600B64EE5 /* UpdateLocationView.swift in Sources */,
 				931C29C52C71A56E00554592 /* LineCoordinator.swift in Sources */,
 				931C29AD2C719E7E00554592 /* RecordFunction.swift in Sources */,
 				BFD4A8DB2C71FE9C00D5E4C5 /* EvidenceItemViewModel.swift in Sources */,
@@ -1132,7 +1133,6 @@
 				931C29C72C71A5C700554592 /* iOSLocationView.swift in Sources */,
 				931C2A442C71E04500554592 /* Recording.swift in Sources */,
 				931C29BF2C71A46500554592 /* LocationManager.swift in Sources */,
-				BF2911B82C7388E4007BA6D7 /* ValidationPageViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1374,6 +1374,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
+				DEVELOPMENT_TEAM = M45X2698V4;
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1409,6 +1410,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
+				DEVELOPMENT_TEAM = M45X2698V4;
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1442,7 +1444,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
@@ -1462,7 +1464,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
@@ -1481,7 +1483,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3UITests;
@@ -1499,7 +1501,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ranggasaputra.MiniChallenge3UITests;
@@ -1519,6 +1521,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = M45X2698V4;
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1551,6 +1554,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = M45X2698V4;
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1582,7 +1586,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppTests";
@@ -1603,7 +1607,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppTests";
@@ -1623,7 +1627,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppUITests";
@@ -1643,7 +1647,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppUITests";
@@ -1664,6 +1668,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetForiOS/Info.plist;
@@ -1692,6 +1697,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetForiOS/Info.plist;

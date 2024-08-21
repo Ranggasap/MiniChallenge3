@@ -11,48 +11,57 @@ struct PulseView: View {
     // mo w update lg nanti (blom kelar)
     @State private var scale: CGFloat = 1.0
     @State private var opacity: Double = 1.0
+    @State private var scaleChanges: CGFloat = 1.5
+    @State private var opacityChanges: Double = 1.0
     
     var body: some View {
-        ZStack {
-            Image(.pulseIcon)
-                .resizable()
-                .frame(width: 320, height: 320)
-                .scaleEffect(scale)
-                .opacity(opacity)
-                .animation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false))
-                .onAppear {
-                    scale = 1.5
-                    opacity = 0.0
-                }
-            Image(.pulseIcon)
-                .resizable()
-                .frame(width: 400, height: 400)
-                .scaleEffect(scale)
-                .opacity(opacity)
-                .animation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false))
-                .onAppear {
-                    scale = 1.5
-                    opacity = 0.0
-                }
-            Image(.pulseIcon)
-                .resizable()
-                .frame(width: 480, height: 480)
-                .scaleEffect(scale)
-                .opacity(opacity)
-                .animation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false))
-                .onAppear {
-                    scale = 1.5
-                    opacity = 0.0
-                }
-            
-            
-            Image(.pulseIcon)
-                .resizable()
-                .frame(width: 260, height: 260)
+        VStack{
+            ZStack {
+                Image(.pulseIcon)
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
+                    .scaleEffect(scale)
+                    .opacity(opacity)
+                    .animation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false))
+                    .onAppear {
+                        scale = scaleChanges
+                        opacity = opacityChanges
+                    }
+                Image(.pulseIcon)
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width/2+UIScreen.main.bounds.width/4.4, height: UIScreen.main.bounds.width/2+UIScreen.main.bounds.width/4.4)
+                    .scaleEffect(scale)
+                    .opacity(opacity)
+                    .animation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false))
+                    .onAppear {
+                        scale = scaleChanges
+                        opacity = opacityChanges
+                    }
+                Image(.pulseIcon)
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width/2+UIScreen.main.bounds.width/2.2, height: UIScreen.main.bounds.width/2+UIScreen.main.bounds.width/2.2)
+                    .scaleEffect(scale)
+                    .opacity(opacity)
+                    .animation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false))
+                    .onAppear {
+                        scale = scaleChanges
+                        opacity = opacityChanges
+                    }
+                Image(.pulseIcon)
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width/2+UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.width/2+UIScreen.main.bounds.width/1.1)
+                    .scaleEffect(scale)
+                    .opacity(opacity)
+                    .animation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false))
+                    .onAppear {
+                        scale = scaleChanges
+                        opacity = opacityChanges
+                    }
+            }
+            .padding(.bottom, UIScreen.main.bounds.width/4)
+//            .background(.colorBackground2)
         }
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        .background(.colorBackground1)
-        
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
