@@ -35,6 +35,10 @@ class LoadLocationManager: ObservableObject {
         self.player = Player(avPlayer: AVPlayer(url: Bundle.main.url(forResource: "testSong", withExtension: "mp3")!), maxDuration: maxSliderValue)
     }
     
+//    func getReportFromRoute() -> Report {
+//        
+//    }
+    
     func updateRegionForEntireRoute() {
         guard !routeCoordinates.isEmpty else { return }
         let coordinates = routeCoordinates.map { $0.coordinate }
