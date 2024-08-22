@@ -34,6 +34,13 @@ struct EvidenceItemView: View {
                 }
                 Spacer()
             }
+            .onTapGesture {
+                withAnimation(.spring()) {
+                    viewModel.toggleExpand()
+                }
+                onTap(viewModel.streetName, viewModel.recordingTime)
+            }
+            
             if viewModel.isExpanded {
                 VStack(spacing: 10) {
                     Slider(value: .constant(0.2))
@@ -83,6 +90,7 @@ struct EvidenceItemView: View {
                 }
             }
         }
+        .transition(.opacity.animation(.easeInOut)) // Add smooth transition
         .padding()
         .background(.containerColor2)
         .cornerRadius(10)
