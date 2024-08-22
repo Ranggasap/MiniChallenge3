@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CoreLocation
+import CloudKit
 
 class EvidenceItemViewModel: ObservableObject {
     @Published var isExpanded: Bool = false
@@ -30,11 +32,34 @@ class EvidenceListViewModel: ObservableObject {
     @Published var navigateToPinValidation = false
     @Published var evidenceItems: [EvidenceItemViewModel] = []
     
-
+    
     @Published var selectedStreetName: String = ""
     @Published var selectedStreetDetail: String = ""
     @Published var selectedRecordingTime: String = ""
-
+    
+    //    var reportVm: ReportManager
+    //    var userVm: UserAppManager
+    //
+    //    init(reportVm: ReportManager, userVm: UserAppManager) {
+    //        self.reportVm = reportVm
+    //        self.userVm = userVm
+    //    }
+    
+    let reportVm: ReportManager
+    let userVm: UserAppManager
+    
+    init() {
+        let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
+        self.reportVm = ReportManager(container: container)
+        self.userVm = UserAppManager(container: container)
+        
+        userVm.fetchUsers()
+    }
+    
+    @StateObject var locationManager = GeofencingManager()
+    
+    
+    
     func collapseAllExcept(selectedItem: EvidenceItemViewModel) {
         for item in evidenceItems {
             if item !== selectedItem {
@@ -209,5 +234,24 @@ class EvidenceListViewModel: ObservableObject {
             return ""
         }
     }
-
+    
+    func saveReportToCloud(){
+        
+        let userID = userVm.currentUser?.userID
+        let newReport = Report(reportDate: Date(), reportKronologi: "Apple Developer Academy", location: CLLocation(latitude: -6.302147, longitude: 106.652291), userID: userID!)
+        reportVm.createReport(report: newReport) { result in
+            switch result {
+            case .success(let record):
+                print("Report created: \(String(describing: record))")
+            case .failure(let error):
+                print("Error creating report: \(error.localizedDescription)")
+            }
+            
+            
+        }
+        
+        
+        
+    }
+    
 }
