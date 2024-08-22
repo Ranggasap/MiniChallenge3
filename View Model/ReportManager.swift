@@ -64,7 +64,7 @@ class ReportManager: CloudKitConnection, ObservableObject {
     
     func fetchReportsNearUserLocation(userLocation: CLLocation) {
             // Define a circular region with a 1 km (1000 meters) radius
-            let region = CLCircularRegion(center: userLocation.coordinate, radius: 1500, identifier: "NearbyRegion")
+            let region = CLCircularRegion(center: userLocation.coordinate, radius: 1000, identifier: "NearbyRegion")
             
             // Perform a broad query to get reports (this won't filter by distance yet)
             let predicate = NSPredicate(value: true)
@@ -100,6 +100,8 @@ class ReportManager: CloudKitConnection, ObservableObject {
                         } ?? []
                         
                         self.geofencingManager.startMonitoringForReports(self.reportsNearby)
+                     
+                        
                     }
                 }
             }

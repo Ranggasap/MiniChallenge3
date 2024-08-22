@@ -17,6 +17,8 @@ struct ContentView: View {
     @State var alreadyRecord = false
     @StateObject var iOSVM = iOSManager()
     @StateObject private var listViewModel = EvidenceListViewModel()
+    
+    @StateObject var locationManager = GeofencingManager()
 
     
     // test state
@@ -25,6 +27,7 @@ struct ContentView: View {
 //    @State var isEndRecord = true
     
     @State private var showingAlert = false
+    
 
     var body: some View {
         NavigationStack {
@@ -115,11 +118,11 @@ struct ContentView: View {
 
             // ini flow lama yg no progress bar and back
             .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, /*reportVm: ReportManager(container: container),*/ alreadyRecord: $alreadyRecord)
             }
             //
             .navigationDestination(isPresented: $listViewModel.navigateToValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, /*reportVm: ReportManager(container: container),*/ alreadyRecord: $alreadyRecord)
             }
             .alert(isPresented: $showingAlert) {
                 Alert(
@@ -138,8 +141,22 @@ struct ContentView: View {
             
         }
         .navigationViewStyle(.stack)
+        .onChange(of: locationManager.currentLocation) { newLocation in
+            if let location = newLocation {
+                listViewModel.reportVm.fetchReportsNearUserLocation(userLocation: location)
+                print(location)
+                
+                locationManager.updateLocation()
+                
+            }
+        }
+        
+        .onAppear{
+            NotifManager().requestAuthorization()
+            
+        }
+        
     }
-    
     
 }
                                              
