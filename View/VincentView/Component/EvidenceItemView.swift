@@ -34,12 +34,7 @@ struct EvidenceItemView: View {
                 }
                 Spacer()
             }
-            .onTapGesture {
-                withAnimation(.spring()) {
-                    viewModel.toggleExpand()
-                }
-                onTap(viewModel.streetName, viewModel.recordingTime)
-            }
+            
             
             if viewModel.isExpanded {
                 VStack(spacing: 10) {
@@ -52,7 +47,7 @@ struct EvidenceItemView: View {
                             .disabled(true)
                         Spacer()
                         
-                        HStack(spacing:16){
+                        HStack(spacing: 16) {
                             Button(action: {
                                 // backward 10 sec
                             }) {
@@ -88,17 +83,18 @@ struct EvidenceItemView: View {
                         }
                     }
                 }
+                .transition(.opacity.animation(.easeInOut)) // Add smooth transition
             }
         }
-        .transition(.opacity.animation(.easeInOut)) // Add smooth transition
         .padding()
-        .background(.containerColor2)
+        .background(Color.containerColor2)
         .cornerRadius(10)
         .shadow(radius: 2, y: 4)
         .onTapGesture {
-            viewModel.toggleExpand()
-            // example data yang di kirim
-            onTap(viewModel.streetName, viewModel.recordingTime)
+            withAnimation(.spring()) {
+                viewModel.toggleExpand()
+                onTap(viewModel.streetName, viewModel.recordingTime)
+            }
         }
     }
 }
