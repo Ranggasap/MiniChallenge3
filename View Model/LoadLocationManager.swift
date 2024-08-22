@@ -176,21 +176,14 @@ class LoadLocationManager: ObservableObject {
         if let closestLocation = getClosestLocation(to: targetTimestamp) {
             let latitude = closestLocation.coordinate.latitude
             let longitude = closestLocation.coordinate.longitude
-            print("Current location at slider value (\(sliderValue) seconds):")
-            print("Lat: \(latitude), Lon: \(longitude)")
             
             // Check if the new coordinate is close enough to the last geocoded coordinate
             if let lastCoordinate = lastGeocodedCoordinate,
                isCoordinate(closestLocation.coordinate, closeTo: lastCoordinate) {
-                // Use cached address
-                print("Cached Address Name: \(lastGeocodedAddressName)")
-                print("Cached Address Detail: \(lastGeocodedAddressDetail)")
             } else {
                 // Perform reverse geocoding
                 reverseGeocodeLocation(closestLocation.coordinate) { [weak self] _ in
                     if let self = self {
-                        print("Geocoded Address Name: \(self.lastGeocodedAddressName)")
-                        print("Geocoded Address Detail: \(self.lastGeocodedAddressDetail)")
                         self.lastGeocodedCoordinate = closestLocation.coordinate
                     }
                 }

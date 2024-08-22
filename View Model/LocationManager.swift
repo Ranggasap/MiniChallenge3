@@ -130,8 +130,22 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
 
 extension ContentView {
     func storeLocationToSwiftData() {
-        // Create a new SavedLocation object with the current values from loadLocManager
-        let savedLocation = SavedLocation(
+        if savedLocations.count >= 3 {
+            savedLocations.last?.delete(context)
+        }
+        
+        addNewItemToSwiftData()
+    }
+    
+    private func addNewItemToSwiftData() {
+        let savedLocation = createNewSavedLocation()
+        savedLocation.insert(context)
+        appendRouteCoordinates(to: savedLocation)
+        appendPinnedLocations(to: savedLocation)
+    }
+    
+    private func createNewSavedLocation() -> SavedLocation {
+        return SavedLocation(
             sliderValue: locationVM.loadLocManager.sliderValue,
             showSlider: locationVM.loadLocManager.showSlider,
             regionCenterLatitude: locationVM.loadLocManager.region.center.latitude,
@@ -142,11 +156,9 @@ extension ContentView {
             streetName: locationVM.loadLocManager.lastGeocodedAddressName,
             streetDetail: locationVM.loadLocManager.lastGeocodedAddressDetail
         )
-        
-        // Insert the savedLocation into the SwiftData context
-        savedLocation.insert(context)
-        
-        // Convert routeCoordinates to RouteCoordinate objects and append them to savedLocation
+    }
+    
+    private func appendRouteCoordinates(to savedLocation: SavedLocation) {
         for location in locationVM.loadLocManager.routeCoordinates {
             let routeCoordinate = RouteCoordinate(
                 routeLatitude: location.coordinate.latitude,
@@ -155,8 +167,9 @@ extension ContentView {
             )
             savedLocation.routeCoordinates.append(routeCoordinate)
         }
-        
-        // Convert pins to PinnedLocation objects and append them to savedLocation
+    }
+    
+    private func appendPinnedLocations(to savedLocation: SavedLocation) {
         for pin in locationVM.loadLocManager.pins {
             let pinnedLocation = PinnedLocation(
                 pinLatitude: pin.coordinate.latitude,
@@ -169,7 +182,6 @@ extension ContentView {
     
     func convertToTempData() {
         for location in savedLocations {
-            
             if locationVM.storeLocation.contains(where: { $0.id == location.id }) {
                 print("Location with id \(location.id) already exists in storeLocation. Skipping...")
                 continue
@@ -177,7 +189,7 @@ extension ContentView {
             
             var pinLoc: [PinLocation] = []
             var routeCoor: [(coordinate: CLLocationCoordinate2D, timestamp: Date)] = []
-
+            
             for pin in location.pinnedLocations {
                 let coordinate = CLLocationCoordinate2D(latitude: pin.pinLatitude, longitude: pin.pinLongitude)
                 let timestamp = Date(timeIntervalSince1970: pin.pinDate)
@@ -191,12 +203,12 @@ extension ContentView {
                 routeCoor.append((coordinate: coordinate, timestamp: timestamp))
             }
             routeCoor.sort(by: { $0.timestamp < $1.timestamp })
-
+            
             let region = MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: location.regionCenterLatitude, longitude: location.regionCenterLongitude),
                 span: MKCoordinateSpan(latitudeDelta: location.regionSpanLatitude, longitudeDelta: location.regionSpanLongitude)
             )
-
+            
             let saveLoc = SaveLoc(
                 id: location.id,
                 routeCoordinates: routeCoor,

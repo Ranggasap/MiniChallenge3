@@ -18,14 +18,16 @@ class EvidenceItemViewModel: ObservableObject {
     var recordingTime: String
     var audioPlayer: Player
     var recording: URL
+    var notes: String
     
-    init(timestamp: String ,streetName: String, streetDetail: String, recordingTime: String, audioPlayer: Player, recording: URL) {
+    init(timestamp: String ,streetName: String, streetDetail: String, recordingTime: String, audioPlayer: Player, recording: URL, notes: String) {
         self.timestamp = timestamp
         self.streetName = streetName
         self.streetDetail = streetDetail
         self.recordingTime = recordingTime
         self.audioPlayer = audioPlayer
         self.recording = recording
+        self.notes = notes
     }
     
     func toggleExpand() {
@@ -42,6 +44,14 @@ class EvidenceListViewModel: ObservableObject {
     @Published var selectedStreetDetail: String = ""
     @Published var selectedRecordingTime: String = ""
     @Published var selectedIndex: Int = 0
+    @Published var storeNotes: String = ""
+    var storeNotesBinding: Binding<String> {
+        Binding(
+            get: { self.storeNotes },
+            set: { self.storeNotes = $0 }
+        )
+    }
+    
     @Published var LocationDetailVM = LoadLocationManager(
         region: MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
@@ -83,23 +93,23 @@ class EvidenceListViewModel: ObservableObject {
                         self.selectedStreetName = streetName
                         self.selectedStreetDetail = item.streetDetail
                         self.selectedRecordingTime = recordingTime
-                        print("foreach \(index)\n\n")
+                        self.storeNotes = item.notes
                         self.LocationDetailVM = LoadLocationManager(
-                            region: 
+                            region:
                                 locationVM.storeLocation[index].region,
-                            pins: 
+                            pins:
                                 locationVM.storeLocation[index].pins,
-                            routeCoordinates: 
+                            routeCoordinates:
                                 locationVM.storeLocation[index].routeCoordinates,
-                            sliderValue: 
+                            sliderValue:
                                 locationVM.storeLocation[index].sliderValue,
-                            showSlider: 
+                            showSlider:
                                 locationVM.storeLocation[index].showSlider,
-                            maxSliderValue: 
+                            maxSliderValue:
                                 locationVM.storeLocation[index].maxSliderValue,
-                            lastGeocodedAddressName: 
+                            lastGeocodedAddressName:
                                 locationVM.storeLocation[index].streetName,
-                            lastGeocodedAddressDetail: 
+                            lastGeocodedAddressDetail:
                                 locationVM.storeLocation[index].streetDetail
                         )
                         
@@ -108,16 +118,12 @@ class EvidenceListViewModel: ObservableObject {
                 }
                 Spacer()
             }
-
+            
             .onAppear {
-                if self.recordings == [] {
-                    self.recordings = iOSVM.fetchRecordings()
-                    
-                    print("count: \(self.recordings.count)\n\n")
-                    
-                    // Loop through the recordings with index
+                self.recordings = iOSVM.fetchRecordings()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                    self.evidenceItems = []
                     for (index, recording) in self.recordings.enumerated() {
-                        
                         if let lastCoordinate = locationVM.storeLocation[index].routeCoordinates.last {
                             let timestamp = lastCoordinate.timestamp
                             
@@ -142,7 +148,8 @@ class EvidenceListViewModel: ObservableObject {
                             streetDetail: locationVM.loadLocManager.lastGeocodedAddressDetail,
                             recordingTime: self.audioTime,
                             audioPlayer: self.audioPlayer!,
-                            recording: recording
+                            recording: recording,
+                            notes: ""
                         )
                         
                         self.evidenceItems.append(evidenceItem)
@@ -153,10 +160,10 @@ class EvidenceListViewModel: ObservableObject {
         case 2:
             VStack(spacing: 24) {
                 RoutePolyline(routeCoordinates: LocationDetailVM.routeUpToSliderValue(), startEndPins: LocationDetailVM.startEndPinLocations())
-                .foregroundColor(.blue)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .frame(height: UIScreen.main.bounds.height * 2 / 5)
-                .shadow(radius: 2, y: 4)
+                    .foregroundColor(.blue)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .frame(height: UIScreen.main.bounds.height * 2 / 5)
+                    .shadow(radius: 2, y: 4)
                 
                 RoundedRectangle(cornerRadius: 10)
                     .frame(height: 73)
@@ -217,11 +224,11 @@ class EvidenceListViewModel: ObservableObject {
                         .shadow(radius: 2, y: 4)
                         .overlay {
                             VStack(alignment:.leading, spacing:4) {
-                                Text(selectedStreetName)
+                                Text(selectedDate)
                                     .foregroundColor(.fontColor4)
                                     .font(.lt(size: 16, weight: .semibold))
                                 HStack {
-                                    Text(selectedStreetDetail)
+                                    Text(selectedStreetName)
                                     Spacer()
                                     Text(selectedRecordingTime)
                                 }
@@ -249,10 +256,10 @@ class EvidenceListViewModel: ObservableObject {
                                         Image(.icon1)
                                     }
                                 VStack(alignment: .leading, spacing: 3) {
-                                    Text(selectedStreetName) // Use selected data
+                                    Text(selectedStreetName)
                                         .foregroundColor(.fontColor4)
                                         .font(.lt(size: 16, weight: .semibold))
-                                    Text(selectedStreetDetail) // Use selected data
+                                    Text(selectedStreetDetail)
                                         .foregroundColor(.fontColor6)
                                         .font(.lt(size: 15))
                                 }
@@ -271,9 +278,14 @@ class EvidenceListViewModel: ObservableObject {
                         .foregroundColor(.containerColor2)
                         .shadow(radius: 2, y: 4)
                         .overlay {
-                            // textfield for notes
-                            Text("")
+                            TextField("Enter your notes here...", text: storeNotesBinding)
+                                .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
                                 .disableAutocorrection(true)
+                                .foregroundColor(.fontColor4)
+                                .font(.lt(size: 16, weight: .semibold))
+                                .onSubmit {
+                                    self.evidenceItems[self.selectedIndex].notes = self.storeNotes
+                                }
                         }
                 }
                 Spacer()

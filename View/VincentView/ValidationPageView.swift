@@ -14,6 +14,7 @@ struct ValidationPageView: View {
     
     @State private var showLoginPage = false
     @AppStorage("userId") var userId : String = ""
+    @State private var notes: String = ""
     
     
     @State var onPinValidation: Bool

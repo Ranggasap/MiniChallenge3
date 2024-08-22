@@ -15,7 +15,7 @@ struct ContentView: View {
     @State private var username = "Natalie"
     @State private var trackLocationStopped = false
 
-    
+    var maxStoreItem = 3
     let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
 
     @State var alreadyRecord = false
@@ -75,9 +75,10 @@ struct ContentView: View {
                             
                         }
                         
-                        if alreadyRecord {
+                        if savedLocations != [] {
                             Button(action: {
                                 // report action
+                                listViewModel.navigateToValidation = true
                             }) {
                                 RoundedRectangle(cornerRadius: 14)
                                     .stroke(lineWidth: 2)
@@ -131,13 +132,16 @@ struct ContentView: View {
                         func waitForLocationDisabled() {
                             if locationVM.isDisabled && trackLocationStopped {
                                 storeLocationToSwiftData()
-                                convertToTempData()
-                                print("saved: \(savedLocations.count)\n\n")
-                                print("storeLoc: \(locationVM.storeLocation.count)\n\n")
                                 
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    convertToTempData()
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                     listViewModel.navigateToValidation = true
                                 }
+                                
+                                trackLocationStopped = false
                             } else {
                                 // Continue polling
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
