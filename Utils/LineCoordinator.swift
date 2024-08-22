@@ -25,7 +25,7 @@ class LineCoordinator: NSObject, MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation.title == "End" {
+        if annotation.title == "Here" {
             let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "pin")
             annotationView.markerTintColor = .iconColor2
             annotationView.glyphImage = UIImage(named: "pinIconLogo")

@@ -28,17 +28,10 @@ struct RoutePolyline: UIViewRepresentable {
             mapView.setVisibleMapRect(polyline.boundingMapRect, animated: true)
         }
 
-        if let startPin = startEndPins.start {
-            let startAnnotation = MKPointAnnotation()
-            startAnnotation.coordinate = startPin.coordinate
-            startAnnotation.title = "Start"
-            mapView.addAnnotation(startAnnotation)
-        }
-
         if let endPin = startEndPins.end {
             let endAnnotation = MKPointAnnotation()
             endAnnotation.coordinate = endPin.coordinate
-            endAnnotation.title = "End"
+            endAnnotation.title = "Here"
             mapView.addAnnotation(endAnnotation)
         }
     }
