@@ -65,9 +65,16 @@ class Player: ObservableObject {
     
     func fastForward() {
         let currentTime = avPlayer.currentTime()
-        let newTime = CMTimeGetSeconds(currentTime) + 10
+        let currentTimeInSeconds = CMTimeGetSeconds(currentTime)
+        let remainingTime = itemDuration - currentTimeInSeconds
+        
+        // Check if the remaining time is less than 10 seconds
+        let fastForwardInterval: Double = 10
+        let newTime = remainingTime < fastForwardInterval ? itemDuration : currentTimeInSeconds + fastForwardInterval
+        
         avPlayer.seek(to: CMTime(seconds: newTime, preferredTimescale: 1000))
     }
+
     
     func rewind() {
         let currentTime = avPlayer.currentTime()
