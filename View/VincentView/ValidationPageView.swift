@@ -25,17 +25,19 @@ struct ValidationPageView: View {
     @State private var showingAlert = false
     @ObservedObject var iOSVM: iOSManager
     @ObservedObject var listViewModel: EvidenceListViewModel
+    @ObservedObject var locationVM: LocationManager
     
     @StateObject var reportVm: ReportManager
     
     
-    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, reportVm: ReportManager, alreadyRecord: Binding<Bool>, iOSVM: iOSManager, listViewModel: EvidenceListViewModel) {
+    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, reportVm: ReportManager, alreadyRecord: Binding<Bool>, iOSVM: iOSManager, listViewModel: EvidenceListViewModel, locationVM: LocationManager) {
         self._navigateToValidation = navigateToValidation
         self._onPinValidation = State(initialValue: onPinValidation)
         _reportVm = StateObject(wrappedValue: reportVm)
         self._alreadyRecord = alreadyRecord
         self.iOSVM = iOSVM
         self.listViewModel = listViewModel
+        self.locationVM = locationVM
     }
     
     
@@ -114,7 +116,7 @@ struct ValidationPageView: View {
                             }
                             
                             ScrollView {
-                                listViewModel.getCurrentCaseView(for: currentCase)
+                                listViewModel.getCurrentCaseView(for: currentCase, locationVM, iOSVM)
                             }
                             .scrollIndicators(.hidden)
                             
@@ -219,7 +221,7 @@ struct ValidationPageView: View {
 
 #Preview {
     
-    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, reportVm: ReportManager(), alreadyRecord: .constant(true), iOSVM: iOSManager(), listViewModel: EvidenceListViewModel())
+    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, reportVm: ReportManager(), alreadyRecord: .constant(true), iOSVM: iOSManager(), listViewModel: EvidenceListViewModel(), locationVM: LocationManager())
     
 }
 

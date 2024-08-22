@@ -24,7 +24,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         self.loadLocManager = LoadLocationManager(region: MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
             span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        ), pins: [], routeCoordinates: [], sliderValue: 0, showSlider: false, maxSliderValue: 0)
+        ), pins: [], routeCoordinates: [], sliderValue: 0, showSlider: false, maxSliderValue: 0, lastGeocodedAddressName: "", lastGeocodedAddressDetail: "")
         
         mgr = CLLocationManager()
         mgr.desiredAccuracy = kCLLocationAccuracyBestForNavigation
@@ -55,6 +55,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         countMaxSliderValue()
         loadLocManager.sliderValue = loadLocManager.maxSliderValue
         loadLocManager.showSlider = true
+        loadLocManager.outputSliderValueLocationData()
         isDisabled = true
     }
     
@@ -127,24 +128,26 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     
 }
 
-extension iOSLocationView {
+extension ContentView {
     func storeLocationToSwiftData() {
         // Create a new SavedLocation object with the current values from loadLocManager
         let savedLocation = SavedLocation(
-            sliderValue: model.loadLocManager.sliderValue,
-            showSlider: model.loadLocManager.showSlider,
-            regionCenterLatitude: model.loadLocManager.region.center.latitude,
-            regionCenterLongitude: model.loadLocManager.region.center.longitude,
-            regionSpanLatitude: model.loadLocManager.region.span.latitudeDelta,
-            regionSpanLongitude: model.loadLocManager.region.span.longitudeDelta,
-            maxSliderValue: model.loadLocManager.maxSliderValue
+            sliderValue: locationVM.loadLocManager.sliderValue,
+            showSlider: locationVM.loadLocManager.showSlider,
+            regionCenterLatitude: locationVM.loadLocManager.region.center.latitude,
+            regionCenterLongitude: locationVM.loadLocManager.region.center.longitude,
+            regionSpanLatitude: locationVM.loadLocManager.region.span.latitudeDelta,
+            regionSpanLongitude: locationVM.loadLocManager.region.span.longitudeDelta,
+            maxSliderValue: locationVM.loadLocManager.maxSliderValue,
+            streetName: locationVM.loadLocManager.lastGeocodedAddressName,
+            streetDetail: locationVM.loadLocManager.lastGeocodedAddressDetail
         )
         
         // Insert the savedLocation into the SwiftData context
         savedLocation.insert(context)
         
         // Convert routeCoordinates to RouteCoordinate objects and append them to savedLocation
-        for location in model.loadLocManager.routeCoordinates {
+        for location in locationVM.loadLocManager.routeCoordinates {
             let routeCoordinate = RouteCoordinate(
                 routeLatitude: location.coordinate.latitude,
                 routeLongitude: location.coordinate.longitude,
@@ -154,7 +157,7 @@ extension iOSLocationView {
         }
         
         // Convert pins to PinnedLocation objects and append them to savedLocation
-        for pin in model.loadLocManager.pins {
+        for pin in locationVM.loadLocManager.pins {
             let pinnedLocation = PinnedLocation(
                 pinLatitude: pin.coordinate.latitude,
                 pinLongitude: pin.coordinate.longitude,
@@ -167,7 +170,7 @@ extension iOSLocationView {
     func convertToTempData() {
         for location in savedLocations {
             
-            if model.storeLocation.contains(where: { $0.id == location.id }) {
+            if locationVM.storeLocation.contains(where: { $0.id == location.id }) {
                 print("Location with id \(location.id) already exists in storeLocation. Skipping...")
                 continue
             }
@@ -201,10 +204,12 @@ extension iOSLocationView {
                 sliderValue: location.sliderValue,
                 showSlider: location.showSlider,
                 region: region,
-                maxSliderValue: location.maxSliderValue
+                maxSliderValue: location.maxSliderValue,
+                streetName: location.streetName,
+                streetDetail: location.streetDetail
             )
             
-            model.storeLocation.append(saveLoc)
+            locationVM.storeLocation.append(saveLoc)
         }
     }
 }

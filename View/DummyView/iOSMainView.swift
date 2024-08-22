@@ -17,7 +17,7 @@ struct iOSMainView: View {
             VStack {
                 HStack {
                     Button(action: {
-                        iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
+//                        iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
                     }, label: {
                         Text(iOSVM.isRecording ? "Stop Recording" : "Start Recording")
                     })
@@ -48,15 +48,15 @@ struct iOSMainView: View {
 //                                iOSVM.playRecording(recording)
 //                            }
 //                            Spacer()
-                            Button("Download") {
-                                iOSVM.downloadRecording(recording)
-                            }
+//                            Button("Download") {
+//                                iOSVM.downloadRecording(recording)
+//                            }
                         }
                     }
                 }
             }
             .navigationDestination(isPresented: $iOSVM.isDirected) {
-                iOSLocationView()
+//                iOSLocationView()
             }
             .onReceive(iOSVM.connectivity.$isReceived) { newValue in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

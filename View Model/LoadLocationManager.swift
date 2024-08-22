@@ -20,13 +20,14 @@ class LoadLocationManager: ObservableObject {
     @Published var sliderValue: Double = 0
     @Published var showSlider = false
     @Published var player: Player
+    @Published var lastGeocodedAddressName: String
+    @Published var lastGeocodedAddressDetail: String
+    @Published var lastGeocodedCoordinate: CLLocationCoordinate2D?
     var audioPlayer: AVPlayer?
     var timer: Timer?
     var maxSliderValue: Double
-    var lastGeocodedCoordinate: CLLocationCoordinate2D?
-    var lastGeocodedAddress: String?
     
-    init(region: MKCoordinateRegion, pins: [PinLocation], routeCoordinates: [(coordinate: CLLocationCoordinate2D, timestamp: Date)], sliderValue: Double, showSlider: Bool, audioPlayer: AVPlayer? = nil, maxSliderValue: Double) {
+    init(region: MKCoordinateRegion, pins: [PinLocation], routeCoordinates: [(coordinate: CLLocationCoordinate2D, timestamp: Date)], sliderValue: Double, showSlider: Bool, audioPlayer: AVPlayer? = nil, maxSliderValue: Double, lastGeocodedAddressName: String, lastGeocodedAddressDetail: String) {
         self.region = region
         self.pins = pins
         self.routeCoordinates = routeCoordinates
@@ -34,7 +35,9 @@ class LoadLocationManager: ObservableObject {
         self.showSlider = showSlider
         self.audioPlayer = audioPlayer
         self.maxSliderValue = maxSliderValue
-        self.player = Player(avPlayer: AVPlayer(url: Bundle.main.url(forResource: "testSong", withExtension: "mp3")!), maxDuration: maxSliderValue)
+        self.player = Player(avPlayer: AVPlayer(url: Bundle.main.url(forResource: "testSong", withExtension: "mp3")!))
+        self.lastGeocodedAddressName = lastGeocodedAddressName
+        self.lastGeocodedAddressDetail = lastGeocodedAddressDetail
     }
     
     func updateRegionForEntireRoute() {
@@ -112,32 +115,41 @@ class LoadLocationManager: ObservableObject {
                 return
             }
             
-            // Construct a detailed address string
-            var address = ""
+            self.lastGeocodedAddressName = ""
+            self.lastGeocodedAddressDetail = ""
+            
+            // Construct a formatted address string
+            if let street = placemark.thoroughfare, let city = placemark.locality, let country = placemark.country {
+                self.lastGeocodedAddressName += street + ", " + city + ", " + country
+            } else if let name = placemark.name {
+                self.lastGeocodedAddressName += name
+            } else {
+                self.lastGeocodedAddressName += "Address information not available."
+            }
             
             if let name = placemark.name {
-                address += name + ", "
+                self.lastGeocodedAddressDetail += name + ", "
             }
             if let street = placemark.thoroughfare {
-                address += street + ", "
+                self.lastGeocodedAddressDetail += street + ", "
             }
             if let subLocality = placemark.subLocality {
-                address += subLocality + ", "
+                self.lastGeocodedAddressDetail += subLocality + ", "
             }
             if let city = placemark.locality {
-                address += city + ", "
+                self.lastGeocodedAddressDetail += city + ", "
             }
             if let state = placemark.administrativeArea {
-                address += state + ", "
+                self.lastGeocodedAddressDetail += state + ", "
             }
             if let postalCode = placemark.postalCode {
-                address += postalCode + ", "
+                self.lastGeocodedAddressDetail += postalCode + ", "
             }
             if let country = placemark.country {
-                address += country
+                self.lastGeocodedAddressDetail += country
             }
             
-            completion(address.isEmpty ? "Address information not available." : address)
+            completion(self.lastGeocodedAddressName.isEmpty ? "Address information not available." : self.lastGeocodedAddressName)
         }
     }
 
@@ -171,18 +183,15 @@ class LoadLocationManager: ObservableObject {
             if let lastCoordinate = lastGeocodedCoordinate,
                isCoordinate(closestLocation.coordinate, closeTo: lastCoordinate) {
                 // Use cached address
-                if let cachedAddress = lastGeocodedAddress {
-                    print("Cached Address: \(cachedAddress)")
-                }
+                print("Cached Address Name: \(lastGeocodedAddressName)")
+                print("Cached Address Detail: \(lastGeocodedAddressDetail)")
             } else {
                 // Perform reverse geocoding
-                reverseGeocodeLocation(closestLocation.coordinate) { [weak self] address in
-                    if let address = address {
-                        print("Address: \(address)")
-                        self?.lastGeocodedCoordinate = closestLocation.coordinate
-                        self?.lastGeocodedAddress = address
-                    } else {
-                        print("No address found for this location.")
+                reverseGeocodeLocation(closestLocation.coordinate) { [weak self] _ in
+                    if let self = self {
+                        print("Geocoded Address Name: \(self.lastGeocodedAddressName)")
+                        print("Geocoded Address Detail: \(self.lastGeocodedAddressDetail)")
+                        self.lastGeocodedCoordinate = closestLocation.coordinate
                     }
                 }
             }
@@ -190,6 +199,7 @@ class LoadLocationManager: ObservableObject {
             print("No location data available for the current slider value.")
         }
     }
+
 
 
 

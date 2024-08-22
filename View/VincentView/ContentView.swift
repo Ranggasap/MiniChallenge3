@@ -7,9 +7,13 @@
 
 import SwiftUI
 import CloudKit
+import SwiftData
+import CoreLocation
+import MapKit
 
 struct ContentView: View {
     @State private var username = "Natalie"
+    @State private var trackLocationStopped = false
 
     
     let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
@@ -17,6 +21,9 @@ struct ContentView: View {
     @State var alreadyRecord = false
     @StateObject var iOSVM = iOSManager()
     @StateObject private var listViewModel = EvidenceListViewModel()
+    @StateObject var locationVM = LocationManager()
+    @Environment(\.modelContext) var context
+    @Query(sort: \SavedLocation.id) var savedLocations: [SavedLocation]
 
     
     // test state
@@ -96,32 +103,19 @@ struct ContentView: View {
                 
             }
             
-            .onAppear {
-                print("\(iOSVM.isRecording), \(iOSVM.endRecord)")
-            }
-            
             .onChange(of: iOSVM.endRecord) {
                 if iOSVM.endRecord && iOSVM.isRecording {
                     showingAlert = true
                 }
             }
-            
-            .onReceive(iOSVM.connectivity.$isReceived) { newValue in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    if newValue {
-                        iOSVM.audio.recordings = iOSVM.fetchRecordings()
-                        iOSVM.connectivity.isReceived = false
-                    }
-                }
-            }
 
             // ini flow lama yg no progress bar and back
-            .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel)
-            }
+//            .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
+//                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel)
+//            }
             //
             .navigationDestination(isPresented: $listViewModel.navigateToValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel, locationVM: locationVM)
             }
             .alert(isPresented: $showingAlert) {
                 Alert(
@@ -131,8 +125,32 @@ struct ContentView: View {
                         iOSVM.toggleStoredState(iOSVM.connectivity, true)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             iOSVM.isRecording = false
-                            listViewModel.navigateToValidation = true
                         }
+
+                        // Poll every 0.5 seconds to check if locationVM.isDisabled is false
+                        func waitForLocationDisabled() {
+                            if locationVM.isDisabled && trackLocationStopped {
+                                storeLocationToSwiftData()
+                                convertToTempData()
+                                print("saved: \(savedLocations.count)\n\n")
+                                print("storeLoc: \(locationVM.storeLocation.count)\n\n")
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    listViewModel.navigateToValidation = true
+                                }
+                            } else {
+                                // Continue polling
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    waitForLocationDisabled()
+                                }
+                            }
+                        }
+                        
+                        // Start polling
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            waitForLocationDisabled()
+                        }
+                        
                     },
                     secondaryButton: .cancel(Text("No")) {
                         iOSVM.toggleStoredState(iOSVM.connectivity, false)
@@ -146,6 +164,27 @@ struct ContentView: View {
             
         }
         .navigationViewStyle(.stack)
+        .onAppear {
+            if !locationVM.isLocationTrackingEnabled {
+                locationVM.updateRegionForEntireRoute()
+            }
+        }
+        
+        .onChange(of: iOSVM.isRecording) {
+            locationVM.startStopLocationTracking()
+        }
+        
+        .onReceive(iOSVM.connectivity.$isReceived) { newValue in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                if newValue {
+                    iOSVM.audio.recordings = iOSVM.fetchRecordings()
+                    iOSVM.connectivity.isReceived = false
+                    if locationVM.isDisabled {
+                        trackLocationStopped = true
+                    }
+                }
+            }
+        }
     }
     
     
