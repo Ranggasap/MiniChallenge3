@@ -37,11 +37,11 @@ class EvidenceListViewModel: ObservableObject {
     @Published var navigateToValidation = false
     @Published var navigateToPinValidation = false
     @Published var evidenceItems: [EvidenceItemViewModel] = []
-    @Published var audioPlayer: [Player] = []
     @Published var selectedDate: String = ""
     @Published var selectedStreetName: String = ""
     @Published var selectedStreetDetail: String = ""
     @Published var selectedRecordingTime: String = ""
+    @Published var selectedIndex: Int = 0
     @Published var LocationDetailVM = LoadLocationManager(
         region: MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
@@ -56,6 +56,11 @@ class EvidenceListViewModel: ObservableObject {
         lastGeocodedAddressName: "Some Street",
         lastGeocodedAddressDetail: "Near Some Place"
     )
+    
+    @Published var recordings: [URL] = []
+    @Published var formattedDate: String = ""
+    @Published var audioTime: String = ""
+    @Published var audioPlayer: Player?
     
     func collapseAllExcept(selectedItem: EvidenceItemViewModel) {
         for item in evidenceItems {
@@ -73,10 +78,12 @@ class EvidenceListViewModel: ObservableObject {
                 ForEach(Array(evidenceItems.enumerated()), id: \.element.id) { index, item in
                     EvidenceItemView(viewModel: item, player: item.audioPlayer) { streetName, recordingTime in
                         self.collapseAllExcept(selectedItem: item)
+                        self.selectedIndex = index
                         self.selectedDate = item.timestamp
                         self.selectedStreetName = streetName
                         self.selectedStreetDetail = item.streetDetail
                         self.selectedRecordingTime = recordingTime
+                        print("foreach \(index)\n\n")
                         self.LocationDetailVM = LoadLocationManager(
                             region: 
                                 locationVM.storeLocation[index].region,
@@ -103,45 +110,44 @@ class EvidenceListViewModel: ObservableObject {
             }
 
             .onAppear {
-                var recordings: [URL] = []
-                var formattedDate: String = ""
-                var audioTime: String = ""
-                var audioPlayer: Player?
-                recordings = iOSVM.fetchRecordings()
-                
-                // Loop through the recordings with index
-                for (index, recording) in recordings.enumerated() {
+                if self.recordings == [] {
+                    self.recordings = iOSVM.fetchRecordings()
                     
-                    if let lastCoordinate = locationVM.storeLocation[index].routeCoordinates.last {
-                        let timestamp = lastCoordinate.timestamp
+                    print("count: \(self.recordings.count)\n\n")
+                    
+                    // Loop through the recordings with index
+                    for (index, recording) in self.recordings.enumerated() {
                         
-                        // Create a DateFormatter to format the date
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateStyle = .long
-                        dateFormatter.timeStyle = .none
+                        if let lastCoordinate = locationVM.storeLocation[index].routeCoordinates.last {
+                            let timestamp = lastCoordinate.timestamp
+                            
+                            // Create a DateFormatter to format the date
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateStyle = .long
+                            dateFormatter.timeStyle = .none
+                            
+                            // Format the timestamp to a string
+                            self.formattedDate = dateFormatter.string(from: timestamp)
+                            
+                        } else {
+                            print("No coordinates available.")
+                        }
                         
-                        // Format the timestamp to a string
-                        formattedDate = dateFormatter.string(from: timestamp)
+                        self.audioTime = self.formatDuration(recording)
+                        self.audioPlayer = Player(avPlayer: AVPlayer(url: recording))
                         
-                    } else {
-                        print("No coordinates available.")
+                        let evidenceItem = EvidenceItemViewModel(
+                            timestamp: self.formattedDate,
+                            streetName: locationVM.loadLocManager.lastGeocodedAddressName,
+                            streetDetail: locationVM.loadLocManager.lastGeocodedAddressDetail,
+                            recordingTime: self.audioTime,
+                            audioPlayer: self.audioPlayer!,
+                            recording: recording
+                        )
+                        
+                        self.evidenceItems.append(evidenceItem)
                     }
-                    
-                    audioTime = self.formatDuration(recording)
-                    audioPlayer = Player(avPlayer: AVPlayer(url: recording))
-                    
-                    let evidenceItem = EvidenceItemViewModel(
-                        timestamp: formattedDate,
-                        streetName: locationVM.loadLocManager.lastGeocodedAddressName,
-                        streetDetail: locationVM.loadLocManager.lastGeocodedAddressDetail,
-                        recordingTime: audioTime,
-                        audioPlayer: audioPlayer!,
-                        recording: recording
-                    )
-                    
-                    self.evidenceItems.append(evidenceItem)
                 }
-                
             }
             
         case 2:
@@ -177,6 +183,26 @@ class EvidenceListViewModel: ObservableObject {
                         .padding()
                     }
                 Spacer()
+            }
+            .onAppear {
+                self.LocationDetailVM = LoadLocationManager(
+                    region:
+                        locationVM.storeLocation[self.selectedIndex].region,
+                    pins:
+                        locationVM.storeLocation[self.selectedIndex].pins,
+                    routeCoordinates:
+                        locationVM.storeLocation[self.selectedIndex].routeCoordinates,
+                    sliderValue:
+                        locationVM.storeLocation[self.selectedIndex].sliderValue,
+                    showSlider:
+                        locationVM.storeLocation[self.selectedIndex].showSlider,
+                    maxSliderValue:
+                        locationVM.storeLocation[self.selectedIndex].maxSliderValue,
+                    lastGeocodedAddressName:
+                        locationVM.storeLocation[self.selectedIndex].streetName,
+                    lastGeocodedAddressDetail:
+                        locationVM.storeLocation[self.selectedIndex].streetDetail
+                )
             }
             
         case 3:
