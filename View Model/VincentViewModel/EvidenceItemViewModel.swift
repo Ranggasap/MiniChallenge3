@@ -238,7 +238,7 @@ class EvidenceListViewModel: ObservableObject {
     func saveReportToCloud(){
         
         let userID = userVm.currentUser?.userID
-        let newReport = Report(reportDate: Date(), reportKronologi: "Catcall SkyHouse", location: CLLocation(latitude: -6.3034, longitude: 106.6454), userID: userID!)
+        let newReport = Report(reportDate: Date(), reportKronologi: "Apple Developer Academy", location: CLLocation(latitude: -6.302147, longitude: 106.652291), userID: userID!)
         reportVm.createReport(report: newReport) { result in
             switch result {
             case .success(let record):

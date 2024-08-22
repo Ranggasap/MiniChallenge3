@@ -17,6 +17,8 @@ struct ContentView: View {
     @State var alreadyRecord = false
     @StateObject var iOSVM = iOSManager()
     @StateObject private var listViewModel = EvidenceListViewModel()
+    
+    @StateObject var locationManager = GeofencingManager()
 
     
     // test state
@@ -139,6 +141,20 @@ struct ContentView: View {
             
         }
         .navigationViewStyle(.stack)
+        .onChange(of: locationManager.currentLocation) { newLocation in
+            if let location = newLocation {
+                listViewModel.reportVm.fetchReportsNearUserLocation(userLocation: location)
+                print(location)
+                
+                locationManager.updateLocation()
+                
+            }
+        }
+        
+        .onAppear{
+            NotifManager().requestAuthorization()
+            
+        }
         
     }
     

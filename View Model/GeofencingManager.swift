@@ -5,14 +5,13 @@
 //  Created by Lucinda Artahni on 20/08/24.
 //
 
-//TODO: rapiin corelocation, samain ama yang code bv
 import Foundation
 import CoreLocation
 import CloudKit
 
 class GeofencingManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
     private var locationManager: CLLocationManager
-    private var monitoredRegions: [CLCircularRegion] = []
+    var monitoredRegions: [CLCircularRegion] = []
     @Published var currentLocation: CLLocation?
     
     
@@ -21,8 +20,13 @@ class GeofencingManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
         super.init()
         locationManager.delegate = self
         
-        
-        
+
+    }
+    
+    func updateLocation(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15){
+            self.locationManager.startUpdatingLocation()
+        }
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -30,8 +34,10 @@ class GeofencingManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
         case .notDetermined:
             //            manager.requestLocation()
             manager.requestWhenInUseAuthorization()
+            manager.requestAlwaysAuthorization()
         case .authorizedWhenInUse, .authorizedAlways:
             manager.requestLocation()
+            manager.requestAlwaysAuthorization()
         case .restricted, .denied:
             print("Location services are denied or restricted.")
         @unknown default:
@@ -42,6 +48,8 @@ class GeofencingManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
     
     
     func startMonitoringForReports(_ reports: [Report]) {
+        NotifManager.instance.cancelNotification()
+        
         for region in monitoredRegions {
             locationManager.stopMonitoring(for: region)
         }
@@ -68,6 +76,11 @@ class GeofencingManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
             monitoredRegions.append(region)
         }
         
+        for region in monitoredRegions {
+            NotifManager.instance.scheduleNotification(for: region)
+                   
+        }
+        
         print(monitoredRegions)
     }
     
@@ -76,6 +89,7 @@ class GeofencingManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let latestLocation = locations.last else { return }
         currentLocation = latestLocation
+       
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
@@ -116,9 +130,6 @@ class GeofencingManager:  NSObject, ObservableObject, CLLocationManagerDelegate{
             }
         }
     }
-    
-    
-    
 }
 
 

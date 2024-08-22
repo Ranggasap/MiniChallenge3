@@ -26,7 +26,6 @@ struct ValidationPageView: View {
     @StateObject var iOSVM = iOSManager()
     @StateObject private var listViewModel = EvidenceListViewModel()
     
-    @StateObject var locationManager = GeofencingManager()
     
 //    @StateObject var reportVm: ReportManager
     
@@ -170,14 +169,7 @@ struct ValidationPageView: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
-        //TODO: cek onchange
-        .onChange(of: locationManager.currentLocation) { newLocation in
-            if let location = newLocation {
-                listViewModel.reportVm.fetchReportsNearUserLocation(userLocation: location)
-                print(location)
-                
-            }
-        }
+        
         
     }
     
