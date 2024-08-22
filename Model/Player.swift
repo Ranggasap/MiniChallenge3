@@ -31,11 +31,10 @@ class Player: ObservableObject {
         }
     }
 
-    init(avPlayer: AVPlayer, maxDuration: Double) {
+    init(avPlayer: AVPlayer) {
         self.avPlayer = avPlayer
         addPeriodicTimeObserver()
         observePlayerStatus()
-        trimAudioToMaxDuration(maxDuration)
     }
     
     deinit {
@@ -46,6 +45,10 @@ class Player: ObservableObject {
         if isPlaying {
             pause()
         } else {
+            if displayTime >= itemDuration {
+                displayTime = 0
+                avPlayer.seek(to: CMTime(seconds: 0, preferredTimescale: 1000))
+            }
             play()
         }
     }
@@ -58,6 +61,18 @@ class Player: ObservableObject {
     func pause() {
         avPlayer.pause()
         isPlaying = false
+    }
+    
+    func fastForward() {
+        let currentTime = avPlayer.currentTime()
+        let newTime = CMTimeGetSeconds(currentTime) + 10
+        avPlayer.seek(to: CMTime(seconds: newTime, preferredTimescale: 1000))
+    }
+    
+    func rewind() {
+        let currentTime = avPlayer.currentTime()
+        let newTime = CMTimeGetSeconds(currentTime) - 10
+        avPlayer.seek(to: CMTime(seconds: newTime, preferredTimescale: 1000))
     }
     
     private func addPeriodicTimeObserver() {
@@ -101,11 +116,5 @@ class Player: ObservableObject {
             .compactMap { $0?.seconds }
             .receive(on: DispatchQueue.main)
             .assign(to: &$itemDuration)
-    }
-
-    private func trimAudioToMaxDuration(_ maxDuration: Double) {
-        guard let currentItem = avPlayer.currentItem else { return }
-        let endTime = CMTime(seconds: maxDuration, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-        currentItem.forwardPlaybackEndTime = endTime
     }
 }

@@ -26,7 +26,7 @@ class recordFunction {
             let newRecordings = files.filter { $0.pathExtension == "m4a" }
             print("fetched recording = \(newRecordings)")
             
-            return newRecordings
+            return newRecordings.sorted(by: { $0.lastPathComponent > $1.lastPathComponent })
         } catch {
             print("Failed to fetch recordings: \(error.localizedDescription)")
             return []

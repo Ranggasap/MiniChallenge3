@@ -6,18 +6,25 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 class EvidenceItemViewModel: ObservableObject {
     @Published var isExpanded: Bool = false
+    var id = UUID()
+    var timestamp: String
     var streetName: String
     var streetDetail: String
     var recordingTime: String
+    var audioPlayer: Player
+    var recording: URL
     
-    
-    init(streetName: String, streetDetail: String, recordingTime: String) {
+    init(timestamp: String ,streetName: String, streetDetail: String, recordingTime: String, audioPlayer: Player, recording: URL) {
+        self.timestamp = timestamp
         self.streetName = streetName
         self.streetDetail = streetDetail
         self.recordingTime = recordingTime
+        self.audioPlayer = audioPlayer
+        self.recording = recording
     }
     
     func toggleExpand() {
@@ -29,8 +36,9 @@ class EvidenceListViewModel: ObservableObject {
     @Published var navigateToValidation = false
     @Published var navigateToPinValidation = false
     @Published var evidenceItems: [EvidenceItemViewModel] = []
-    
+    @Published var audioPlayer: [Player] = []
 
+    @Published var selectedDate: String = ""
     @Published var selectedStreetName: String = ""
     @Published var selectedStreetDetail: String = ""
     @Published var selectedRecordingTime: String = ""
@@ -44,14 +52,15 @@ class EvidenceListViewModel: ObservableObject {
     }
     
     @ViewBuilder
-    func getCurrentCaseView(for currentCase: Int) -> some View {
+    func getCurrentCaseView(for currentCase: Int, _ locationVM: LocationManager, _ iOSVM: iOSManager) -> some View {
         switch currentCase {
         case 1:
             VStack(spacing: 24) {
-                ForEach(Array(evidenceItems.prefix(3)), id: \.streetName) { item in
-                    EvidenceItemView(viewModel: item) { streetName, recordingTime in
+                ForEach(Array(evidenceItems), id: \.id) { item in
+                    EvidenceItemView(viewModel: item, player: item.audioPlayer) { streetName, recordingTime in
                         // Store the selected data
                         self.collapseAllExcept(selectedItem: item)
+                        self.selectedDate = item.timestamp
                         self.selectedStreetName = streetName
                         self.selectedStreetDetail = item.streetDetail
                         self.selectedRecordingTime = recordingTime
@@ -63,11 +72,45 @@ class EvidenceListViewModel: ObservableObject {
                 Spacer()
             }
             .onAppear {
-                self.evidenceItems = [
-                    EvidenceItemViewModel(streetName: "BSD Boulevard 1170 Street", streetDetail: "Recorded near GOP Office Park", recordingTime: "00:34"),
-                    EvidenceItemViewModel(streetName: "Main St", streetDetail: "Near Central Park", recordingTime: "00:45"),
-                    EvidenceItemViewModel(streetName: "Wall St", streetDetail: "Financial District", recordingTime: "01:02")
-                ]
+                var recordings: [URL] = []
+                var formattedDate: String = ""
+                var audioTime: String = ""
+                var audioPlayer: Player?
+                recordings = iOSVM.fetchRecordings()
+                
+                // Loop through the recordings with index
+                for (index, recording) in recordings.enumerated() {
+                    
+                    if let lastCoordinate = locationVM.storeLocation[index].routeCoordinates.last {
+                        let timestamp = lastCoordinate.timestamp
+                        
+                        // Create a DateFormatter to format the date
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateStyle = .long
+                        dateFormatter.timeStyle = .none
+                        
+                        // Format the timestamp to a string
+                        formattedDate = dateFormatter.string(from: timestamp)
+                        
+                    } else {
+                        print("No coordinates available.")
+                    }
+                    
+                    audioTime = self.formatDuration(recording)
+                    audioPlayer = Player(avPlayer: AVPlayer(url: recording))
+
+                    let evidenceItem = EvidenceItemViewModel(
+                        timestamp: formattedDate,
+                        streetName: locationVM.loadLocManager.lastGeocodedAddressName,
+                        streetDetail: locationVM.loadLocManager.lastGeocodedAddressDetail,
+                        recordingTime: audioTime,
+                        audioPlayer: audioPlayer!,
+                        recording: recording
+                    )
+                    
+                    self.evidenceItems.append(evidenceItem)
+                }
+
             }
             
         case 2:
@@ -208,6 +251,22 @@ class EvidenceListViewModel: ObservableObject {
         default:
             return ""
         }
+    }
+    
+    func formatDuration(_ recording: URL) -> String {
+        let asset = AVURLAsset(url: recording)
+        
+        guard let assetReader = try? AVAssetReader(asset: asset) else {
+            return ""
+        }
+        
+        let duration = Double(assetReader.asset.duration.value)
+        let timescale = Double(assetReader.asset.duration.timescale)
+        let totalDuration = duration / timescale
+        
+        let minutes = Int(totalDuration) / 60
+        let seconds = Int(totalDuration) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
     }
 
 }

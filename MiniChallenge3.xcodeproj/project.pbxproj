@@ -69,6 +69,7 @@
 		93BA05422C7468DC007E4049 /* iOSLocationViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05412C7468DC007E4049 /* iOSLocationViewDetail.swift */; };
 		93BA05442C749D0B007E4049 /* LoadLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05432C749D0B007E4049 /* LoadLocationManager.swift */; };
 		93BA05482C75AA14007E4049 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05472C75AA14007E4049 /* Player.swift */; };
+		93BA054A2C7779F2007E4049 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05492C7779F2007E4049 /* DownloadManager.swift */; };
 		BF02279D2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
 		BF02279E2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
 		BF02279F2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
@@ -346,6 +347,7 @@
 		93BA05412C7468DC007E4049 /* iOSLocationViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLocationViewDetail.swift; sourceTree = "<group>"; };
 		93BA05432C749D0B007E4049 /* LoadLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationManager.swift; sourceTree = "<group>"; };
 		93BA05472C75AA14007E4049 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		93BA05492C7779F2007E4049 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		BF02278C2C71F97000177974 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		BF02278D2C71F97000177974 /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
@@ -611,6 +613,7 @@
 				631EC7E92C74E30D00DBBA4D /* ReportManager.swift */,
 				631EC7EC2C74E4D900DBBA4D /* GeofencingManager.swift */,
 				93BA05432C749D0B007E4049 /* LoadLocationManager.swift */,
+				93BA05492C7779F2007E4049 /* DownloadManager.swift */,
 				BFD4A8CF2C71FCF200D5E4C5 /* VincentViewModel */,
 			);
 			path = "View Model";
@@ -1162,6 +1165,7 @@
 				93BA05442C749D0B007E4049 /* LoadLocationManager.swift in Sources */,
 				BF2911BA2C743C18007BA6D7 /* PinPointPageView.swift in Sources */,
 				8BE370412C75983A00AFFC8D /* DummyLocationViewModel.swift in Sources */,
+				93BA054A2C7779F2007E4049 /* DownloadManager.swift in Sources */,
 				931C29B82C719EE100554592 /* iOSMainView.swift in Sources */,
 				8BE370462C75A76400AFFC8D /* iOSManager.swift in Sources */,
 				BFD4A8A42C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */,
