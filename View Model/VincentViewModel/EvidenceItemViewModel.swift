@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import MapKit
 
 class EvidenceItemViewModel: ObservableObject {
     @Published var isExpanded: Bool = false
@@ -37,12 +38,25 @@ class EvidenceListViewModel: ObservableObject {
     @Published var navigateToPinValidation = false
     @Published var evidenceItems: [EvidenceItemViewModel] = []
     @Published var audioPlayer: [Player] = []
-
     @Published var selectedDate: String = ""
     @Published var selectedStreetName: String = ""
     @Published var selectedStreetDetail: String = ""
     @Published var selectedRecordingTime: String = ""
-
+    @Published var LocationDetailVM = LoadLocationManager(
+        region: MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
+            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        ),
+        pins: [PinLocation(coordinate: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), timestamp: Date())],
+        routeCoordinates: [(coordinate: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), timestamp: Date())],
+        sliderValue: 0.5,
+        showSlider: true,
+        audioPlayer: nil, // Optional, can be nil or AVPlayer instance
+        maxSliderValue: 10.0,
+        lastGeocodedAddressName: "Some Street",
+        lastGeocodedAddressDetail: "Near Some Place"
+    )
+    
     func collapseAllExcept(selectedItem: EvidenceItemViewModel) {
         for item in evidenceItems {
             if item !== selectedItem {
@@ -56,21 +70,38 @@ class EvidenceListViewModel: ObservableObject {
         switch currentCase {
         case 1:
             VStack(spacing: 24) {
-                ForEach(Array(evidenceItems), id: \.id) { item in
+                ForEach(Array(evidenceItems.enumerated()), id: \.element.id) { index, item in
                     EvidenceItemView(viewModel: item, player: item.audioPlayer) { streetName, recordingTime in
-                        // Store the selected data
                         self.collapseAllExcept(selectedItem: item)
                         self.selectedDate = item.timestamp
                         self.selectedStreetName = streetName
                         self.selectedStreetDetail = item.streetDetail
                         self.selectedRecordingTime = recordingTime
+                        self.LocationDetailVM = LoadLocationManager(
+                            region: 
+                                locationVM.storeLocation[index].region,
+                            pins: 
+                                locationVM.storeLocation[index].pins,
+                            routeCoordinates: 
+                                locationVM.storeLocation[index].routeCoordinates,
+                            sliderValue: 
+                                locationVM.storeLocation[index].sliderValue,
+                            showSlider: 
+                                locationVM.storeLocation[index].showSlider,
+                            maxSliderValue: 
+                                locationVM.storeLocation[index].maxSliderValue,
+                            lastGeocodedAddressName: 
+                                locationVM.storeLocation[index].streetName,
+                            lastGeocodedAddressDetail: 
+                                locationVM.storeLocation[index].streetDetail
+                        )
                         
-                        // Debugging
-                        print("Tapped on street: \(streetName) at time: \(recordingTime)")
+                        
                     }
                 }
                 Spacer()
             }
+
             .onAppear {
                 var recordings: [URL] = []
                 var formattedDate: String = ""
@@ -98,7 +129,7 @@ class EvidenceListViewModel: ObservableObject {
                     
                     audioTime = self.formatDuration(recording)
                     audioPlayer = Player(avPlayer: AVPlayer(url: recording))
-
+                    
                     let evidenceItem = EvidenceItemViewModel(
                         timestamp: formattedDate,
                         streetName: locationVM.loadLocManager.lastGeocodedAddressName,
@@ -110,16 +141,16 @@ class EvidenceListViewModel: ObservableObject {
                     
                     self.evidenceItems.append(evidenceItem)
                 }
-
+                
             }
             
         case 2:
             VStack(spacing: 24) {
-                Rectangle()
-                    .foregroundColor(.blue)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .frame(height: UIScreen.main.bounds.height * 2 / 5)
-                    .shadow(radius: 2, y: 4)
+                RoutePolyline(routeCoordinates: LocationDetailVM.routeUpToSliderValue(), startEndPins: LocationDetailVM.startEndPinLocations())
+                .foregroundColor(.blue)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .frame(height: UIScreen.main.bounds.height * 2 / 5)
+                .shadow(radius: 2, y: 4)
                 
                 RoundedRectangle(cornerRadius: 10)
                     .frame(height: 73)
@@ -268,5 +299,5 @@ class EvidenceListViewModel: ObservableObject {
         let seconds = Int(totalDuration) % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
-
+    
 }
