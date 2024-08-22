@@ -193,6 +193,8 @@
 		BF0228212C71FA7B00177974 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0228162C71FA7B00177974 /* ColorExtension.swift */; };
 		BF0228222C71FA7B00177974 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0228162C71FA7B00177974 /* ColorExtension.swift */; };
 		BF227A332C7595A600B64EE5 /* UpdateLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF227A322C7595A600B64EE5 /* UpdateLocationView.swift */; };
+		BF227A462C7704DE00B64EE5 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF227A452C7704DE00B64EE5 /* WatchView.swift */; };
+		BF227A482C77050200B64EE5 /* PulseWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF227A472C77050200B64EE5 /* PulseWatchView.swift */; };
 		BF2911B12C738791007BA6D7 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B02C738791007BA6D7 /* AvatarView.swift */; };
 		BF2911B32C7387AD007BA6D7 /* BubbleChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */; };
 		BF2911B52C7387DA007BA6D7 /* PulseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B42C7387DA007BA6D7 /* PulseView.swift */; };
@@ -366,6 +368,8 @@
 		BF0228152C71FA7B00177974 /* DynamicIslandChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicIslandChecker.swift; sourceTree = "<group>"; };
 		BF0228162C71FA7B00177974 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		BF227A322C7595A600B64EE5 /* UpdateLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationView.swift; sourceTree = "<group>"; };
+		BF227A452C7704DE00B64EE5 /* WatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
+		BF227A472C77050200B64EE5 /* PulseWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseWatchView.swift; sourceTree = "<group>"; };
 		BF2911B02C738791007BA6D7 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChatView.swift; sourceTree = "<group>"; };
 		BF2911B42C7387DA007BA6D7 /* PulseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseView.swift; sourceTree = "<group>"; };
@@ -456,6 +460,7 @@
 				8BE370372C74501800AFFC8D /* WatchUI.swift */,
 				8BE370392C7481C500AFFC8D /* IdleWatchUI.swift */,
 				8BE3703B2C7481FE00AFFC8D /* RecordingWatchUI.swift */,
+				BF227A452C7704DE00B64EE5 /* WatchView.swift */,
 			);
 			path = WatchUI;
 			sourceTree = "<group>";
@@ -730,6 +735,7 @@
 				BFD4A8A02C71FCB600D5E4C5 /* Component */,
 				BFD4A89B2C71FCA100D5E4C5 /* bgStyle.swift */,
 				BF2911B42C7387DA007BA6D7 /* PulseView.swift */,
+				BF227A472C77050200B64EE5 /* PulseWatchView.swift */,
 				BF2911B02C738791007BA6D7 /* AvatarView.swift */,
 				BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */,
 			);
@@ -1218,12 +1224,14 @@
 				8BE3703A2C7481C500AFFC8D /* IdleWatchUI.swift in Sources */,
 				BF0228202C71FA7B00177974 /* ColorExtension.swift in Sources */,
 				BF0228122C71FA5B00177974 /* FontExtension.swift in Sources */,
+				BF227A462C7704DE00B64EE5 /* WatchView.swift in Sources */,
 				931C2A4C2C7247F600554592 /* Utils.swift in Sources */,
 				931C29B42C719ECB00554592 /* WatchMainView.swift in Sources */,
 				8BE370382C74501800AFFC8D /* WatchUI.swift in Sources */,
 				931C29AB2C719E4200554592 /* WatchConnectivityManager.swift in Sources */,
 				931C296D2C719C7D00554592 /* Mini3App.swift in Sources */,
 				931C29B22C719EA700554592 /* WatchManager.swift in Sources */,
+				BF227A482C77050200B64EE5 /* PulseWatchView.swift in Sources */,
 				8BE3703C2C7481FE00AFFC8D /* RecordingWatchUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1423,7 +1431,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
@@ -1441,7 +1449,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1459,7 +1467,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
@@ -1477,7 +1485,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1492,7 +1500,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
@@ -1512,7 +1520,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
@@ -1531,7 +1539,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3UITests;
@@ -1549,7 +1557,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3UITests;
@@ -1569,20 +1577,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Mini3;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.dandenion.MiniChallenge3-1";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.dandenion.MiniChallenge3-2";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-2.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1601,20 +1609,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Mini3;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.dandenion.MiniChallenge3-1";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.dandenion.MiniChallenge3-2";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-2.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1632,7 +1640,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppTests";
@@ -1653,7 +1661,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppTests";
@@ -1673,7 +1681,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppUITests";
@@ -1693,7 +1701,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppUITests";
@@ -1714,7 +1722,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetForiOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetForiOS;
@@ -1726,7 +1734,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1.WidgetForiOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-2.WidgetForiOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1742,7 +1750,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = M45X2698V4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetForiOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetForiOS;
@@ -1754,7 +1762,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1.WidgetForiOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-2.WidgetForiOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -52,7 +52,7 @@ struct ContentView: View {
                         }
 
                         Button(action: { //isrecord = true, endrecord = false
-                            if (iOSVM.isRecording != true) || (iOSVM.isRecording && !iOSVM.endRecord){
+                            if !iOSVM.isRecording || (iOSVM.isRecording && !iOSVM.endRecord){
                                 iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
                             }
                         }) {
