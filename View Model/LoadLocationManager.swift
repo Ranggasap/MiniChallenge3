@@ -23,6 +23,8 @@ class LoadLocationManager: ObservableObject {
     var audioPlayer: AVPlayer?
     var timer: Timer?
     var maxSliderValue: Double
+    var lastGeocodedCoordinate: CLLocationCoordinate2D?
+    var lastGeocodedAddress: String?
     
     init(region: MKCoordinateRegion, pins: [PinLocation], routeCoordinates: [(coordinate: CLLocationCoordinate2D, timestamp: Date)], sliderValue: Double, showSlider: Bool, audioPlayer: AVPlayer? = nil, maxSliderValue: Double) {
         self.region = region
@@ -34,10 +36,6 @@ class LoadLocationManager: ObservableObject {
         self.maxSliderValue = maxSliderValue
         self.player = Player(avPlayer: AVPlayer(url: Bundle.main.url(forResource: "testSong", withExtension: "mp3")!), maxDuration: maxSliderValue)
     }
-    
-//    func getReportFromRoute() -> Report {
-//        
-//    }
     
     func updateRegionForEntireRoute() {
         guard !routeCoordinates.isEmpty else { return }
@@ -92,4 +90,107 @@ class LoadLocationManager: ObservableObject {
     func pauseAudio() {
         player.pause()
     }
+    
+    func getClosestLocation(to targetTimestamp: Date) -> (coordinate: CLLocationCoordinate2D, timestamp: Date)? {
+        return routeCoordinates.min(by: { abs($0.timestamp.timeIntervalSince(targetTimestamp)) < abs($1.timestamp.timeIntervalSince(targetTimestamp)) })
+    }
+    
+    func reverseGeocodeLocation(_ coordinate: CLLocationCoordinate2D, completion: @escaping (String?) -> Void) {
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        let geocoder = CLGeocoder()
+        
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            if let error = error {
+                print("Error during reverse geocoding: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let placemark = placemarks?.first else {
+                print("No placemarks found.")
+                completion(nil)
+                return
+            }
+            
+            // Construct a detailed address string
+            var address = ""
+            
+            if let name = placemark.name {
+                address += name + ", "
+            }
+            if let street = placemark.thoroughfare {
+                address += street + ", "
+            }
+            if let subLocality = placemark.subLocality {
+                address += subLocality + ", "
+            }
+            if let city = placemark.locality {
+                address += city + ", "
+            }
+            if let state = placemark.administrativeArea {
+                address += state + ", "
+            }
+            if let postalCode = placemark.postalCode {
+                address += postalCode + ", "
+            }
+            if let country = placemark.country {
+                address += country
+            }
+            
+            completion(address.isEmpty ? "Address information not available." : address)
+        }
+    }
+
+    
+    func isCoordinate(_ coordinate1: CLLocationCoordinate2D, closeTo coordinate2: CLLocationCoordinate2D, threshold: CLLocationDistance = 50) -> Bool {
+        let location1 = CLLocation(latitude: coordinate1.latitude, longitude: coordinate1.longitude)
+        let location2 = CLLocation(latitude: coordinate2.latitude, longitude: coordinate2.longitude)
+        
+        return location1.distance(from: location2) <= threshold
+    }
+
+    
+    func outputSliderValueLocationData() {
+        // Get the exact coordinate at the current slider value
+        guard let firstTimestamp = routeCoordinates.first?.timestamp else {
+            print("No location data available.")
+            return
+        }
+        
+        // Calculate the target timestamp as a Date object
+        let targetTimestamp = firstTimestamp.addingTimeInterval(sliderValue)
+        
+        // Get the closest location to the slider value
+        if let closestLocation = getClosestLocation(to: targetTimestamp) {
+            let latitude = closestLocation.coordinate.latitude
+            let longitude = closestLocation.coordinate.longitude
+            print("Current location at slider value (\(sliderValue) seconds):")
+            print("Lat: \(latitude), Lon: \(longitude)")
+            
+            // Check if the new coordinate is close enough to the last geocoded coordinate
+            if let lastCoordinate = lastGeocodedCoordinate,
+               isCoordinate(closestLocation.coordinate, closeTo: lastCoordinate) {
+                // Use cached address
+                if let cachedAddress = lastGeocodedAddress {
+                    print("Cached Address: \(cachedAddress)")
+                }
+            } else {
+                // Perform reverse geocoding
+                reverseGeocodeLocation(closestLocation.coordinate) { [weak self] address in
+                    if let address = address {
+                        print("Address: \(address)")
+                        self?.lastGeocodedCoordinate = closestLocation.coordinate
+                        self?.lastGeocodedAddress = address
+                    } else {
+                        print("No address found for this location.")
+                    }
+                }
+            }
+        } else {
+            print("No location data available for the current slider value.")
+        }
+    }
+
+
+
 }

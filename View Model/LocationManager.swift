@@ -125,28 +125,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         loadLocManager.pauseAudio()
     }
     
-    //TODO: not needed I guess??
-    func outputSliderValueLocationData() {
-        // Get the exact coordinate at the current slider value
-        guard let firstTimestamp = loadLocManager.routeCoordinates.first?.timestamp else {
-            print("No location data available.")
-            return
-        }
-        
-        // Calculate the target timestamp
-        let targetTimestamp = firstTimestamp.addingTimeInterval(loadLocManager.sliderValue)
-        
-        // Find the closest coordinate to the target timestamp
-        if let closestLocation = loadLocManager.routeCoordinates.min(by: { abs($0.timestamp.timeIntervalSince(targetTimestamp)) < abs($1.timestamp.timeIntervalSince(targetTimestamp)) }) {
-            let latitude = closestLocation.coordinate.latitude
-            let longitude = closestLocation.coordinate.longitude
-            print("Current location at slider value (\(loadLocManager.sliderValue) seconds):")
-            print("Lat: \(latitude), Lon: \(longitude)")
-        } else {
-            print("No location data available for the current slider value.")
-        }
-    }
-    
 }
 
 extension iOSLocationView {
