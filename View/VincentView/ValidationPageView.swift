@@ -175,6 +175,7 @@ struct ValidationPageView: View {
             if let location = newLocation {
                 listViewModel.reportVm.fetchReportsNearUserLocation(userLocation: location)
                 print(location)
+                
             }
         }
         
