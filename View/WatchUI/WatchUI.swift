@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct WatchUI: View {
-    @State var isRecording: Bool = false
     @State var isAutoRecord: Bool = false
     
     @StateObject var watchVM = WatchManager()
@@ -17,10 +16,10 @@ struct WatchUI: View {
         ZStack(alignment: .top){
             
             if watchVM.isRecording {
-                RecordingWatchUI(watchVM: watchVM, isRecording: $isRecording)
+                RecordingWatchUI(watchVM: watchVM)
                     .transition(.opacity)
                 HStack{
-                    StopRecordingBackButton(isRecording: $isRecording)
+                    StopRecordingBackButton(watchVM: watchVM)
                         .frame(width: 30)
                     
                     Spacer()
@@ -30,7 +29,7 @@ struct WatchUI: View {
                 .padding(.top, 20)
                 .ignoresSafeArea()
             } else {
-                IdleWatchUI(watchVM: watchVM, isRecording: $isRecording)
+                IdleWatchUI(watchVM: watchVM)
                     .transition(.opacity)
                 
             }
@@ -69,13 +68,15 @@ struct WatchUI: View {
                 watchVM.stopRecording()
             }
         }
-        .animation(.easeInOut(duration: 0.2), value: isRecording)
+        .animation(.easeInOut(duration: 0.2), value: watchVM.isRecording)
     }
     
 }
 
 struct StopRecordingBackButton: View {
-    @Binding var isRecording: Bool
+    
+    @ObservedObject var watchVM: WatchManager
+    
     var body: some View {
         ZStack{
             Circle()
@@ -84,7 +85,7 @@ struct StopRecordingBackButton: View {
             Image(systemName: "xmark")
         }
         .onTapGesture {
-            isRecording = false
+            watchVM.toggleRecordingState(watchVM.connectivity, watchVM.isRecording)
         }
     }
 }

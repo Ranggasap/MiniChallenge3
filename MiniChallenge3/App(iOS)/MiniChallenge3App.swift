@@ -25,6 +25,6 @@ struct MiniChallenge3App: App {
             ContentView() // Frontend
             
         }
-//        .modelContainer(for: SavedLocation.self)
+        .modelContainer(for: SavedLocation.self)
     }
 }

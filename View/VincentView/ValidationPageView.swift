@@ -23,17 +23,19 @@ struct ValidationPageView: View {
     
     @State var currentCase: Int = 1
     @State private var showingAlert = false
-    @StateObject var iOSVM = iOSManager()
-    @StateObject private var listViewModel = EvidenceListViewModel()
+    @ObservedObject var iOSVM: iOSManager
+    @ObservedObject var listViewModel: EvidenceListViewModel
     
     @StateObject var reportVm: ReportManager
     
     
-    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, reportVm: ReportManager, alreadyRecord: Binding<Bool>) {
+    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, reportVm: ReportManager, alreadyRecord: Binding<Bool>, iOSVM: iOSManager, listViewModel: EvidenceListViewModel) {
         self._navigateToValidation = navigateToValidation
         self._onPinValidation = State(initialValue: onPinValidation)
         _reportVm = StateObject(wrappedValue: reportVm)
         self._alreadyRecord = alreadyRecord
+        self.iOSVM = iOSVM
+        self.listViewModel = listViewModel
     }
     
     
@@ -217,7 +219,7 @@ struct ValidationPageView: View {
 
 #Preview {
     
-    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, reportVm: ReportManager(), alreadyRecord: .constant(true))
+    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, reportVm: ReportManager(), alreadyRecord: .constant(true), iOSVM: iOSManager(), listViewModel: EvidenceListViewModel())
     
 }
 

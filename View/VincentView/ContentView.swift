@@ -51,20 +51,13 @@ struct ContentView: View {
                             ToggleRecordView(isAutoRecording: $iOSVM.isAutoRecording)
                         }
 
-                        Button(action: {
-                            if iOSVM.isRecording {
+                        Button(action: { //isrecord = true, endrecord = false
+                            if (iOSVM.isRecording != true) || (iOSVM.isRecording && !iOSVM.endRecord){
                                 iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
-                                iOSVM.isRecording.toggle()
-                                iOSVM.endRecord = true
-                                showingAlert = true
-                            } else {
-                                iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
-                                iOSVM.isRecording.toggle()
-
                             }
                         }) {
                             RoundedRectangle(cornerRadius: 14)
-                                .foregroundColor(iOSVM.endRecord && iOSVM.isRecording ? .buttonColor2 : .buttonColor1)
+                                .foregroundColor(iOSVM.isRecording ? .buttonColor2 : .buttonColor1)
                                 .frame(width: UIScreen.main.bounds.width - 64, height: 62)
                                 .overlay {
                                     Text(iOSVM.isRecording ? "End Record" : "Start Record")
@@ -74,13 +67,6 @@ struct ContentView: View {
                                 .padding(.horizontal, 32)
                             
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            if iOSVM.endRecord && iOSVM.isRecording{
-                                listViewModel.navigateToValidation = true
-                            }
-                            
-                        })
-
                         
                         if alreadyRecord {
                             Button(action: {
@@ -99,9 +85,6 @@ struct ContentView: View {
                                     .padding(.horizontal, 32)
 
                             }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                listViewModel.navigateToValidation = true
-                            })
 
                         }
                     }
@@ -112,25 +95,50 @@ struct ContentView: View {
                 }
                 
             }
+            
+            .onAppear {
+                print("\(iOSVM.isRecording), \(iOSVM.endRecord)")
+            }
+            
+            .onChange(of: iOSVM.endRecord) {
+                if iOSVM.endRecord && iOSVM.isRecording {
+                    showingAlert = true
+                }
+            }
+            
+            .onReceive(iOSVM.connectivity.$isReceived) { newValue in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if newValue {
+                        iOSVM.audio.recordings = iOSVM.fetchRecordings()
+                        iOSVM.connectivity.isReceived = false
+                    }
+                }
+            }
 
             // ini flow lama yg no progress bar and back
             .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel)
             }
             //
             .navigationDestination(isPresented: $listViewModel.navigateToValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel)
             }
             .alert(isPresented: $showingAlert) {
                 Alert(
                     title: Text("Did you feel uncomfortable?"),
                     message: Text("Share to us if you got catcalled while walking just now"),
                     primaryButton: .default(Text("Yes")) {
-                        iOSVM.isRecording = false
-                        listViewModel.navigateToPinValidation = true
+                        iOSVM.toggleStoredState(iOSVM.connectivity, true)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            iOSVM.isRecording = false
+                            listViewModel.navigateToValidation = true
+                        }
                     },
                     secondaryButton: .cancel(Text("No")) {
-                        iOSVM.isRecording = false
+                        iOSVM.toggleStoredState(iOSVM.connectivity, false)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            iOSVM.isRecording = false
+                        }
                     }
                 )
 
