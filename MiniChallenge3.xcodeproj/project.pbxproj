@@ -1335,6 +1335,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Dandenion;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app will show your location on a map";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app will show your location on a map";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "The app will record the sound from your surroundings";
@@ -1373,6 +1374,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Dandenion;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app will show your location on a map";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app will show your location on a map";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "The app will record the sound from your surroundings";
@@ -1484,7 +1486,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Mini3;
+				INFOPLIST_KEY_CFBundleDisplayName = Dandenion;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.dandenion.MiniChallenge3-1";
@@ -1516,7 +1518,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Mini3;
+				INFOPLIST_KEY_CFBundleDisplayName = Dandenion;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.dandenion.MiniChallenge3-1";

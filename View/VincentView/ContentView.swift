@@ -55,7 +55,10 @@ struct ContentView: View {
                     Spacer()
                     VStack(spacing: 16) {
                         if !iOSVM.isRecording{
-                            ToggleRecordView(isAutoRecording: $iOSVM.isAutoRecording)
+                            ToggleRecordView(isAutoRecording: $iOSVM.isAutoRecord)
+                                .onChange(of: iOSVM.isAutoRecord) {
+                                    iOSVM.toggleAutoRecordState(iOSVM.connectivity, iOSVM.isAutoRecord)
+                                }
                         }
 
                         Button(action: { //isrecord = true, endrecord = false
@@ -78,7 +81,13 @@ struct ContentView: View {
                         if savedLocations != [] {
                             Button(action: {
                                 // report action
-                                listViewModel.navigateToValidation = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    convertToTempData()
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    listViewModel.navigateToValidation = true
+                                }
                             }) {
                                 RoundedRectangle(cornerRadius: 14)
                                     .stroke(lineWidth: 2)

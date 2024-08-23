@@ -17,6 +17,9 @@ struct ToggleRecordView: View {
                 .foregroundColor(.fontColor2)
             Toggle("", isOn: $isAutoRecording)
                 .labelsHidden()
+                .onChange(of: isAutoRecording) {
+                    print("\(isAutoRecording)")
+                }
         }
         .padding(.horizontal, 32)
     }

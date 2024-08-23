@@ -156,4 +156,9 @@ class WatchManager: recordFunction, ObservableObject {
             print("No recordings to remove.")
         }
     }
+    
+    func toggleAutoRecordState(_ connectivity: WatchConnectivityManager, _ isToggled: Bool) {
+        let newValue = !isToggled
+        connectivity.sendStateChangeRequest(messageSent.autoRec.rawValue, newValue)
+    }
 }

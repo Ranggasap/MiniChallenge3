@@ -13,7 +13,7 @@ class iOSManager: recordFunction, ObservableObject {
     @Published var audio = Audio()
     @Published var isLoading = true
     @Published var isDirected = false
-    @Published var isAutoRecording = false
+    @Published var isAutoRecord = false
     @Published var isRecording = false
     @Published var endRecord = true
     @Published var isStored = false
@@ -37,6 +37,17 @@ class iOSManager: recordFunction, ObservableObject {
                         self.endRecord = !newValue
                     }
                 }
+            }
+            .store(in: &cancellables)
+        
+        connectivity.isAutoRecSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newValue in
+                guard let self = self else { return }
+                if self.isAutoRecord != newValue {
+                    self.isAutoRecord = newValue
+                }
+
             }
             .store(in: &cancellables)
     }

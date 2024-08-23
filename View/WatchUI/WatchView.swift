@@ -9,7 +9,6 @@ import SwiftUI
 
 struct WatchView: View {
     @State var alreadyPin = false
-    @State var isAutoRecord: Bool = false
     
     @StateObject var watchVM = WatchManager()
     
@@ -73,15 +72,15 @@ struct WatchView: View {
                     }
                     Spacer()
                     Button(action: {
-                        isAutoRecord.toggle()
+                        watchVM.toggleAutoRecordState(watchVM.connectivity, watchVM.isAutoRecord)
                     }) {
                         ZStack {
                             Circle()
                                 .stroke(.buttonColor4, lineWidth: 8)
-                                .fill(isAutoRecord ? .buttonColor4 : .buttonColor5)
+                                .fill(watchVM.isAutoRecord ? .buttonColor4 : .buttonColor5)
                                 .frame(width: 24, height: 24)
                                 .overlay{
-                                    if isAutoRecord{
+                                    if watchVM.isAutoRecord{
                                         Image(systemName: "record.circle")
                                             .resizable()
                                             .foregroundColor(.buttonColor2)

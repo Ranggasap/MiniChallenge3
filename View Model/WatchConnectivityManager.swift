@@ -88,6 +88,8 @@ class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
             }
         } else if let request = message[messageSent.done.rawValue] as? Bool {
             self.isRecording = request
+        } else if let request = message[messageSent.autoRec.rawValue] as? Bool {
+            self.isAutoRec = request
         }
     }
 #else
@@ -103,6 +105,19 @@ class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
         }
         
         sendFile(recordingURL, stringSent.recording.rawValue)
+    }
+    
+    func sendStateChangeRequest(_ storeRecord: String, _ isToggled: Bool) {
+        let session = WCSession.default
+        if session.activationState == .activated {
+            if storeRecord == messageSent.autoRec.rawValue {
+                session.sendMessage([messageSent.autoRec.rawValue: isToggled], replyHandler: nil) { error in
+                    print("Error sending request: \(error.localizedDescription)")
+                }
+            }
+        } else {
+            print("Session is not activated")
+        }
     }
     
     func sendRecordingStateChangeRequest(_ isRecording: Bool) {
