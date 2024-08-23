@@ -15,6 +15,7 @@
 		631EC7E72C74E2E100DBBA4D /* UserAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7E62C74E2E100DBBA4D /* UserAppManager.swift */; };
 		631EC7EA2C74E30D00DBBA4D /* ReportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7E92C74E30D00DBBA4D /* ReportManager.swift */; };
 		631EC7ED2C74E4D900DBBA4D /* GeofencingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC7EC2C74E4D900DBBA4D /* GeofencingManager.swift */; };
+		639CBFF12C76EC2500695DE0 /* NotifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639CBFF02C76EC2500695DE0 /* NotifManager.swift */; };
 		8BE3702F2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3702E2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift */; };
 		8BE370312C74469500AFFC8D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE370302C74469500AFFC8D /* LoadingViewController.swift */; };
 		8BE370332C74482800AFFC8D /* RecordFunctionUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE370322C74482800AFFC8D /* RecordFunctionUnitTests.swift */; };
@@ -275,6 +276,7 @@
 		631EC7E62C74E2E100DBBA4D /* UserAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAppManager.swift; sourceTree = "<group>"; };
 		631EC7E92C74E30D00DBBA4D /* ReportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportManager.swift; sourceTree = "<group>"; };
 		631EC7EC2C74E4D900DBBA4D /* GeofencingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingManager.swift; sourceTree = "<group>"; };
+		639CBFF02C76EC2500695DE0 /* NotifManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifManager.swift; sourceTree = "<group>"; };
 		8BE3702E2C74463800AFFC8D /* LoadingViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		8BE370302C74469500AFFC8D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		8BE370322C74482800AFFC8D /* RecordFunctionUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFunctionUnitTests.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 				631EC7E62C74E2E100DBBA4D /* UserAppManager.swift */,
 				631EC7E92C74E30D00DBBA4D /* ReportManager.swift */,
 				631EC7EC2C74E4D900DBBA4D /* GeofencingManager.swift */,
+				639CBFF02C76EC2500695DE0 /* NotifManager.swift */,
 				93BA05432C749D0B007E4049 /* LoadLocationManager.swift */,
 				93BA05492C7779F2007E4049 /* DownloadManager.swift */,
 				BFD4A8CF2C71FCF200D5E4C5 /* VincentViewModel */,
@@ -1098,6 +1101,7 @@
 				931C29C32C71A51D00554592 /* RoutePolyline.swift in Sources */,
 				8BE370312C74469500AFFC8D /* LoadingViewController.swift in Sources */,
 				8BFFF9582C57D51F00A2F088 /* MiniChallenge3App.swift in Sources */,
+				639CBFF12C76EC2500695DE0 /* NotifManager.swift in Sources */,
 				93BA05422C7468DC007E4049 /* iOSLocationViewDetail.swift in Sources */,
 				931C29C72C71A5C700554592 /* iOSLocationView.swift in Sources */,
 				931C29BF2C71A46500554592 /* LocationManager.swift in Sources */,
@@ -1331,12 +1335,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Dandenion;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app will show your location on a map";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app will show your location on a map";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app will show your location on a map";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "The app will record the sound from your surroundings";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1350,7 +1355,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1370,12 +1375,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiniChallenge3/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Dandenion;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app will show your location on a map";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app will show your location on a map";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app will show your location on a map";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "The app will record the sound from your surroundings";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1389,7 +1395,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1482,20 +1488,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Dandenion;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.dandenion.MiniChallenge3-1";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.dandenion.MiniChallenge3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1514,20 +1520,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
+				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mini3-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Dandenion;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.dandenion.MiniChallenge3-1";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.dandenion.MiniChallenge3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

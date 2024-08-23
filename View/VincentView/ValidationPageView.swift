@@ -28,13 +28,15 @@ struct ValidationPageView: View {
     @ObservedObject var listViewModel: EvidenceListViewModel
     @ObservedObject var locationVM: LocationManager
     
-    @StateObject var reportVm: ReportManager
     
+//    @StateObject var reportVm: ReportManager
     
-    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, reportVm: ReportManager, alreadyRecord: Binding<Bool>, iOSVM: iOSManager, listViewModel: EvidenceListViewModel, locationVM: LocationManager) {
+
+    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, alreadyRecord: Binding<Bool>, iOSVM: iOSManager, listViewModel: EvidenceListViewModel, locationVM: LocationManager) {
+
         self._navigateToValidation = navigateToValidation
         self._onPinValidation = State(initialValue: onPinValidation)
-        _reportVm = StateObject(wrappedValue: reportVm)
+//        _reportVm = StateObject(wrappedValue: reportVm)
         self._alreadyRecord = alreadyRecord
         self.iOSVM = iOSVM
         self.listViewModel = listViewModel
@@ -171,6 +173,8 @@ struct ValidationPageView: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        
+        
     }
     
     private func handleBackAction() {
@@ -204,6 +208,7 @@ struct ValidationPageView: View {
             alreadyRecord = true
             navigateToValidation = false
             currentCase = 2
+            listViewModel.saveReportToCloud()
             self.presentationMode.wrappedValue.dismiss()
             
         }
@@ -222,7 +227,9 @@ struct ValidationPageView: View {
 
 #Preview {
     
-    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, reportVm: ReportManager(), alreadyRecord: .constant(true), iOSVM: iOSManager(), listViewModel: EvidenceListViewModel(), locationVM: LocationManager())
+
+    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, /*reportVm: ReportManager(),*/ alreadyRecord: .constant(true), iOSVM: iOSManager(), listViewModel: EvidenceListViewModel(), locationVM: LocationManager())
+
     
 }
 

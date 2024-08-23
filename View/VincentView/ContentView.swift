@@ -12,8 +12,10 @@ import CoreLocation
 import MapKit
 
 struct ContentView: View {
-    @State private var username = "Natalie"
+    @State private var username = "Fellow"
     @State private var trackLocationStopped = false
+    
+//    @AppStorage("firstName") var firstName : String = ""
 
     var maxStoreItem = 3
     let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
@@ -21,9 +23,14 @@ struct ContentView: View {
     @State var alreadyRecord = false
     @StateObject var iOSVM = iOSManager()
     @StateObject private var listViewModel = EvidenceListViewModel()
+  
     @StateObject var locationVM = LocationManager()
     @Environment(\.modelContext) var context
     @Query(sort: \SavedLocation.id) var savedLocations: [SavedLocation]
+
+    
+    @StateObject var locationManager = GeofencingManager()
+
 
     
     // test state
@@ -32,6 +39,7 @@ struct ContentView: View {
 //    @State var isEndRecord = true
     
     @State private var showingAlert = false
+    
 
     var body: some View {
         NavigationStack {
@@ -50,7 +58,8 @@ struct ContentView: View {
                     BubbleChatView(text: "Right now, I company you and observe your surrounding on your apple watch")
                 }
 
-                HelloView(username: $username)
+                HelloView(username:  $username)
+                
                 VStack {
                     Spacer()
                     VStack(spacing: 16) {
@@ -120,12 +129,14 @@ struct ContentView: View {
             }
 
             // ini flow lama yg no progress bar and back
+
 //            .navigationDestination(isPresented: $listViewModel.navigateToPinValidation) {
 //                ValidationPageView(navigateToValidation: $listViewModel.navigateToPinValidation, onPinValidation: true, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel)
 //            }
             //
             .navigationDestination(isPresented: $listViewModel.navigateToValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel, locationVM: locationVM)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, /*reportVm: ReportManager(container: container),*/ alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel, locationVM: locationVM)
+
             }
             .alert(isPresented: $showingAlert) {
                 Alert(
@@ -177,6 +188,7 @@ struct ContentView: View {
             
         }
         .navigationViewStyle(.stack)
+
         .onAppear {
             if !locationVM.isLocationTrackingEnabled {
                 locationVM.updateRegionForEntireRoute()
@@ -198,8 +210,24 @@ struct ContentView: View {
                 }
             }
         }
+
+        .onChange(of: locationManager.currentLocation) { newLocation in
+            if let location = newLocation {
+                listViewModel.reportVm.fetchReportsNearUserLocation(userLocation: location)
+                print(location)
+                
+                locationManager.updateLocation()
+                
+            }
+        }
+        
+        .onAppear{
+            NotifManager().requestAuthorization()
+            
+        }
+        
+
     }
-    
     
 }
                                              
