@@ -41,7 +41,7 @@ class EvidenceListViewModel: ObservableObject {
     @Published var navigateToValidation = false
     @Published var navigateToPinValidation = false
     @Published var evidenceItems: [EvidenceItemViewModel] = []
-
+    
     @Published var selectedDate: String = ""
     @Published var selectedStreetName: String = ""
     @Published var selectedStreetDetail: String = ""
@@ -74,7 +74,7 @@ class EvidenceListViewModel: ObservableObject {
     @Published var formattedDate: String = ""
     @Published var audioTime: String = ""
     @Published var audioPlayer: Player?
-
+    
     
     
     let reportVm: ReportManager
@@ -91,7 +91,7 @@ class EvidenceListViewModel: ObservableObject {
     @StateObject var locationManager = GeofencingManager()
     
     
-
+    
     
     func collapseAllExcept(selectedItem: EvidenceItemViewModel) {
         for item in evidenceItems {
@@ -343,7 +343,7 @@ class EvidenceListViewModel: ObservableObject {
         }
     }
     
-
+    
     func formatDuration(_ recording: URL) -> String {
         let asset = AVURLAsset(url: recording)
         
@@ -358,25 +358,27 @@ class EvidenceListViewModel: ObservableObject {
         let minutes = Int(totalDuration) / 60
         let seconds = Int(totalDuration) % 60
         return String(format: "%02d:%02d", minutes, seconds)
-
-    func saveReportToCloud(){
+    }
         
-        let userID = userVm.currentUser?.userID
-        let newReport = Report(reportDate: Date(), reportKronologi: "Apple Developer Academy", location: CLLocation(latitude: -6.302147, longitude: 106.652291), userID: userID!)
-        reportVm.createReport(report: newReport) { result in
-            switch result {
-            case .success(let record):
-                print("Report created: \(String(describing: record))")
-            case .failure(let error):
-                print("Error creating report: \(error.localizedDescription)")
+        func saveReportToCloud(){
+            
+            let userID = userVm.currentUser?.userID
+            let newReport = Report(reportDate: Date(), reportKronologi: "Apple Developer Academy", location: CLLocation(latitude: -6.302147, longitude: 106.652291), userID: userID!)
+            reportVm.createReport(report: newReport) { result in
+                switch result {
+                case .success(let record):
+                    print("Report created: \(String(describing: record))")
+                case .failure(let error):
+                    print("Error creating report: \(error.localizedDescription)")
+                }
+                
+                
             }
+            
+            
             
             
         }
         
-        
-        
-
-    }
     
 }

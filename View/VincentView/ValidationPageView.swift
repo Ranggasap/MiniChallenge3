@@ -228,7 +228,7 @@ struct ValidationPageView: View {
 #Preview {
     
 
-    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, reportVm: ReportManager(), alreadyRecord: .constant(true), iOSVM: iOSManager(), listViewModel: EvidenceListViewModel(), locationVM: LocationManager())
+    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, /*reportVm: ReportManager(),*/ alreadyRecord: .constant(true), iOSVM: iOSManager(), listViewModel: EvidenceListViewModel(), locationVM: LocationManager())
 
     
 }

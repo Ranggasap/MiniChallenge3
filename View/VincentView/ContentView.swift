@@ -12,8 +12,10 @@ import CoreLocation
 import MapKit
 
 struct ContentView: View {
-    @State private var username = "Natalie"
+    @State private var username = "Fellow"
     @State private var trackLocationStopped = false
+    
+//    @AppStorage("firstName") var firstName : String = ""
 
     var maxStoreItem = 3
     let container = CKContainer(identifier: "iCloud.com.dandenion.MiniChallenge3")
@@ -56,7 +58,8 @@ struct ContentView: View {
                     BubbleChatView(text: "Right now, I company you and observe your surrounding on your apple watch")
                 }
 
-                HelloView(username: $username)
+                HelloView(username:  $username)
+                
                 VStack {
                     Spacer()
                     VStack(spacing: 16) {
@@ -123,7 +126,7 @@ struct ContentView: View {
 //            }
             //
             .navigationDestination(isPresented: $listViewModel.navigateToValidation) {
-                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, reportVm: ReportManager(container: container), alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel, locationVM: locationVM)
+                ValidationPageView(navigateToValidation: $listViewModel.navigateToValidation, onPinValidation: false, /*reportVm: ReportManager(container: container),*/ alreadyRecord: $alreadyRecord, iOSVM: iOSVM, listViewModel: listViewModel, locationVM: locationVM)
 
             }
             .alert(isPresented: $showingAlert) {
