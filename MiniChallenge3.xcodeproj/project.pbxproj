@@ -59,12 +59,6 @@
 		931C29D02C71ACC000554592 /* WhatYouWant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29CB2C71ACC000554592 /* WhatYouWant.mp3 */; };
 		931C2A4B2C7247F600554592 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A4A2C7247F600554592 /* Utils.swift */; };
 		931C2A4C2C7247F600554592 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A4A2C7247F600554592 /* Utils.swift */; };
-		931C2A8B2C7250F400554592 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C2A8A2C7250F400554592 /* WidgetKit.framework */; };
-		931C2A8D2C7250F400554592 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C2A8C2C7250F400554592 /* SwiftUI.framework */; };
-		931C2A902C7250F400554592 /* WidgetForiOSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A8F2C7250F400554592 /* WidgetForiOSBundle.swift */; };
-		931C2A922C7250F400554592 /* WidgetForiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A912C7250F400554592 /* WidgetForiOS.swift */; };
-		931C2A942C7250F500554592 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 931C2A932C7250F500554592 /* Assets.xcassets */; };
-		931C2A982C7250F500554592 /* WidgetForiOSExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 931C2A882C7250F400554592 /* WidgetForiOSExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		93BA053B2C743C14007E4049 /* SavedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA053A2C743C14007E4049 /* SavedLocation.swift */; };
 		93BA05422C7468DC007E4049 /* iOSLocationViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05412C7468DC007E4049 /* iOSLocationViewDetail.swift */; };
 		93BA05442C749D0B007E4049 /* LoadLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05432C749D0B007E4049 /* LoadLocationManager.swift */; };
@@ -245,13 +239,6 @@
 			remoteGlobalIDString = 931C29692C719C7D00554592;
 			remoteInfo = "Mini3 Watch App";
 		};
-		931C2A962C7250F500554592 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8BFFF94C2C57D51F00A2F088 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 931C2A872C7250F400554592;
-			remoteInfo = WidgetForiOSExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -272,7 +259,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				931C2A982C7250F500554592 /* WidgetForiOSExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 1;
@@ -336,13 +322,6 @@
 		931C29CA2C71ACC000554592 /* testSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testSong.mp3; sourceTree = "<group>"; };
 		931C29CB2C71ACC000554592 /* WhatYouWant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WhatYouWant.mp3; sourceTree = "<group>"; };
 		931C2A4A2C7247F600554592 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		931C2A882C7250F400554592 /* WidgetForiOSExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetForiOSExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		931C2A8A2C7250F400554592 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		931C2A8C2C7250F400554592 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		931C2A8F2C7250F400554592 /* WidgetForiOSBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetForiOSBundle.swift; sourceTree = "<group>"; };
-		931C2A912C7250F400554592 /* WidgetForiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetForiOS.swift; sourceTree = "<group>"; };
-		931C2A932C7250F500554592 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		931C2A952C7250F500554592 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93BA053A2C743C14007E4049 /* SavedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocation.swift; sourceTree = "<group>"; };
 		93BA05412C7468DC007E4049 /* iOSLocationViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLocationViewDetail.swift; sourceTree = "<group>"; };
 		93BA05432C749D0B007E4049 /* LoadLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationManager.swift; sourceTree = "<group>"; };
@@ -428,15 +407,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		931C2A852C7250F400554592 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				931C2A8D2C7250F400554592 /* SwiftUI.framework in Frameworks */,
-				931C2A8B2C7250F400554592 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -472,7 +442,6 @@
 			children = (
 				8BFFF9562C57D51F00A2F088 /* MiniChallenge3 */,
 				931C296B2C719C7D00554592 /* Mini3 Watch App */,
-				931C2A8E2C7250F400554592 /* WidgetForiOS */,
 				931C29A52C719DEC00554592 /* Model */,
 				931C29A42C719DE400554592 /* View Model */,
 				931C29A32C719DE100554592 /* View */,
@@ -480,7 +449,6 @@
 				BF02278A2C71F95800177974 /* Font */,
 				931C29CC2C71ACC000554592 /* Dummy Audio Files */,
 				BF02280D2C71FA1B00177974 /* Extension */,
-				931C2A892C7250F400554592 /* Frameworks */,
 				8BFFF9672C57D52100A2F088 /* MiniChallenge3Tests */,
 				8BFFF9712C57D52100A2F088 /* MiniChallenge3UITests */,
 				931C297C2C719C7E00554592 /* Mini3 Watch AppTests */,
@@ -498,7 +466,6 @@
 				931C296A2C719C7D00554592 /* Mini3 Watch App.app */,
 				931C29792C719C7E00554592 /* Mini3 Watch AppTests.xctest */,
 				931C29832C719C7E00554592 /* Mini3 Watch AppUITests.xctest */,
-				931C2A882C7250F400554592 /* WidgetForiOSExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -673,34 +640,6 @@
 			path = "App(WatchOS)";
 			sourceTree = "<group>";
 		};
-		931C2A892C7250F400554592 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				931C2A8A2C7250F400554592 /* WidgetKit.framework */,
-				931C2A8C2C7250F400554592 /* SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		931C2A8E2C7250F400554592 /* WidgetForiOS */ = {
-			isa = PBXGroup;
-			children = (
-				931C2A952C7250F500554592 /* Info.plist */,
-				931C2A9D2C72511000554592 /* App(Widget) */,
-				931C2A932C7250F500554592 /* Assets.xcassets */,
-			);
-			path = WidgetForiOS;
-			sourceTree = "<group>";
-		};
-		931C2A9D2C72511000554592 /* App(Widget) */ = {
-			isa = PBXGroup;
-			children = (
-				931C2A8F2C7250F400554592 /* WidgetForiOSBundle.swift */,
-				931C2A912C7250F400554592 /* WidgetForiOS.swift */,
-			);
-			path = "App(Widget)";
-			sourceTree = "<group>";
-		};
 		BF02278A2C71F95800177974 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -798,7 +737,6 @@
 			);
 			dependencies = (
 				931C298C2C719C7E00554592 /* PBXTargetDependency */,
-				931C2A972C7250F500554592 /* PBXTargetDependency */,
 			);
 			name = MiniChallenge3;
 			productName = MiniChallenge3;
@@ -894,23 +832,6 @@
 			productReference = 931C29832C719C7E00554592 /* Mini3 Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		931C2A872C7250F400554592 /* WidgetForiOSExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 931C2A992C7250F500554592 /* Build configuration list for PBXNativeTarget "WidgetForiOSExtension" */;
-			buildPhases = (
-				931C2A842C7250F400554592 /* Sources */,
-				931C2A852C7250F400554592 /* Frameworks */,
-				931C2A862C7250F400554592 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = WidgetForiOSExtension;
-			productName = WidgetForiOSExtension;
-			productReference = 931C2A882C7250F400554592 /* WidgetForiOSExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -943,9 +864,6 @@
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = 931C29692C719C7D00554592;
 					};
-					931C2A872C7250F400554592 = {
-						CreatedOnToolsVersion = 15.4;
-					};
 				};
 			};
 			buildConfigurationList = 8BFFF94F2C57D51F00A2F088 /* Build configuration list for PBXProject "MiniChallenge3" */;
@@ -967,7 +885,6 @@
 				931C29692C719C7D00554592 /* Mini3 Watch App */,
 				931C29782C719C7E00554592 /* Mini3 Watch AppTests */,
 				931C29822C719C7E00554592 /* Mini3 Watch AppUITests */,
-				931C2A872C7250F400554592 /* WidgetForiOSExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1131,14 +1048,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		931C2A862C7250F400554592 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				931C2A942C7250F500554592 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1261,15 +1170,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		931C2A842C7250F400554592 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				931C2A902C7250F400554592 /* WidgetForiOSBundle.swift in Sources */,
-				931C2A922C7250F400554592 /* WidgetForiOS.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1297,11 +1197,6 @@
 			isa = PBXTargetDependency;
 			target = 931C29692C719C7D00554592 /* Mini3 Watch App */;
 			targetProxy = 931C298B2C719C7E00554592 /* PBXContainerItemProxy */;
-		};
-		931C2A972C7250F500554592 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 931C2A872C7250F400554592 /* WidgetForiOSExtension */;
-			targetProxy = 931C2A962C7250F500554592 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1723,62 +1618,6 @@
 			};
 			name = Release;
 		};
-		931C2A9A2C7250F500554592 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WidgetForiOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WidgetForiOS;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1.WidgetForiOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		931C2A9B2C7250F500554592 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2U62MM8G6X;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WidgetForiOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WidgetForiOS;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1.WidgetForiOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1841,15 +1680,6 @@
 			buildConfigurations = (
 				931C29932C719C7E00554592 /* Debug */,
 				931C29942C719C7E00554592 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		931C2A992C7250F500554592 /* Build configuration list for PBXNativeTarget "WidgetForiOSExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				931C2A9A2C7250F500554592 /* Debug */,
-				931C2A9B2C7250F500554592 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

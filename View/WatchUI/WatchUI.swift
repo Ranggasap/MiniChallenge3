@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct WatchUI: View {
-    @State var isAutoRecord: Bool = false
-    
     @StateObject var watchVM = WatchManager()
     
     var body: some View {
@@ -34,11 +32,11 @@ struct WatchUI: View {
                 
             }
             
-            if isAutoRecord {
+            if watchVM.isAutoRecord {
                 HStack{
                     Spacer()
                         .frame(width: 125)
-                    AutoRecordIndicatorOn(isAutoRecord: $isAutoRecord)
+                    AutoRecordIndicatorOn(isAutoRecord: $watchVM.isAutoRecord)
                         .frame(width: 30)
                 }
                 .padding()
@@ -49,7 +47,7 @@ struct WatchUI: View {
                 HStack{
                     Spacer()
                         .frame(width: 125)
-                    AutoRecordIndicatorOff(isAutoRecord: $isAutoRecord)
+                    AutoRecordIndicatorOff(isAutoRecord: $watchVM.isAutoRecord)
                         .frame(width: 30)
                 }
                 .padding()

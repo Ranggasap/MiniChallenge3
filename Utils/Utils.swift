@@ -16,6 +16,7 @@ enum messageSent: String {
     case recordState = "recordState"
     case done = "done"
     case stored = "stored"
+    case autoRec = "autoRec"
 }
 
 enum PlayerScrubState {

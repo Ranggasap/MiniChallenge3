@@ -43,10 +43,14 @@ class iOSManager: recordFunction, ObservableObject {
     
     func toggleRecordingState(_ connectivity: WatchConnectivityManager, _ isRecording: Bool) {
         let newState = !isRecording
-        connectivity.sendStateChangeRequest(newState, messageSent.recordState.rawValue, false)
+        connectivity.sendStateChangeRequest(newState, messageSent.recordState.rawValue, false, false)
     }
     
     func toggleStoredState(_ connectivity: WatchConnectivityManager, _ isStored: Bool) {
-        connectivity.sendStateChangeRequest(false, messageSent.stored.rawValue, isStored)
+        connectivity.sendStateChangeRequest(false, messageSent.stored.rawValue, isStored, false)
+    }
+    
+    func toggleAutoRecordState(_ connectivity: WatchConnectivityManager, _ isToggled: Bool) {
+        connectivity.sendStateChangeRequest(false, messageSent.autoRec.rawValue, false, isToggled)
     }
 }
