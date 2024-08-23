@@ -144,8 +144,8 @@ class EvidenceListViewModel: ObservableObject {
                         
                         let evidenceItem = EvidenceItemViewModel(
                             timestamp: self.formattedDate,
-                            streetName: locationVM.loadLocManager.lastGeocodedAddressName,
-                            streetDetail: locationVM.loadLocManager.lastGeocodedAddressDetail,
+                            streetName: locationVM.storeLocation[index].streetName,
+                            streetDetail: locationVM.storeLocation[index].streetDetail,
                             recordingTime: self.audioTime,
                             audioPlayer: self.audioPlayer!,
                             recording: recording,
