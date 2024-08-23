@@ -54,6 +54,7 @@ struct iOSLocationViewDetail: View {
                 .padding()
                 .onChange(of: model.player.displayTime) { _, newValue in
                     model.sliderValue = newValue
+                    model.outputSliderValueLocationData()
                 }
                 
                 Button(action: {

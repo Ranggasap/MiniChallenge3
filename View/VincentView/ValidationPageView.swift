@@ -14,6 +14,7 @@ struct ValidationPageView: View {
     
     @State private var showLoginPage = false
     @AppStorage("userId") var userId : String = ""
+    @State private var notes: String = ""
     
     
     @State var onPinValidation: Bool
@@ -23,20 +24,23 @@ struct ValidationPageView: View {
     
     @State var currentCase: Int = 1
     @State private var showingAlert = false
-    @StateObject var iOSVM = iOSManager()
-    @StateObject private var listViewModel = EvidenceListViewModel()
+    @ObservedObject var iOSVM: iOSManager
+    @ObservedObject var listViewModel: EvidenceListViewModel
+    @ObservedObject var locationVM: LocationManager
     
     
 //    @StateObject var reportVm: ReportManager
     
-  
-    
-    
-    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, /*reportVm: ReportManager,*/ alreadyRecord: Binding<Bool>) {
+
+    init(navigateToValidation: Binding<Bool>, onPinValidation: Bool, alreadyRecord: Binding<Bool>, iOSVM: iOSManager, listViewModel: EvidenceListViewModel, locationVM: LocationManager) {
+
         self._navigateToValidation = navigateToValidation
         self._onPinValidation = State(initialValue: onPinValidation)
 //        _reportVm = StateObject(wrappedValue: reportVm)
         self._alreadyRecord = alreadyRecord
+        self.iOSVM = iOSVM
+        self.listViewModel = listViewModel
+        self.locationVM = locationVM
     }
     
     
@@ -115,7 +119,7 @@ struct ValidationPageView: View {
                             }
                             
                             ScrollView {
-                                listViewModel.getCurrentCaseView(for: currentCase)
+                                listViewModel.getCurrentCaseView(for: currentCase, locationVM, iOSVM)
                             }
                             .scrollIndicators(.hidden)
                             
@@ -223,7 +227,9 @@ struct ValidationPageView: View {
 
 #Preview {
     
-    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, /*reportVm: ReportManager(),*/ alreadyRecord: .constant(true))
+
+    ValidationPageView(navigateToValidation: .constant(true), onPinValidation: false, reportVm: ReportManager(), alreadyRecord: .constant(true), iOSVM: iOSManager(), listViewModel: EvidenceListViewModel(), locationVM: LocationManager())
+
     
 }
 

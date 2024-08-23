@@ -24,9 +24,22 @@ class recordFunction {
         do {
             let files = try FileManager.default.contentsOfDirectory(at: documentPath, includingPropertiesForKeys: nil, options: [])
             let newRecordings = files.filter { $0.pathExtension == "m4a" }
-            print("fetched recording = \(newRecordings)")
             
-            return newRecordings
+            let allRecordings = newRecordings.sorted(by: { $0.lastPathComponent > $1.lastPathComponent })
+            
+            if allRecordings.count > 3 {
+                do {
+                    let oldestRecording = allRecordings.last!
+                    try FileManager.default.removeItem(at: oldestRecording)
+                    print("Deleted recording: \(oldestRecording.lastPathComponent)")
+                } catch {
+                    print("Failed to delete recording: \(error.localizedDescription)")
+                }
+            }
+            
+            print("fetched Recording: \(allRecordings)")
+            
+            return allRecordings
         } catch {
             print("Failed to fetch recordings: \(error.localizedDescription)")
             return []

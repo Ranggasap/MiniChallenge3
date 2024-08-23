@@ -26,6 +26,6 @@ struct MiniChallenge3App: App {
 //            DummyCloudKit(userVm: UserAppManager(container: container), reportVm: ReportManager(container: container))
             
         }
-//        .modelContainer(for: SavedLocation.self)
+        .modelContainer(for: SavedLocation.self)
     }
 }

@@ -57,10 +57,32 @@ struct PulseView: View {
                         scale = scaleChanges
                         opacity = opacityChanges
                     }
+                Image(.pulseIcon)
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width/2+UIScreen.main.bounds.width/0.55, height: UIScreen.main.bounds.width/2+UIScreen.main.bounds.width/0.55)
+                    .scaleEffect(scale)
+                    .opacity(opacity)
+                    .animation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false))
+                    .onAppear {
+                        scale = scaleChanges
+                        opacity = opacityChanges
+                    }
+                Image(.pulseIcon)
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width/2+UIScreen.main.bounds.width/0.275, height: UIScreen.main.bounds.width/2+UIScreen.main.bounds.width/0.275)
+                    .scaleEffect(scale)
+                    .opacity(opacity)
+                    .animation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false))
+                    .onAppear {
+                        scale = scaleChanges
+                        opacity = opacityChanges
+                    }
             }
             .padding(.bottom, UIScreen.main.bounds.width/4)
 //            .background(.colorBackground2)
         }
+        .clipped()
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         .edgesIgnoringSafeArea(.all)
     }
 }

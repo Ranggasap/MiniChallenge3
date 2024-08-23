@@ -19,6 +19,8 @@ struct SaveLoc: Identifiable {
     var showSlider: Bool
     var region: MKCoordinateRegion
     var maxSliderValue: Double
+    var streetName: String
+    var streetDetail: String
 }
 
 @Model
@@ -33,8 +35,10 @@ class SavedLocation {
     var regionSpanLatitude: Double
     var regionSpanLongitude: Double
     var maxSliderValue: Double
+    var streetName: String
+    var streetDetail: String
     
-    init(id: UUID = UUID(), sliderValue: Double, showSlider: Bool, regionCenterLatitude: Double, regionCenterLongitude: Double, regionSpanLatitude: Double, regionSpanLongitude: Double, maxSliderValue: Double) {
+    init(id: UUID = UUID(), sliderValue: Double, showSlider: Bool, regionCenterLatitude: Double, regionCenterLongitude: Double, regionSpanLatitude: Double, regionSpanLongitude: Double, maxSliderValue: Double, streetName: String, streetDetail: String) {
         self.id = id
         self.sliderValue = sliderValue
         self.showSlider = showSlider
@@ -43,6 +47,8 @@ class SavedLocation {
         self.regionSpanLatitude = regionSpanLatitude
         self.regionSpanLongitude = regionSpanLongitude
         self.maxSliderValue = maxSliderValue
+        self.streetName = streetName
+        self.streetDetail = streetDetail
     }
     
     func insert(_ context: ModelContext) {

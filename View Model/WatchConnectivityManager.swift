@@ -20,6 +20,11 @@ class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
         get { isStoredSubject.value }
         set { isStoredSubject.send(newValue) }
     }
+    var isAutoRecSubject = CurrentValueSubject<Bool, Never>(false)
+    var isAutoRec: Bool {
+        get { isAutoRecSubject.value }
+        set { isAutoRecSubject.send(newValue) }
+    }
     
     override init() {
         super.init()
@@ -44,11 +49,15 @@ class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
         // iOS specific implementation
     }
     
-    func sendStateChangeRequest(_ isRecording: Bool, _ storeRecord: String, _ isStored: Bool) {
+    func sendStateChangeRequest(_ isRecording: Bool, _ storeRecord: String, _ isStored: Bool, _ isToggled: Bool) {
         let session = WCSession.default
         if session.activationState == .activated {
             if storeRecord == messageSent.stored.rawValue {
                 session.sendMessage([messageSent.stored.rawValue: isStored], replyHandler: nil) { error in
+                    print("Error sending request: \(error.localizedDescription)")
+                }
+            } else if storeRecord == messageSent.autoRec.rawValue {
+                session.sendMessage([messageSent.autoRec.rawValue: isToggled], replyHandler: nil) { error in
                     print("Error sending request: \(error.localizedDescription)")
                 }
             } else {
@@ -126,6 +135,8 @@ class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
             self.isRecording = request
         } else if let request = message[messageSent.stored.rawValue] as? Bool {
             self.isStored = request
+        } else if let request = message[messageSent.autoRec.rawValue] as? Bool {
+            self.isAutoRec = request
         }
     }
 #endif

@@ -12,6 +12,7 @@ import AVFoundation
 class WatchManager: recordFunction, ObservableObject {
     @Published var audio = Audio()
     @Published var isRecording = false
+    @Published var isAutoRecord = false
     @Published var isLoading = true
     @Published var connectivity = WatchConnectivityManager()
     var audioRecorder: AVAudioRecorder?
@@ -44,6 +45,17 @@ class WatchManager: recordFunction, ObservableObject {
                     }
                 } else {
                     self.initializeState = true
+                }
+
+            }
+            .store(in: &cancellables)
+        
+        connectivity.isAutoRecSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newValue in
+                guard let self = self else { return }
+                if self.isAutoRecord != newValue {
+                    self.isAutoRecord = newValue
                 }
 
             }

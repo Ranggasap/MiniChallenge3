@@ -24,7 +24,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         self.loadLocManager = LoadLocationManager(region: MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275),
             span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        ), pins: [], routeCoordinates: [], sliderValue: 0, showSlider: false, maxSliderValue: 0)
+        ), pins: [], routeCoordinates: [], sliderValue: 0, showSlider: false, maxSliderValue: 0, lastGeocodedAddressName: "", lastGeocodedAddressDetail: "")
         
         mgr = CLLocationManager()
         mgr.desiredAccuracy = kCLLocationAccuracyBestForNavigation
@@ -55,6 +55,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         countMaxSliderValue()
         loadLocManager.sliderValue = loadLocManager.maxSliderValue
         loadLocManager.showSlider = true
+        loadLocManager.outputSliderValueLocationData()
         isDisabled = true
     }
     
@@ -125,48 +126,40 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         loadLocManager.pauseAudio()
     }
     
-    //TODO: not needed I guess??
-    func outputSliderValueLocationData() {
-        // Get the exact coordinate at the current slider value
-        guard let firstTimestamp = loadLocManager.routeCoordinates.first?.timestamp else {
-            print("No location data available.")
-            return
-        }
-        
-        // Calculate the target timestamp
-        let targetTimestamp = firstTimestamp.addingTimeInterval(loadLocManager.sliderValue)
-        
-        // Find the closest coordinate to the target timestamp
-        if let closestLocation = loadLocManager.routeCoordinates.min(by: { abs($0.timestamp.timeIntervalSince(targetTimestamp)) < abs($1.timestamp.timeIntervalSince(targetTimestamp)) }) {
-            let latitude = closestLocation.coordinate.latitude
-            let longitude = closestLocation.coordinate.longitude
-            print("Current location at slider value (\(loadLocManager.sliderValue) seconds):")
-            print("Lat: \(latitude), Lon: \(longitude)")
-        } else {
-            print("No location data available for the current slider value.")
-        }
-    }
-    
 }
 
-extension iOSLocationView {
+extension ContentView {
     func storeLocationToSwiftData() {
-        // Create a new SavedLocation object with the current values from loadLocManager
-        let savedLocation = SavedLocation(
-            sliderValue: model.loadLocManager.sliderValue,
-            showSlider: model.loadLocManager.showSlider,
-            regionCenterLatitude: model.loadLocManager.region.center.latitude,
-            regionCenterLongitude: model.loadLocManager.region.center.longitude,
-            regionSpanLatitude: model.loadLocManager.region.span.latitudeDelta,
-            regionSpanLongitude: model.loadLocManager.region.span.longitudeDelta,
-            maxSliderValue: model.loadLocManager.maxSliderValue
-        )
+        if savedLocations.count >= 3 {
+            savedLocations.last?.delete(context)
+        }
         
-        // Insert the savedLocation into the SwiftData context
+        addNewItemToSwiftData()
+    }
+    
+    private func addNewItemToSwiftData() {
+        let savedLocation = createNewSavedLocation()
         savedLocation.insert(context)
-        
-        // Convert routeCoordinates to RouteCoordinate objects and append them to savedLocation
-        for location in model.loadLocManager.routeCoordinates {
+        appendRouteCoordinates(to: savedLocation)
+        appendPinnedLocations(to: savedLocation)
+    }
+    
+    private func createNewSavedLocation() -> SavedLocation {
+        return SavedLocation(
+            sliderValue: locationVM.loadLocManager.sliderValue,
+            showSlider: locationVM.loadLocManager.showSlider,
+            regionCenterLatitude: locationVM.loadLocManager.region.center.latitude,
+            regionCenterLongitude: locationVM.loadLocManager.region.center.longitude,
+            regionSpanLatitude: locationVM.loadLocManager.region.span.latitudeDelta,
+            regionSpanLongitude: locationVM.loadLocManager.region.span.longitudeDelta,
+            maxSliderValue: locationVM.loadLocManager.maxSliderValue,
+            streetName: locationVM.loadLocManager.lastGeocodedAddressName,
+            streetDetail: locationVM.loadLocManager.lastGeocodedAddressDetail
+        )
+    }
+    
+    private func appendRouteCoordinates(to savedLocation: SavedLocation) {
+        for location in locationVM.loadLocManager.routeCoordinates {
             let routeCoordinate = RouteCoordinate(
                 routeLatitude: location.coordinate.latitude,
                 routeLongitude: location.coordinate.longitude,
@@ -174,9 +167,10 @@ extension iOSLocationView {
             )
             savedLocation.routeCoordinates.append(routeCoordinate)
         }
-        
-        // Convert pins to PinnedLocation objects and append them to savedLocation
-        for pin in model.loadLocManager.pins {
+    }
+    
+    private func appendPinnedLocations(to savedLocation: SavedLocation) {
+        for pin in locationVM.loadLocManager.pins {
             let pinnedLocation = PinnedLocation(
                 pinLatitude: pin.coordinate.latitude,
                 pinLongitude: pin.coordinate.longitude,
@@ -188,15 +182,14 @@ extension iOSLocationView {
     
     func convertToTempData() {
         for location in savedLocations {
-            
-            if model.storeLocation.contains(where: { $0.id == location.id }) {
+            if locationVM.storeLocation.contains(where: { $0.id == location.id }) {
                 print("Location with id \(location.id) already exists in storeLocation. Skipping...")
                 continue
             }
             
             var pinLoc: [PinLocation] = []
             var routeCoor: [(coordinate: CLLocationCoordinate2D, timestamp: Date)] = []
-
+            
             for pin in location.pinnedLocations {
                 let coordinate = CLLocationCoordinate2D(latitude: pin.pinLatitude, longitude: pin.pinLongitude)
                 let timestamp = Date(timeIntervalSince1970: pin.pinDate)
@@ -210,12 +203,12 @@ extension iOSLocationView {
                 routeCoor.append((coordinate: coordinate, timestamp: timestamp))
             }
             routeCoor.sort(by: { $0.timestamp < $1.timestamp })
-
+            
             let region = MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: location.regionCenterLatitude, longitude: location.regionCenterLongitude),
                 span: MKCoordinateSpan(latitudeDelta: location.regionSpanLatitude, longitudeDelta: location.regionSpanLongitude)
             )
-
+            
             let saveLoc = SaveLoc(
                 id: location.id,
                 routeCoordinates: routeCoor,
@@ -223,10 +216,12 @@ extension iOSLocationView {
                 sliderValue: location.sliderValue,
                 showSlider: location.showSlider,
                 region: region,
-                maxSliderValue: location.maxSliderValue
+                maxSliderValue: location.maxSliderValue,
+                streetName: location.streetName,
+                streetDetail: location.streetDetail
             )
             
-            model.storeLocation.append(saveLoc)
+            locationVM.storeLocation.append(saveLoc)
         }
     }
 }

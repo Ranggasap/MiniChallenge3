@@ -10,7 +10,6 @@ import SwiftUI
 struct RecordingWatchUI: View {
     
     @ObservedObject var watchVM : WatchManager
-    @Binding var isRecording: Bool
     
     var body: some View {
         ZStack(alignment: .top){
@@ -46,7 +45,6 @@ struct RecordingWatchUI: View {
                 Button(action: {
                     withAnimation{
                         watchVM.toggleRecordingState(watchVM.connectivity, watchVM.isRecording)
-                        isRecording = watchVM.isRecording
                     }
                 }) {
                     Text("Add Pin Point")
@@ -89,9 +87,8 @@ struct AutoRecordIndicatorOn: View {
 
 
 #Preview {
-    @State var isRecording = false
     @StateObject var watchVM = WatchManager()
-    return RecordingWatchUI(watchVM: watchVM, isRecording: $isRecording)
+    return RecordingWatchUI(watchVM: watchVM)
 }
 
 

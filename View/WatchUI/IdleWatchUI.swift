@@ -10,7 +10,6 @@ import SwiftUI
 struct IdleWatchUI: View {
     
     @ObservedObject var watchVM : WatchManager
-    @Binding var isRecording: Bool
     
     var body: some View {
         ZStack(alignment: .top){
@@ -36,7 +35,6 @@ struct IdleWatchUI: View {
                 Button(action: {
                     withAnimation{
                         watchVM.toggleRecordingState(watchVM.connectivity, watchVM.isRecording)
-                        isRecording = watchVM.isRecording
                     }
                 }) {
                     Text("Start Record")
@@ -76,9 +74,8 @@ struct AutoRecordIndicatorOff: View {
 }
 
 #Preview {
-    @State var isRecording = false
     @StateObject var watchVM = WatchManager()
-    return IdleWatchUI(watchVM: watchVM, isRecording: $isRecording)
+    return IdleWatchUI(watchVM: watchVM)
 }
 
 

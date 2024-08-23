@@ -8,69 +8,92 @@
 import SwiftUI
 
 struct UpdateLocationView: View {
-    @State var alreadyRecord = false
-    @StateObject var iOSVM = iOSManager()
-    @StateObject private var listViewModel = EvidenceListViewModel()
-    
+    @ObservedObject var iOSVM = iOSManager()
+    @ObservedObject private var listViewModel = EvidenceListViewModel()
     @State private var showingAlert = false
 
     var body: some View {
         NavigationStack {
             ZStack {
-                if iOSVM.endRecord {
-                    bgStyle(pattern: "ItemBackground1", colorBg: "ColorBackground1")
-                    AvatarView(avatar: "avatar1")
-                    BubbleChatView(text: "How was your day? Keep your head high, knowing that you have the power within you to face any challenge.")
-                } else {
-                    bgStyle(pattern: "ItemBackground2", colorBg: "ColorBackground2")
-                    PulseView()
-                    AvatarView(avatar: "avatar2")
-                    BubbleChatView(text: "Right now, I company you and observe your surrounding on your apple watch")
-                }
+                // mapviewnya (harus disesuain sama bgstyle biar pas)
+//                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                bgStyle(pattern: "ItemBackground1", colorBg: "ColorBackground1") // testview
                 
-                VStack {
+                VStack(spacing:16) {
                     Spacer()
-                    VStack(spacing: 16) {
-                        if iOSVM.isRecording && iOSVM.endRecord {
-                        } else {
-                            Button(action: {
-                                if iOSVM.isRecording {
-                                    iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
-                                    showingAlert = true
-                                } else {
-                                    iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
+                    VStack(spacing: 32) {
+                        VStack(spacing:12){
+                            HStack{
+                                Image(systemName: "figure.walk")
+                                Slider(value: .constant(0.3))
+                                Image(systemName: "figure.wave")
+                            }
+                            .padding(.horizontal, 32)
+                            HStack{
+                                Spacer()
+                                
+                                HStack(spacing:16){
+                                    Button(action: {
+                                        // backward 10 sec
+                                    }) {
+                                        Image(systemName: "gobackward.10")
+                                            .font(.system(size: 24))
+                                            .foregroundColor(.buttonColor5)
+                                    }
+                                    
+                                    Button(action: {
+                                        // implement play music
+                                    }) {
+                                        Image(systemName: "play.fill")
+                                            .font(.system(size: 32))
+                                            .foregroundColor(.buttonColor3)
+                                    }
+                                    
+                                    Button(action: {
+                                        // forward 10 sec
+                                    }) {
+                                        Image(systemName: "goforward.10")
+                                            .font(.system(size: 24))
+                                            .foregroundColor(.buttonColor5)
+                                    }
                                 }
+                                Spacer()
+                            }
+                        }
+                        
+                        VStack(spacing:16){
+                            Button(action: {
+                                // Update pin point action
                             }) {
                                 RoundedRectangle(cornerRadius: 14)
-                                    .foregroundColor(iOSVM.isRecording ? .buttonColor2 : .buttonColor1)
+                                    .foregroundColor(.buttonColor1)
                                     .frame(width: UIScreen.main.bounds.width - 64, height: 62)
                                     .overlay {
-                                        Text(iOSVM.isRecording ? "End Record" : "Start Record")
+                                        Text("Change Pin Point")
                                             .font(.lt(size: 20, weight: .bold))
                                             .foregroundColor(.fontColor1)
                                     }
                                     .padding(.horizontal, 32)
                             }
                             
-                            if alreadyRecord {
-                                Button(action: {
-                                    
-                                }) {
-                                    RoundedRectangle(cornerRadius: 14)
-                                        .stroke(lineWidth: 2)
-                                        .foregroundColor(.buttonColor3)
-                                        .frame(width: UIScreen.main.bounds.width - 64, height: 62)
-                                        .overlay {
-                                            Text("Report")
-                                                .font(.lt(size: 20, weight: .bold))
-                                                .foregroundColor(.fontColor3)
-                                        }
-                                        .padding(.horizontal, 32)
-                                }
-                                .simultaneousGesture(TapGesture().onEnded {
-                                    listViewModel.navigateToValidation = true
-                                })
+                            Button(action: {
+                                // Cancel action
+                            }) {
+                                RoundedRectangle(cornerRadius: 14)
+                                    .stroke(lineWidth: 2)
+                                    .foregroundColor(.buttonColor2)
+                                    .frame(width: UIScreen.main.bounds.width - 64, height: 62)
+                                    .overlay {
+                                        Text("Cancel")
+                                            .font(.lt(size: 20, weight: .bold))
+                                            .foregroundColor(.buttonColor2)
+                                    }
+                                    .padding(.horizontal, 32)
                             }
+                            .simultaneousGesture(TapGesture().onEnded {
+                                listViewModel.navigateToValidation = true
+                            })
                         }
                     }
                     .padding(.top, 28)
@@ -78,20 +101,7 @@ struct UpdateLocationView: View {
                     .background(.containerColor1)
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                 }
-            }
-            
-            .alert(isPresented: $showingAlert) { // Present the alert
-                Alert(
-                    title: Text("Did you feel uncomfortable?"),
-                    message: Text("Share to us if you got catcalled while walking just now"),
-                    primaryButton: .default(Text("Yes")) {
-                        iOSVM.isRecording = false
-                        listViewModel.navigateToPinValidation = true
-                    },
-                    secondaryButton: .cancel(Text("No")) {
-                        iOSVM.isRecording = false
-                    }
-                )
+                
             }
         }
         .navigationViewStyle(.stack)
@@ -99,6 +109,6 @@ struct UpdateLocationView: View {
 }
 
 #Preview {
-    ContentView(alreadyRecord: false, iOSVM: iOSManager())
+    UpdateLocationView(iOSVM: iOSManager())
 }
 

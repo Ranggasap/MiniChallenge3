@@ -58,20 +58,13 @@
 		931C29CE2C71ACC000554592 /* IronBacon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29C92C71ACC000554592 /* IronBacon.mp3 */; };
 		931C29CF2C71ACC000554592 /* testSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29CA2C71ACC000554592 /* testSong.mp3 */; };
 		931C29D02C71ACC000554592 /* WhatYouWant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 931C29CB2C71ACC000554592 /* WhatYouWant.mp3 */; };
-		931C2A442C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
-		931C2A452C71E04500554592 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A432C71E04500554592 /* Recording.swift */; };
 		931C2A4B2C7247F600554592 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A4A2C7247F600554592 /* Utils.swift */; };
 		931C2A4C2C7247F600554592 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A4A2C7247F600554592 /* Utils.swift */; };
-		931C2A8B2C7250F400554592 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C2A8A2C7250F400554592 /* WidgetKit.framework */; };
-		931C2A8D2C7250F400554592 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931C2A8C2C7250F400554592 /* SwiftUI.framework */; };
-		931C2A902C7250F400554592 /* WidgetForiOSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A8F2C7250F400554592 /* WidgetForiOSBundle.swift */; };
-		931C2A922C7250F400554592 /* WidgetForiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C2A912C7250F400554592 /* WidgetForiOS.swift */; };
-		931C2A942C7250F500554592 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 931C2A932C7250F500554592 /* Assets.xcassets */; };
-		931C2A982C7250F500554592 /* WidgetForiOSExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 931C2A882C7250F400554592 /* WidgetForiOSExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		93BA053B2C743C14007E4049 /* SavedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA053A2C743C14007E4049 /* SavedLocation.swift */; };
 		93BA05422C7468DC007E4049 /* iOSLocationViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05412C7468DC007E4049 /* iOSLocationViewDetail.swift */; };
 		93BA05442C749D0B007E4049 /* LoadLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05432C749D0B007E4049 /* LoadLocationManager.swift */; };
 		93BA05482C75AA14007E4049 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05472C75AA14007E4049 /* Player.swift */; };
+		93BA054A2C7779F2007E4049 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA05492C7779F2007E4049 /* DownloadManager.swift */; };
 		BF02279D2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
 		BF02279E2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
 		BF02279F2C71F97100177974 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */; };
@@ -196,6 +189,8 @@
 		BF0228212C71FA7B00177974 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0228162C71FA7B00177974 /* ColorExtension.swift */; };
 		BF0228222C71FA7B00177974 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0228162C71FA7B00177974 /* ColorExtension.swift */; };
 		BF227A332C7595A600B64EE5 /* UpdateLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF227A322C7595A600B64EE5 /* UpdateLocationView.swift */; };
+		BF227A462C7704DE00B64EE5 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF227A452C7704DE00B64EE5 /* WatchView.swift */; };
+		BF227A482C77050200B64EE5 /* PulseWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF227A472C77050200B64EE5 /* PulseWatchView.swift */; };
 		BF2911B12C738791007BA6D7 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B02C738791007BA6D7 /* AvatarView.swift */; };
 		BF2911B32C7387AD007BA6D7 /* BubbleChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */; };
 		BF2911B52C7387DA007BA6D7 /* PulseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2911B42C7387DA007BA6D7 /* PulseView.swift */; };
@@ -245,13 +240,6 @@
 			remoteGlobalIDString = 931C29692C719C7D00554592;
 			remoteInfo = "Mini3 Watch App";
 		};
-		931C2A962C7250F500554592 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8BFFF94C2C57D51F00A2F088 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 931C2A872C7250F400554592;
-			remoteInfo = WidgetForiOSExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -268,14 +256,13 @@
 		};
 		931C2A9C2C7250F500554592 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				931C2A982C7250F500554592 /* WidgetForiOSExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -336,19 +323,12 @@
 		931C29C92C71ACC000554592 /* IronBacon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = IronBacon.mp3; sourceTree = "<group>"; };
 		931C29CA2C71ACC000554592 /* testSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testSong.mp3; sourceTree = "<group>"; };
 		931C29CB2C71ACC000554592 /* WhatYouWant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WhatYouWant.mp3; sourceTree = "<group>"; };
-		931C2A432C71E04500554592 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		931C2A4A2C7247F600554592 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		931C2A882C7250F400554592 /* WidgetForiOSExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetForiOSExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		931C2A8A2C7250F400554592 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		931C2A8C2C7250F400554592 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		931C2A8F2C7250F400554592 /* WidgetForiOSBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetForiOSBundle.swift; sourceTree = "<group>"; };
-		931C2A912C7250F400554592 /* WidgetForiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetForiOS.swift; sourceTree = "<group>"; };
-		931C2A932C7250F500554592 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		931C2A952C7250F500554592 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93BA053A2C743C14007E4049 /* SavedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocation.swift; sourceTree = "<group>"; };
 		93BA05412C7468DC007E4049 /* iOSLocationViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLocationViewDetail.swift; sourceTree = "<group>"; };
 		93BA05432C749D0B007E4049 /* LoadLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationManager.swift; sourceTree = "<group>"; };
 		93BA05472C75AA14007E4049 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		93BA05492C7779F2007E4049 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		BF02278B2C71F97000177974 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		BF02278C2C71F97000177974 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		BF02278D2C71F97000177974 /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
@@ -371,6 +351,8 @@
 		BF0228152C71FA7B00177974 /* DynamicIslandChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicIslandChecker.swift; sourceTree = "<group>"; };
 		BF0228162C71FA7B00177974 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		BF227A322C7595A600B64EE5 /* UpdateLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationView.swift; sourceTree = "<group>"; };
+		BF227A452C7704DE00B64EE5 /* WatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
+		BF227A472C77050200B64EE5 /* PulseWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseWatchView.swift; sourceTree = "<group>"; };
 		BF2911B02C738791007BA6D7 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChatView.swift; sourceTree = "<group>"; };
 		BF2911B42C7387DA007BA6D7 /* PulseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseView.swift; sourceTree = "<group>"; };
@@ -427,15 +409,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		931C2A852C7250F400554592 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				931C2A8D2C7250F400554592 /* SwiftUI.framework in Frameworks */,
-				931C2A8B2C7250F400554592 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -461,6 +434,7 @@
 				8BE370372C74501800AFFC8D /* WatchUI.swift */,
 				8BE370392C7481C500AFFC8D /* IdleWatchUI.swift */,
 				8BE3703B2C7481FE00AFFC8D /* RecordingWatchUI.swift */,
+				BF227A452C7704DE00B64EE5 /* WatchView.swift */,
 			);
 			path = WatchUI;
 			sourceTree = "<group>";
@@ -470,7 +444,6 @@
 			children = (
 				8BFFF9562C57D51F00A2F088 /* MiniChallenge3 */,
 				931C296B2C719C7D00554592 /* Mini3 Watch App */,
-				931C2A8E2C7250F400554592 /* WidgetForiOS */,
 				931C29A52C719DEC00554592 /* Model */,
 				931C29A42C719DE400554592 /* View Model */,
 				931C29A32C719DE100554592 /* View */,
@@ -478,7 +451,6 @@
 				BF02278A2C71F95800177974 /* Font */,
 				931C29CC2C71ACC000554592 /* Dummy Audio Files */,
 				BF02280D2C71FA1B00177974 /* Extension */,
-				931C2A892C7250F400554592 /* Frameworks */,
 				8BFFF9672C57D52100A2F088 /* MiniChallenge3Tests */,
 				8BFFF9712C57D52100A2F088 /* MiniChallenge3UITests */,
 				931C297C2C719C7E00554592 /* Mini3 Watch AppTests */,
@@ -496,7 +468,6 @@
 				931C296A2C719C7D00554592 /* Mini3 Watch App.app */,
 				931C29792C719C7E00554592 /* Mini3 Watch AppTests.xctest */,
 				931C29832C719C7E00554592 /* Mini3 Watch AppUITests.xctest */,
-				931C2A882C7250F400554592 /* WidgetForiOSExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -612,6 +583,7 @@
 				631EC7EC2C74E4D900DBBA4D /* GeofencingManager.swift */,
 				639CBFF02C76EC2500695DE0 /* NotifManager.swift */,
 				93BA05432C749D0B007E4049 /* LoadLocationManager.swift */,
+				93BA05492C7779F2007E4049 /* DownloadManager.swift */,
 				BFD4A8CF2C71FCF200D5E4C5 /* VincentViewModel */,
 			);
 			path = "View Model";
@@ -624,7 +596,6 @@
 				631EC7DD2C74E1AB00DBBA4D /* UserApp.swift */,
 				631EC7E02C74E1B000DBBA4D /* Report.swift */,
 				931C29C02C71A47700554592 /* PinLocation.swift */,
-				931C2A432C71E04500554592 /* Recording.swift */,
 				93BA053A2C743C14007E4049 /* SavedLocation.swift */,
 				93BA05472C75AA14007E4049 /* Player.swift */,
 			);
@@ -672,34 +643,6 @@
 			path = "App(WatchOS)";
 			sourceTree = "<group>";
 		};
-		931C2A892C7250F400554592 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				931C2A8A2C7250F400554592 /* WidgetKit.framework */,
-				931C2A8C2C7250F400554592 /* SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		931C2A8E2C7250F400554592 /* WidgetForiOS */ = {
-			isa = PBXGroup;
-			children = (
-				931C2A952C7250F500554592 /* Info.plist */,
-				931C2A9D2C72511000554592 /* App(Widget) */,
-				931C2A932C7250F500554592 /* Assets.xcassets */,
-			);
-			path = WidgetForiOS;
-			sourceTree = "<group>";
-		};
-		931C2A9D2C72511000554592 /* App(Widget) */ = {
-			isa = PBXGroup;
-			children = (
-				931C2A8F2C7250F400554592 /* WidgetForiOSBundle.swift */,
-				931C2A912C7250F400554592 /* WidgetForiOS.swift */,
-			);
-			path = "App(Widget)";
-			sourceTree = "<group>";
-		};
 		BF02278A2C71F95800177974 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,6 +680,7 @@
 				BFD4A8A02C71FCB600D5E4C5 /* Component */,
 				BFD4A89B2C71FCA100D5E4C5 /* bgStyle.swift */,
 				BF2911B42C7387DA007BA6D7 /* PulseView.swift */,
+				BF227A472C77050200B64EE5 /* PulseWatchView.swift */,
 				BF2911B02C738791007BA6D7 /* AvatarView.swift */,
 				BF2911B22C7387AD007BA6D7 /* BubbleChatView.swift */,
 			);
@@ -796,7 +740,6 @@
 			);
 			dependencies = (
 				931C298C2C719C7E00554592 /* PBXTargetDependency */,
-				931C2A972C7250F500554592 /* PBXTargetDependency */,
 			);
 			name = MiniChallenge3;
 			productName = MiniChallenge3;
@@ -892,23 +835,6 @@
 			productReference = 931C29832C719C7E00554592 /* Mini3 Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		931C2A872C7250F400554592 /* WidgetForiOSExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 931C2A992C7250F500554592 /* Build configuration list for PBXNativeTarget "WidgetForiOSExtension" */;
-			buildPhases = (
-				931C2A842C7250F400554592 /* Sources */,
-				931C2A852C7250F400554592 /* Frameworks */,
-				931C2A862C7250F400554592 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = WidgetForiOSExtension;
-			productName = WidgetForiOSExtension;
-			productReference = 931C2A882C7250F400554592 /* WidgetForiOSExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -941,9 +867,6 @@
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = 931C29692C719C7D00554592;
 					};
-					931C2A872C7250F400554592 = {
-						CreatedOnToolsVersion = 15.4;
-					};
 				};
 			};
 			buildConfigurationList = 8BFFF94F2C57D51F00A2F088 /* Build configuration list for PBXProject "MiniChallenge3" */;
@@ -965,7 +888,6 @@
 				931C29692C719C7D00554592 /* Mini3 Watch App */,
 				931C29782C719C7E00554592 /* Mini3 Watch AppTests */,
 				931C29822C719C7E00554592 /* Mini3 Watch AppUITests */,
-				931C2A872C7250F400554592 /* WidgetForiOSExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1129,14 +1051,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		931C2A862C7250F400554592 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				931C2A942C7250F500554592 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1163,6 +1077,7 @@
 				93BA05442C749D0B007E4049 /* LoadLocationManager.swift in Sources */,
 				BF2911BA2C743C18007BA6D7 /* PinPointPageView.swift in Sources */,
 				8BE370412C75983A00AFFC8D /* DummyLocationViewModel.swift in Sources */,
+				93BA054A2C7779F2007E4049 /* DownloadManager.swift in Sources */,
 				931C29B82C719EE100554592 /* iOSMainView.swift in Sources */,
 				8BE370462C75A76400AFFC8D /* iOSManager.swift in Sources */,
 				BFD4A8A42C71FCB600D5E4C5 /* EvidenceItemView.swift in Sources */,
@@ -1189,7 +1104,6 @@
 				639CBFF12C76EC2500695DE0 /* NotifManager.swift in Sources */,
 				93BA05422C7468DC007E4049 /* iOSLocationViewDetail.swift in Sources */,
 				931C29C72C71A5C700554592 /* iOSLocationView.swift in Sources */,
-				931C2A442C71E04500554592 /* Recording.swift in Sources */,
 				931C29BF2C71A46500554592 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1222,18 +1136,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				931C2A452C71E04500554592 /* Recording.swift in Sources */,
 				931C29AE2C719E7E00554592 /* RecordFunction.swift in Sources */,
 				931C29A82C719E2A00554592 /* Audio.swift in Sources */,
 				8BE3703A2C7481C500AFFC8D /* IdleWatchUI.swift in Sources */,
 				BF0228202C71FA7B00177974 /* ColorExtension.swift in Sources */,
 				BF0228122C71FA5B00177974 /* FontExtension.swift in Sources */,
+				BF227A462C7704DE00B64EE5 /* WatchView.swift in Sources */,
 				931C2A4C2C7247F600554592 /* Utils.swift in Sources */,
 				931C29B42C719ECB00554592 /* WatchMainView.swift in Sources */,
 				8BE370382C74501800AFFC8D /* WatchUI.swift in Sources */,
 				931C29AB2C719E4200554592 /* WatchConnectivityManager.swift in Sources */,
 				931C296D2C719C7D00554592 /* Mini3App.swift in Sources */,
 				931C29B22C719EA700554592 /* WatchManager.swift in Sources */,
+				BF227A482C77050200B64EE5 /* PulseWatchView.swift in Sources */,
 				8BE3703C2C7481FE00AFFC8D /* RecordingWatchUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1256,15 +1171,6 @@
 				931C29882C719C7E00554592 /* Mini3_Watch_AppUITests.swift in Sources */,
 				931C298A2C719C7E00554592 /* Mini3_Watch_AppUITestsLaunchTests.swift in Sources */,
 				BF0228222C71FA7B00177974 /* ColorExtension.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		931C2A842C7250F400554592 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				931C2A902C7250F400554592 /* WidgetForiOSBundle.swift in Sources */,
-				931C2A922C7250F400554592 /* WidgetForiOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1295,11 +1201,6 @@
 			isa = PBXTargetDependency;
 			target = 931C29692C719C7D00554592 /* Mini3 Watch App */;
 			targetProxy = 931C298B2C719C7E00554592 /* PBXContainerItemProxy */;
-		};
-		931C2A972C7250F500554592 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 931C2A872C7250F400554592 /* WidgetForiOSExtension */;
-			targetProxy = 931C2A962C7250F500554592 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1430,9 +1331,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MiniChallenge3/MiniChallenge3.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1446,14 +1349,15 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1467,9 +1371,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MiniChallenge3/MiniChallenge3.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MiniChallenge3/Preview Content\"";
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1483,14 +1389,15 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1504,7 +1411,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
@@ -1524,7 +1431,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
@@ -1543,7 +1450,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3UITests;
@@ -1561,7 +1468,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3UITests;
@@ -1581,6 +1488,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1588,13 +1496,13 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Mini3;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.dandenion.MiniChallenge3;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.dandenion.MiniChallenge3-1";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1613,6 +1521,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3 Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				DEVELOPMENT_TEAM = NNX37468Q3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1620,13 +1529,13 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Mini3;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.dandenion.MiniChallenge3;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.dandenion.MiniChallenge3-1";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dandenion.MiniChallenge3.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dandenion.MiniChallenge3-1.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1644,7 +1553,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppTests";
@@ -1665,7 +1574,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppTests";
@@ -1685,7 +1594,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppUITests";
@@ -1705,7 +1614,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M45X2698V4;
+				DEVELOPMENT_TEAM = 2U62MM8G6X;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SendDataWatch3.Mini3-Watch-AppUITests";
@@ -1719,6 +1628,7 @@
 			};
 			name = Release;
 		};
+
 		931C2A9A2C7250F500554592 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1837,15 +1747,6 @@
 			buildConfigurations = (
 				931C29932C719C7E00554592 /* Debug */,
 				931C29942C719C7E00554592 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		931C2A992C7250F500554592 /* Build configuration list for PBXNativeTarget "WidgetForiOSExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				931C2A9A2C7250F500554592 /* Debug */,
-				931C2A9B2C7250F500554592 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
