@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CloudKit
+import AVFoundation
 
 struct ValidationPageView: View {
     @State private var isAutoRecording = true
@@ -14,8 +15,6 @@ struct ValidationPageView: View {
     
     @State private var showLoginPage = false
     @AppStorage("userId") var userId : String = ""
-    @State private var notes: String = ""
-    
     
     @State var onPinValidation: Bool
     @Binding var alreadyRecord: Bool
@@ -24,6 +23,7 @@ struct ValidationPageView: View {
     
     @State var currentCase: Int = 1
     @State private var showingAlert = false
+
     @ObservedObject var iOSVM: iOSManager
     @ObservedObject var listViewModel: EvidenceListViewModel
     @ObservedObject var locationVM: LocationManager
@@ -119,7 +119,9 @@ struct ValidationPageView: View {
                             }
                             
                             ScrollView {
-                                listViewModel.getCurrentCaseView(for: currentCase, locationVM, iOSVM)
+                                if !listViewModel.isDirected {
+                                    listViewModel.getCurrentCaseView(for: currentCase, locationVM, iOSVM, listViewModel)
+                                }
                             }
                             .scrollIndicators(.hidden)
                             
@@ -173,6 +175,9 @@ struct ValidationPageView: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        .navigationDestination(isPresented: $listViewModel.isDirected) {
+            UpdateLocationView(listViewModel: listViewModel, player: listViewModel.audioPlayerForUpdate)
+        }
         
         
     }

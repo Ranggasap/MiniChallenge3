@@ -26,7 +26,7 @@ struct ContentView: View {
   
     @StateObject var locationVM = LocationManager()
     @Environment(\.modelContext) var context
-    @Query(sort: \SavedLocation.id) var savedLocations: [SavedLocation]
+    @Query(sort: \SavedLocation.id, order: .reverse) var savedLocations: [SavedLocation]
 
     
     @StateObject var locationManager = GeofencingManager()
@@ -70,7 +70,7 @@ struct ContentView: View {
                                 }
                         }
 
-                        Button(action: { //isrecord = true, endrecord = false
+                        Button(action: {
                             if !iOSVM.isRecording || (iOSVM.isRecording && !iOSVM.endRecord){
                                 iOSVM.toggleRecordingState(iOSVM.connectivity, iOSVM.isRecording)
                             }
@@ -211,15 +211,15 @@ struct ContentView: View {
             }
         }
 
-        .onChange(of: locationManager.currentLocation) { newLocation in
-            if let location = newLocation {
-                listViewModel.reportVm.fetchReportsNearUserLocation(userLocation: location)
-                print(location)
-                
-                locationManager.updateLocation()
-                
-            }
-        }
+//        .onChange(of: locationManager.currentLocation) { newLocation in
+//            if let location = newLocation {
+//                listViewModel.reportVm.fetchReportsNearUserLocation(userLocation: location)
+//                print(location)
+//                
+//                locationManager.updateLocation()
+//                
+//            }
+//        }
         
         .onAppear{
             NotifManager().requestAuthorization()

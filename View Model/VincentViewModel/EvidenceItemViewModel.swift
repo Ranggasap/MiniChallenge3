@@ -74,7 +74,14 @@ class EvidenceListViewModel: ObservableObject {
     @Published var formattedDate: String = ""
     @Published var audioTime: String = ""
     @Published var audioPlayer: Player?
-    
+    @Published var audioPlayerForUpdate: Player = Player(avPlayer: AVPlayer(url: Bundle.main.url(forResource: "testSong", withExtension: "mp3")!))
+    @Published var isDirected: Bool = false
+    var isDirectedBinding: Binding<Bool> {
+        Binding(
+            get: { self.isDirected },
+            set: { self.isDirected = $0 }
+        )
+    }
     
     
     let reportVm: ReportManager
@@ -102,7 +109,7 @@ class EvidenceListViewModel: ObservableObject {
     }
     
     @ViewBuilder
-    func getCurrentCaseView(for currentCase: Int, _ locationVM: LocationManager, _ iOSVM: iOSManager) -> some View {
+    func getCurrentCaseView(for currentCase: Int, _ locationVM: LocationManager, _ iOSVM: iOSManager, _ listViewModel: EvidenceListViewModel) -> some View {
         switch currentCase {
         case 1:
             VStack(spacing: 24) {
@@ -111,6 +118,7 @@ class EvidenceListViewModel: ObservableObject {
                         self.collapseAllExcept(selectedItem: item)
                         self.selectedIndex = index
                         self.selectedDate = item.timestamp
+                        self.audioPlayerForUpdate = item.audioPlayer
                         self.selectedStreetName = streetName
                         self.selectedStreetDetail = item.streetDetail
                         self.selectedRecordingTime = recordingTime
@@ -179,58 +187,66 @@ class EvidenceListViewModel: ObservableObject {
             }
             
         case 2:
-            VStack(spacing: 24) {
-                RoutePolyline(routeCoordinates: LocationDetailVM.routeUpToSliderValue(), startEndPins: LocationDetailVM.startEndPinLocations())
-                    .foregroundColor(.blue)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .frame(height: UIScreen.main.bounds.height * 2 / 5)
-                    .shadow(radius: 2, y: 4)
-                
-                RoundedRectangle(cornerRadius: 10)
-                    .frame(height: 73)
-                    .foregroundColor(.containerColor2)
-                    .shadow(radius: 2, y: 4)
-                    .overlay {
-                        HStack(spacing: 12) {
-                            Circle()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.iconColor2)
-                                .overlay {
-                                    Image(.icon1)
-                                }
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text(selectedStreetName)
-                                    .foregroundColor(.fontColor4)
-                                    .font(.lt(size: 16, weight: .semibold))
-                                Text(selectedStreetDetail)
-                                    .foregroundColor(.fontColor6)
-                                    .font(.lt(size: 15))
-                            }
-                            Spacer()
-                        }
-                        .padding()
+            if self.isDirected != true {
+                VStack(spacing: 24) {
+                    Button {
+                        self.isDirectedBinding.wrappedValue = true
+                    } label: {
+                        RoutePolyline(routeCoordinates: LocationDetailVM.routeUpToSliderValue(), startEndPins: LocationDetailVM.startEndPinLocations())
+                            .foregroundColor(.blue)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .frame(height: UIScreen.main.bounds.height * 2 / 5)
+                            .shadow(radius: 2, y: 4)
                     }
-                Spacer()
-            }
-            .onAppear {
-                self.LocationDetailVM = LoadLocationManager(
-                    region:
-                        locationVM.storeLocation[self.selectedIndex].region,
-                    pins:
-                        locationVM.storeLocation[self.selectedIndex].pins,
-                    routeCoordinates:
-                        locationVM.storeLocation[self.selectedIndex].routeCoordinates,
-                    sliderValue:
-                        locationVM.storeLocation[self.selectedIndex].sliderValue,
-                    showSlider:
-                        locationVM.storeLocation[self.selectedIndex].showSlider,
-                    maxSliderValue:
-                        locationVM.storeLocation[self.selectedIndex].maxSliderValue,
-                    lastGeocodedAddressName:
-                        locationVM.storeLocation[self.selectedIndex].streetName,
-                    lastGeocodedAddressDetail:
-                        locationVM.storeLocation[self.selectedIndex].streetDetail
-                )
+                    
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(height: 73)
+                        .foregroundColor(.containerColor2)
+                        .shadow(radius: 2, y: 4)
+                        .overlay {
+                            HStack(spacing: 12) {
+                                Circle()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(.iconColor2)
+                                    .overlay {
+                                        Image(.icon1)
+                                    }
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text(selectedStreetName)
+                                        .foregroundColor(.fontColor4)
+                                        .font(.lt(size: 16, weight: .semibold))
+                                    Text(selectedStreetDetail)
+                                        .foregroundColor(.fontColor6)
+                                        .font(.lt(size: 15))
+                                }
+                                Spacer()
+                            }
+                            .padding()
+                        }
+                    Spacer()
+                }
+                .onAppear {
+                    self.LocationDetailVM = LoadLocationManager(
+                        region:
+                            locationVM.storeLocation[self.selectedIndex].region,
+                        pins:
+                            locationVM.storeLocation[self.selectedIndex].pins,
+                        routeCoordinates:
+                            locationVM.storeLocation[self.selectedIndex].routeCoordinates,
+                        sliderValue:
+                            locationVM.storeLocation[self.selectedIndex].sliderValue,
+                        showSlider:
+                            locationVM.storeLocation[self.selectedIndex].showSlider,
+                        maxSliderValue:
+                            locationVM.storeLocation[self.selectedIndex].maxSliderValue,
+                        lastGeocodedAddressName:
+                            locationVM.storeLocation[self.selectedIndex].streetName,
+                        lastGeocodedAddressDetail:
+                            locationVM.storeLocation[self.selectedIndex].streetDetail
+                    )
+                    
+                    self.audioPlayerForUpdate = Player(avPlayer: AVPlayer(url: self.recordings[self.selectedIndex]))
+                }
             }
             
         case 3:
