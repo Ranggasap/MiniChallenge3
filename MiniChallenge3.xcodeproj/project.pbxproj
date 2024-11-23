@@ -267,7 +267,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		630E5B2E2C75873E00E49885 /* MiniChallenge3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiniChallenge3.entitlements; sourceTree = "<group>"; };
 		630E5B2F2C75876C00E49885 /* DummyCloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCloudKit.swift; sourceTree = "<group>"; };
 		630E5B332C7598A500E49885 /* SignInWithAppleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleComponent.swift; sourceTree = "<group>"; };
 		631EC7DD2C74E1AB00DBBA4D /* UserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApp.swift; sourceTree = "<group>"; };
@@ -475,7 +474,6 @@
 		8BFFF9562C57D51F00A2F088 /* MiniChallenge3 */ = {
 			isa = PBXGroup;
 			children = (
-				630E5B2E2C75873E00E49885 /* MiniChallenge3.entitlements */,
 				931C29992C719CB500554592 /* Info.plist */,
 				931C2A822C7250A500554592 /* App(iOS) */,
 				8BFFF95B2C57D52100A2F088 /* Assets.xcassets */,
